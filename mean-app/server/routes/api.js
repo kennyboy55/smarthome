@@ -13,14 +13,16 @@ const router = express.Router();
 
 router.post('/telegram', (req, res) =>
 {
-  connection.connect();
- 
-connection.query('INSTERT INTO telegram (`time`,`data`) VALUES (\'NOW()\', {{req.body}})', function (error, results, fields) {
-  if (error) throw error;
-  
-});
- 
-connection.end();
+	console.log("Telegram received: " + req.body);
+
+	connection.connect();
+	 
+	connection.query('INSTERT INTO telegram (`time`,`data`) VALUES (\'NOW()\', ' + req.body + ')'), function (error, results, fields) {
+	  if (error) throw error;
+	  
+	});
+	 
+	connection.end();
 
   res.status(200);
   res.send("{\"success\":\"true\"}");
