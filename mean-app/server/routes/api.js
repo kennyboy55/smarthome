@@ -17,7 +17,7 @@ router.post('/telegram', (req, res) =>
 
 	connection.connect();
 	 
-	connection.query('INSTERT INTO telegram (`time`,`data`) VALUES (\'NOW()\', ' + req.body + ')', function (error, results, fields) {
+	connection.query('INSTERT INTO telegram (`time`,`data`) VALUES (\'NOW()\', \'' + req.body + '\')', function (error, results, fields) {
 	  if (error) throw error;
 	  
 	});
