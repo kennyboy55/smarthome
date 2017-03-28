@@ -11,11 +11,11 @@ var connection = mysql.createConnection({
 const express = require('express');
 const router = express.Router();
 
-router.post('/telegram', (req, res) =>
-{
-	console.log("Telegram received: " + req.body);
+router.post('/telegram', function(req, res){
+	console.log("Telegram received: ");
+	console.log(req.body);
 
-	connection.connect();
+	/*connection.connect();
 
 	//connection.query(
 	//                  'INSTERT INTO telegram (`time`,`data`) VALUES (\'NOW()\', \'' + req.body + '\')',
@@ -23,15 +23,14 @@ router.post('/telegram', (req, res) =>
 	 // if (error) throw error;
 
 	//});
-console.log(body);
-	connection.end();
+	connection.end();*/
 
   res.status(200);
   res.send("{\"success\":\"true\"}");
 });
 
 /* GET api listing. */
-router.get('/', (req, res) => {
+router.get('/', function(req, res) {
   res.send('api works');
 });
 
