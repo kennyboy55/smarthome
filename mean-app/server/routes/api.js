@@ -15,15 +15,15 @@ router.post('/telegram', function(req, res){
 	console.log("Telegram received: ");
 	console.log(req.body);
 
-	/*connection.connect();
+	connection.connect();
 
-	//connection.query(
-	//                  'INSTERT INTO telegram (`time`,`data`) VALUES (\'NOW()\', \'' + req.body + '\')',
-  //                                                                function (error, results, fields) {
-	 // if (error) throw error;
+	connection.query(
+	                  'INSTERT INTO telegram (`time`,`data`) VALUES (\'NOW()\', \'' + req.body + '\')',
+                                                                  function (error, results, fields) {
+	 if (error) throw error;
 
-	//});
-	connection.end();*/
+	});
+	connection.end();
 
   res.status(200);
   res.send("{\"success\":\"true\"}");
