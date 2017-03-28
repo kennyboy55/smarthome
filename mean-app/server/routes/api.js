@@ -5,7 +5,7 @@ var connection = mysql.createConnection({
   password : 'asdf1239',
   database : 'smarthome'
 });
- 
+
 
 
 const express = require('express');
@@ -16,12 +16,14 @@ router.post('/telegram', (req, res) =>
 	console.log("Telegram received: " + req.body);
 
 	connection.connect();
-	 
-	connection.query('INSTERT INTO telegram (`time`,`data`) VALUES (\'NOW()\', \'' + req.body + '\')', function (error, results, fields) {
-	  if (error) throw error;
-	  
-	});
-	 
+
+	//connection.query(
+	//                  'INSTERT INTO telegram (`time`,`data`) VALUES (\'NOW()\', \'' + req.body + '\')',
+  //                                                                function (error, results, fields) {
+	 // if (error) throw error;
+
+	//});
+console.log(body);
 	connection.end();
 
   res.status(200);
