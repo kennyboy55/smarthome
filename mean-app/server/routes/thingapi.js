@@ -21,7 +21,13 @@ var parseTelegram = function(data, callback){
 
 
   //TOE1
-  regx = '/1-0:1\.8\.1\((\d{6}\.\d{3})\*kWh\)/g';
+  var FirstS = "1-0:1.8.1(000458.526*kWh)";
+  regx = new RegExp("^([a-z0-700]{*,})$");
+  if (regx.test(string)){
+    console.log("Yes binnen");
+  }else {
+    console.log("No!!!!")
+  }
   found = str.match(regx);
 
   console.log("\n\nPARSING\n");
