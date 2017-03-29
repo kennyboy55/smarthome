@@ -20,6 +20,11 @@ router.post('/device', function(req, res){
   res.send("{\"success\":\"true\"}");
 });
 
+
+
+
+
+
 router.get('/device', function(req, res){
   
   connection.query(
