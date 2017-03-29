@@ -28,7 +28,7 @@ var parseTelegram = function(data, callback){
  // }else {
   //  console.log("No!!!!")
   //}
-  regx = /1-0:1\.8\.1\((\d{6}\.\d{3})\*kWh\)/g
+  regx = /1-0:1\.8\.1\((\d{5}\.\d{3})\*kWh\)/g
   found = str.match(regx);
 
   console.log("\n\nPARSING\n");
