@@ -35,8 +35,6 @@ var parseTelegram = function(data, callback){
   found = found[0].split("*");
   found = found[0].split("(");
 
-  console.log("found:");
-  console.log(found[1]);
   if(found)
     toe1 = found[1];
 console.log(toe1);
@@ -44,49 +42,61 @@ console.log(toe1);
   //TOE2
   regx = /1-0:1\.8\.2\((\d{5,6}\.\d{3})\*kWh\)/g;
   found = str.match(regx);
+  found = found[0].split("*");
+  found = found[0].split("(");
 
   if(found)
-    toe2 = found[0];
+    toe2 = found[1];
 
 
   //TTE1
   regx = /1-0:2\.8\.1\((\d{5,6}\.\d{3})\*kWh\)/g;
   found = str.match(regx);
+  found = found[0].split("*");
+  found = found[0].split("(");
 
   if(found)
-    tte1 = found[0];
+    tte1 = found[1];
 
 
   //TTE2
   regx = /1-0:2\.8\.2\((\d{5,6}\.\d{3})\*kWh\)/g;
   found = str.match(regx);
+  found = found[0].split("*");
+  found = found[0].split("(");
 
   if(found)
-    tte2 = found[0];
+    tte2 = found[1];
 
 
   //HT
   regx = /0-0:96\.14\.0\((\d{2,4})\)/g;
   found = str.match(regx);
+  found = found[0].split(")");
+  found = found[0].split("(");
 
   if(found)
-    ht = found[0];
+    ht = found[1];
 
 
   //HOV
   regx = /1-0:1\.7\.0\((\d{2,4}\.\d{2,3})\*kW\)/g;
   found = str.match(regx);
+  found = found[0].split("*");
+  found = found[0].split("(");
 
   if(found)
-    hov = found[0];
+    hov = found[1];
 
 
    //HTV
   regx = /1-0:2\.7\.0\((\d{2,4}\.\d{2,3})\*kW\)/g;
   found = str.match(regx);
+  found = found[0].split("*");
+  found = found[0].split("(");
 
   if(found)
-    htv = found[0];
+    htv = found[1];
 
 
 
