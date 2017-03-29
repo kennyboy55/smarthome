@@ -34,7 +34,7 @@ var parseTelegram = function(data, callback){
   found = str.match(regx);
 
   console.log("found:");
-  console.log(found);
+  console.log(found[0]);
   if(found)
     toe1 = found[0];
 
