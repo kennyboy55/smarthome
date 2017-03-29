@@ -33,6 +33,7 @@ var parseTelegram = function(data, callback){
   regx = /1-0:1\.8\.1\((\d{5,6}\.\d{3})\*kWh\)/g
   found = str.match(regx);
 
+  console.log(found);
   if(found)
     toe1 = found[0];
 
