@@ -19,7 +19,8 @@ var parseTelegram = function(data, callback){
 
   var str = data;
 
-
+  var entry = JSON.search(str, "1-0:1.8.1");
+  console.log(entry);
   //TOE1
   regx = new RegExp("^([a-z0-9]{*,})$");
   if (regx.test(str)){
