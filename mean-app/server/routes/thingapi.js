@@ -44,6 +44,8 @@ var parseTelegram = function(data, callback){
   var regx = /./g;
   var found = "";
 
+  var str = data;
+
 
   //TOE1
   regx = /1-0:1\.8\.1\((\d{6}\.\d{3})\*kWh\)/g;
