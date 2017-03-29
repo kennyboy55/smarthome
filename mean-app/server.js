@@ -5,7 +5,8 @@ const http = require('http');
 const bodyParser = require('body-parser');
 
 // Get our API routes
-const api = require('./server/routes/api');
+const thingapi = require('./server/routes/thingapi');
+const webapi = require('./server/routes/webapi');
 
 const app = express();
 
@@ -17,7 +18,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes
-app.use('/api', api);
+app.use('/thingapi', thingapi);
+app.use('/webapi', webapi);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
