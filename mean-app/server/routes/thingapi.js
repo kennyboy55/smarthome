@@ -21,9 +21,9 @@ var parseTelegram = function(data, callback){
 
 
   //TOE1
-  var FirstS = "1-0:1.8.1(000458.526*kWh)";
+  var FirstS = "1-0:1.8.1";
   regx = new RegExp("^([a-z0-700]{*,})$");
-  if (regx.test(str)){
+  if (regx.test(FirstS)){
     console.log("Yes binnen");
   }else {
     console.log("No!!!!")
