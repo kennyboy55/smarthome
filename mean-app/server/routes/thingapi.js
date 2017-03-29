@@ -19,15 +19,16 @@ var parseTelegram = function(data, callback){
 
   var str = data;
 
-  var entry = JSON.search(data,'1-0:1.8.1');
-  console.log(entry);
+  //var entry = JSON.search(data,'1-0:1.8.1');
+  //console.log(entry);
   //TOE1
-  regx = new RegExp("^([a-z0-9]{*,})$");
-  if (regx.test(str)){
-    console.log("Yes binnen");
-  }else {
-    console.log("No!!!!")
-  }
+  //regx = new RegExp("^([a-z0-9]{*,})$");
+ // if (regx.test(str)){
+  //  console.log("Yes binnen");
+ // }else {
+  //  console.log("No!!!!")
+  //}
+  regx = /1-0:1\.8\.1\((\d{6}\.\d{3})\*kWh\)/g
   found = str.match(regx);
 
   console.log("\n\nPARSING\n");
