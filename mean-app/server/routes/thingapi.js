@@ -25,8 +25,9 @@ var parseTelegram = function(data, callback){
   found = str.match(regx);
 
   console.log("\n\nPARSING\n");
+  console.log(str);
   console.log(found);
-  
+
   if(found.length > 0)
     toe1 = found[0];
 
@@ -34,7 +35,7 @@ var parseTelegram = function(data, callback){
   //TOE2
   regx = /1-0:1\.8\.2\((\d{6}\.\d{3})\*kWh\)/g;
   found = str.match(regx);
-  
+
   if(found.length > 0)
     toe2 = found[0];
 
@@ -42,7 +43,7 @@ var parseTelegram = function(data, callback){
   //TTE1
   regx = /1-0:2\.8\.1\((\d{6}\.\d{3})\*kWh\)/g;
   found = str.match(regx);
-  
+
   if(found.length > 0)
     tte1 = found[0];
 
@@ -50,7 +51,7 @@ var parseTelegram = function(data, callback){
   //TTE2
   regx = /1-0:2\.8\.2\((\d{6}\.\d{3})\*kWh\)/g;
   found = str.match(regx);
-  
+
   if(found.length > 0)
     tte2 = found[0];
 
@@ -58,7 +59,7 @@ var parseTelegram = function(data, callback){
   //HT
   regx = /0-0:96\.14\.0\((\d{4})\)/g;
   found = str.match(regx);
-  
+
   if(found.length > 0)
     ht = found[0];
 
@@ -66,7 +67,7 @@ var parseTelegram = function(data, callback){
   //HOV
   regx = /1-0:1\.7\.0\((\d{2}\.\d{3})\*kW\)/g;
   found = str.match(regx);
-  
+
   if(found.length > 0)
     hov = found[0];
 
@@ -74,7 +75,7 @@ var parseTelegram = function(data, callback){
    //HTV
   regx = /1-0:2\.7\.0\((\d{2}\.\d{3})\*kW\)/g;
   found = str.match(regx);
-  
+
   if(found.length > 0)
     htv = found[0];
 
@@ -106,7 +107,7 @@ router.post('/telegram', function(req, res){
     res.status(200);
     res.send("{\"success\":\"true\"}");
   })
-  
+
 });
 
 /* GET api listing. */
