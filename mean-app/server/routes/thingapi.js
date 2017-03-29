@@ -74,7 +74,7 @@ var parseTelegram = function(data, callback){
 
 
   //HOV
-  regx = /1-0:1\.7\.0\((\d{2}\.\d{3})\*kW\)/g;
+  regx = /1-0:1\.7\.0\((\d{2}\.\d{2})\*kW\)/g;
   found = str.match(regx);
 
   if(found.length > 0)
@@ -82,7 +82,7 @@ var parseTelegram = function(data, callback){
 
 
    //HTV
-  regx = /1-0:2\.7\.0\((\d{2}\.\d{3})\*kW\)/g;
+  regx = /1-0:2\.7\.0\((\d{2}\.\d{2})\*kW\)/g;
   found = str.match(regx);
 
   if(found.length > 0)
