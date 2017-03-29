@@ -4,33 +4,6 @@ const express = require('express');
 const router = express.Router();
 
 
-
-router.post('/telegram', function(req, res){
-	console.log("Telegram received: ");
-	console.log(req.body);
-
-	connection.query(
-    'INSERT INTO telegram (time, data) VALUES (NOW(), ?)', [req.body.datagram],
-                     function (error, results, fields) {
-	 if (error) throw error;
-
-	});
-
-  parseTelegram(req.body.datagram, function(){
-    res.status(200);
-    res.send("{\"success\":\"true\"}");
-  })
-  
-});
-
-/* GET api listing. */
-router.get('/', function(req, res) {
-  res.status(200);
-  res.send("{\"success\":\"true\"}");
-});
-
-
-
 var parseTelegram = function(data, callback){
 
   var toe1 = 0; //Totaal opgenomen energie (tarief 1)
@@ -50,6 +23,9 @@ var parseTelegram = function(data, callback){
   //TOE1
   regx = /1-0:1\.8\.1\((\d{6}\.\d{3})\*kWh\)/g;
   found = str.match(regx);
+
+  console.log("\n\nPARSING\n");
+  console.log(found);
   
   if(found.length > 0)
     toe1 = found[0];
@@ -113,6 +89,32 @@ var parseTelegram = function(data, callback){
     });
 
 }
+
+
+router.post('/telegram', function(req, res){
+	console.log("Telegram received: ");
+	console.log(req.body);
+
+	connection.query(
+    'INSERT INTO telegram (time, data) VALUES (NOW(), ?)', [req.body.datagram],
+                     function (error, results, fields) {
+	 if (error) throw error;
+
+	});
+
+  parseTelegram(req.body.datagram, function(){
+    res.status(200);
+    res.send("{\"success\":\"true\"}");
+  })
+  
+});
+
+/* GET api listing. */
+router.get('/', function(req, res) {
+  res.status(200);
+  res.send("{\"success\":\"true\"}");
+});
+
 
 
 module.exports = router;
