@@ -28,6 +28,8 @@ var parseTelegram = function(data, callback){
  // }else {
   //  console.log("No!!!!")
   //}
+
+  //TOE1
   regx = /1-0:1\.8\.1\((\d{5}\.\d{3})\*kWh\)/g
   found = str.match(regx);
 
@@ -40,7 +42,7 @@ var parseTelegram = function(data, callback){
 
 
   //TOE2
-  regx = /1-0:1\.8\.2\((\d{6}\.\d{3})\*kWh\)/g;
+  regx = /1-0:1\.8\.2\((\d{5}\.\d{3})\*kWh\)/g;
   found = str.match(regx);
 
   if(found.length > 0)
@@ -48,7 +50,7 @@ var parseTelegram = function(data, callback){
 
 
   //TTE1
-  regx = /1-0:2\.8\.1\((\d{6}\.\d{3})\*kWh\)/g;
+  regx = /1-0:2\.8\.1\((\d{5}\.\d{3})\*kWh\)/g;
   found = str.match(regx);
 
   if(found.length > 0)
@@ -56,7 +58,7 @@ var parseTelegram = function(data, callback){
 
 
   //TTE2
-  regx = /1-0:2\.8\.2\((\d{6}\.\d{3})\*kWh\)/g;
+  regx = /1-0:2\.8\.2\((\d{5}\.\d{3})\*kWh\)/g;
   found = str.match(regx);
 
   if(found.length > 0)
