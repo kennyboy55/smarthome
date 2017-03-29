@@ -32,11 +32,10 @@ var parseTelegram = function(data, callback){
   //TOE1
   regx = /1-0:1\.8\.1\((\d{5,6}\.\d{3})\*kWh\)/g
   found = str.match(regx);
-  found = found[0].split(")");
+  found = found[0].split("*");
   found = found[0].split("(");
 
   console.log("found:");
-  console.log(found[0]);
   console.log(found[1]);
   if(found)
     toe1 = found[1];
