@@ -21,7 +21,7 @@ var parseTelegram = function(data, callback){
 
 
   //TOE1
-  regx = /1-0:1\.8\.1\((\d{6}\.\d{3})\*kWh\)/;
+  regx = '/1-0:1\.8\.1\((\d{6}\.\d{3})\*kWh\)/g';
   found = str.match(regx);
 
   console.log("\n\nPARSING\n");
