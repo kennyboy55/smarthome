@@ -84,7 +84,7 @@ console.log(toe1);
 
 
   connection.query(
-      'INSERT INTO measurement (TOE1, TOE2, TTE1, TTE2, HT, HOV, HTV, time) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())', [toe1, toe2, tte1, tte2, ht, hov, htv],
+      'INSERT INTO measurement (device, TOE1, TOE2, TTE1, TTE2, HT, HOV, HTV, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())', [device, toe1, toe2, tte1, tte2, ht, hov, htv],
                        function (error, results, fields) {
      if (error) throw error;
 
