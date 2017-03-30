@@ -21,12 +21,10 @@ var parseTelegram = function(data, callback){
   var str = data;
 
   //METER ID
-  regx = /0-0:96\.1\.1\((\d+)\)/g;
+  regx = /0-0:96\.1\.1\((\w+)\)/g;
   found = regx.exec((str));
   if(found)
     device = found[1];
-  console.log(device);
-  console.log("\n");
 
   //TOE1
   regx = /1-0:1\.8\.1\((\d{5,6}\.\d{3})\*kWh\)/g;
