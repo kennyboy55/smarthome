@@ -19,21 +19,9 @@ var parseTelegram = function(data, callback){
 
   var str = data;
 
-  //var entry = JSON.search(data,'1-0:1.8.1');
-  //console.log(entry);
-  //TOE1
-  //regx = new RegExp("^([a-z0-9]{*,})$");
- // if (regx.test(str)){
-  //  console.log("Yes binnen");
- // }else {
-  //  console.log("No!!!!")
-  //}
-
   //TOE1
   regx = /1-0:1\.8\.1\((\d{5,6}\.\d{3})\*kWh\)/g
-  found = str.match(regx);
-  found = found[0].split("*");
-  found = found[0].split("(");
+  found = regx.exec(str);
 
   if(found)
     toe1 = found[1];
@@ -41,9 +29,7 @@ console.log(toe1);
 
   //TOE2
   regx = /1-0:1\.8\.2\((\d{5,6}\.\d{3})\*kWh\)/g;
-  found = str.match(regx);
-  found = found[0].split("*");
-  found = found[0].split("(");
+  found = regx.exec(str);
 
   if(found)
     toe2 = found[1];
@@ -51,9 +37,7 @@ console.log(toe1);
 
   //TTE1
   regx = /1-0:2\.8\.1\((\d{5,6}\.\d{3})\*kWh\)/g;
-  found = str.match(regx);
-  found = found[0].split("*");
-  found = found[0].split("(");
+  found = regx.exec(str);
 
   if(found)
     tte1 = found[1];
@@ -61,9 +45,7 @@ console.log(toe1);
 
   //TTE2
   regx = /1-0:2\.8\.2\((\d{5,6}\.\d{3})\*kWh\)/g;
-  found = str.match(regx);
-  found = found[0].split("*");
-  found = found[0].split("(");
+  found = regx.exec(str);
 
   if(found)
     tte2 = found[1];
@@ -71,9 +53,7 @@ console.log(toe1);
 
   //HT
   regx = /0-0:96\.14\.0\((\d{2,4})\)/g;
-  found = str.match(regx);
-  found = found[0].split(")");
-  found = found[0].split("(");
+  found = regx.exec(str);
 
   if(found)
     ht = found[1];
@@ -81,9 +61,7 @@ console.log(toe1);
 
   //HOV
   regx = /1-0:1\.7\.0\((\d{2,4}\.\d{2,3})\*kW\)/g;
-  found = str.match(regx);
-  found = found[0].split("*");
-  found = found[0].split("(");
+  found = regx.exec(str);
 
   if(found)
     hov = found[1];
@@ -91,9 +69,7 @@ console.log(toe1);
 
    //HTV
   regx = /1-0:2\.7\.0\((\d{2,4}\.\d{2,3})\*kW\)/g;
-  found = str.match(regx);
-  found = found[0].split("*");
-  found = found[0].split("(");
+  found = regx.exec(str);
 
   if(found)
     htv = found[1];
