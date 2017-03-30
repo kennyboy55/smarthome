@@ -13,14 +13,21 @@ var parseTelegram = function(data, callback){
   var ht = 0;   //Huidig tarief
   var hov = 0;  //Huidig opgenomen vermogen
   var htv = 0;  //Huidig teruggeleverd vermogen
+  var device = 0; //Device id
 
   var regx = /./g;
   var found = "";
 
   var str = data;
 
+  //METER ID
+  regx = /0-0:96\.1\.1\((\d+)\)/g;
+  found = regx.exec((str));
+  if(found)
+    device = found[1];
+
   //TOE1
-  regx = /1-0:1\.8\.1\((\d{5,6}\.\d{3})\*kWh\)/g
+  regx = /1-0:1\.8\.1\((\d{5,6}\.\d{3})\*kWh\)/g;
   found = regx.exec(str);
 
   if(found)
