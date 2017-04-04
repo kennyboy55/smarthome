@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { LineChartComponent } from './chart.component';
 
 @Component({
   selector: 'app-root',
