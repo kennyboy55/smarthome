@@ -246,7 +246,10 @@ var LineChartComponent = (function () {
         var _this = this;
         this.dataService
             .get()
-            .subscribe(function (res) { return _this.lineChartData[0].data = res.data; });
+            .subscribe(function (res) {
+            console.log(res);
+            _this.lineChartData[0].data = res.data;
+        });
         console.log("Init");
     };
     LineChartComponent = __decorate([
