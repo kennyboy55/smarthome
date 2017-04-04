@@ -9,7 +9,7 @@ import { LabelData } from './label-data';
 
 @Injectable()
 export class DataService {
-  private baseUrl: string = 'http://localhost:3000/webapi/data';
+  private baseUrl: string = '/webapi/data';
 
   constructor(private http : Http){}
 

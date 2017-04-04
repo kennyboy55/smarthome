@@ -12,7 +12,7 @@ export class LineChartComponent implements OnInit {
   public lineChartData:Array<any> = [
     {data: [1,0,0,0,0,0,1], label: 'Series A'}
   ];
-  public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChartLabels:Array<any> = ['', '', '', '', '', '', ''];
   public lineChartOptions:any = {
     responsive: true,
     title: {
