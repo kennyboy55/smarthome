@@ -4,6 +4,8 @@ import 'rxjs/add/operator/map'
 import { Http, Response, Headers } from '@angular/http';
 
 import { LineData } from './line-data';
+import { GraphData } from './graph-data';
+import { LabelData } from './label-data';
 
 @Injectable()
 export class DataService {
@@ -11,7 +13,7 @@ export class DataService {
 
   constructor(private http : Http){}
 
-  get(): Observable<LineData> {
+  get(): Observable<GraphData> {
     console.log('Getting data');
     let lineChartData$ =
       //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
@@ -21,9 +23,7 @@ export class DataService {
         .map(mapData);
 
     console.log(lineChartData$);
-
     return lineChartData$;
-
   }
 
   private getHeaders(){
@@ -33,20 +33,29 @@ export class DataService {
   }
 }
 
-function mapData(response:Response): LineData {
-  console.log('Mapping data', LineData);
+function mapData(response:Response): GraphData {
+  console.log('Mapping data', GraphData);
   let nums = response.json().map(toData);
+  let times = response.json().map(timeToData)
 
   console.log(nums);
 
   let line:LineData = <LineData>({data: nums, label: "Series A"});
+  let label:LabelData = <LabelData>({data: times});
   console.log(line);
-  return line;
+  let graph:GraphData = <GraphData>({lines:line,labels:label});
+  return graph;
 }
 
 function toData(r:any){
   let num = r.TOE1;
   console.log('Parsed Data:', num);
   return num;
+}
+
+function timeToData(r:any){
+  let times = r.time;
+  console.log('Parsed Time:', times);
+  return times;
 }
 

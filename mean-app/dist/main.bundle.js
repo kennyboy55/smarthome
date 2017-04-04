@@ -8,7 +8,7 @@ webpackJsonp([1,4],{
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(617);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(284);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__line_data__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__graph_data__ = __webpack_require__(455);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -51,17 +51,25 @@ var DataService = (function () {
     var _a;
 }());
 function mapData(response) {
-    console.log('Mapping data', __WEBPACK_IMPORTED_MODULE_3__line_data__["a" /* LineData */]);
+    console.log('Mapping data', __WEBPACK_IMPORTED_MODULE_3__graph_data__["a" /* GraphData */]);
     var nums = response.json().map(toData);
+    var times = response.json().map(timeToData);
     console.log(nums);
     var line = ({ data: nums, label: "Series A" });
+    var label = ({ data: times });
     console.log(line);
-    return line;
+    var graph = ({ lines: line, labels: label });
+    return graph;
 }
 function toData(r) {
     var num = r.TOE1;
     console.log('Parsed Data:', num);
     return num;
+}
+function timeToData(r) {
+    var times = r.time;
+    console.log('Parsed Time:', times);
+    return times;
 }
 //# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/data.service.js.map
 
@@ -220,7 +228,12 @@ var LineChartComponent = (function () {
         ];
         this.lineChartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
         this.lineChartOptions = {
-            responsive: true
+            responsive: true,
+            title: {
+                display: true,
+                position: 'left',
+                text: 'Watt'
+            }
         };
         this.lineChartColors = [
             {
@@ -249,9 +262,10 @@ var LineChartComponent = (function () {
             .subscribe(function (res) {
             console.log(res);
             var newDataSet = [];
-            var newLine = { data: res.data, label: res.label };
+            var newLine = { data: res.lines.data, label: res.lines.label };
             newDataSet.push(newLine);
             _this.lineChartData = newDataSet;
+            _this.lineChartLabels = res.labels.data;
         });
         console.log("Init");
     };
@@ -273,13 +287,13 @@ var LineChartComponent = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LineData; });
-var LineData = (function () {
-    function LineData() {
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GraphData; });
+var GraphData = (function () {
+    function GraphData() {
     }
-    return LineData;
+    return GraphData;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/line-data.js.map
+//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/graph-data.js.map
 
 /***/ }),
 

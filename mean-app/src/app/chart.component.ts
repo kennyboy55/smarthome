@@ -14,7 +14,12 @@ export class LineChartComponent implements OnInit {
   ];
   public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions:any = {
-    responsive: true
+    responsive: true,
+    title: {
+      display: true,
+      position: 'left',
+      text: 'Watt'
+    }
   };
   public lineChartColors:Array<any> = [
     { // grey
@@ -46,10 +51,13 @@ export class LineChartComponent implements OnInit {
       .get()
       .subscribe(res => {
         console.log(res);
+
         const newDataSet = [];
-        const newLine = {data: res.data, label: res.label};
+        const newLine = {data: res.lines.data, label: res.lines.label};
         newDataSet.push(newLine);
         this.lineChartData = newDataSet;
+
+        this.lineChartLabels = res.labels.data;
       });
 
     console.log("Init");
