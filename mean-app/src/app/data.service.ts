@@ -34,10 +34,10 @@ export class DataService {
 }
 
 function mapData(response:Response): LineData {
-  return response.json().data.map(toBeer)
+  return response.json().map(toData)
 }
 
-function toBeer(r:any): LineData{
+function toData(r:any): LineData{
   let lineData = <LineData>({
     data: r.TOE1,
     label: r.time,
