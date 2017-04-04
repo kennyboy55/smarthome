@@ -46,9 +46,10 @@ export class LineChartComponent implements OnInit {
       .get()
       .subscribe(res => {
         console.log(res);
+        const newDataSet = [];
         const newLine = {data: res.data, label: res.label};
-        this.lineChartData[0] = newLine;
-
+        newDataSet.push(newLine);
+        this.lineChartData = newDataSet;
       });
 
     console.log("Init");
