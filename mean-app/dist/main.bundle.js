@@ -58,7 +58,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var DataService = (function () {
     function DataService(http) {
         this.http = http;
-        this.baseUrl = 'http://localhost:3000/webapi/data';
+        this.baseUrl = '/webapi/data';
     }
     DataService.prototype.get = function () {
         console.log('Getting data');
@@ -304,7 +304,7 @@ var LineChartComponent = (function () {
         this.lineChartData = [
             { data: [1, 0, 0, 0, 0, 0, 1], label: 'Series A' }
         ];
-        this.lineChartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+        this.lineChartLabels = ['', '', '', '', '', '', ''];
         this.lineChartOptions = {
             responsive: true,
             title: {
