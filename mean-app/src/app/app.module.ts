@@ -7,6 +7,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { AppComponent } from './app.component';
 import { LineChartComponent } from './chart.component';
 
+import { DataService } from './data.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,7 @@ import { LineChartComponent } from './chart.component';
     HttpModule,
     ChartsModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

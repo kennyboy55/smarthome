@@ -1,6 +1,45 @@
 webpackJsonp([1,4],{
 
-/***/ 342:
+/***/ 332:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__(674);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var DataService = (function () {
+    function DataService() {
+    }
+    DataService.prototype.get = function () {
+        var lineChartData$ = ({ data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' });
+        return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].create(function (observer) {
+            observer.next(lineChartData$);
+            observer.complete();
+        });
+    };
+    DataService = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
+        __metadata('design:paramtypes', [])
+    ], DataService);
+    return DataService;
+}());
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/data.service.js.map
+
+/***/ }),
+
+/***/ 401:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -9,20 +48,20 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 342;
+webpackEmptyContext.id = 401;
 
 
 /***/ }),
 
-/***/ 343:
+/***/ 402:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(431);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(454);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(490);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(513);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(511);
 
 
 
@@ -35,11 +74,11 @@ __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dyna
 
 /***/ }),
 
-/***/ 451:
+/***/ 510:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -58,8 +97,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
-            template: __webpack_require__(612),
-            styles: [__webpack_require__(611)]
+            template: __webpack_require__(671),
+            styles: [__webpack_require__(670)]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
@@ -69,18 +108,19 @@ var AppComponent = (function () {
 
 /***/ }),
 
-/***/ 452:
+/***/ 511:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(421);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(427);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts__ = __webpack_require__(609);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(480);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(486);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts__ = __webpack_require__(668);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(451);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chart_component__ = __webpack_require__(453);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(510);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chart_component__ = __webpack_require__(512);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__data_service__ = __webpack_require__(332);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -91,6 +131,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 
@@ -113,7 +154,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
                 __WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts__["ChartsModule"]
             ],
-            providers: [],
+            providers: [__WEBPACK_IMPORTED_MODULE_7__data_service__["a" /* DataService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
         }), 
         __metadata('design:paramtypes', [])
@@ -124,11 +165,12 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 453:
+/***/ 512:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_service__ = __webpack_require__(332);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LineChartComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -140,13 +182,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var LineChartComponent = (function () {
-    function LineChartComponent() {
+    function LineChartComponent(dataService) {
+        this.dataService = dataService;
         // lineChart
         this.lineChartData = [
-            { data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' },
-            { data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B' },
-            { data: [18, 48, 77, 9, 100, 27, 40], label: 'Series C' }
+            { data: [0, 0, 0, 0, 0, 0, 0], label: 'Series A' }
         ];
         this.lineChartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
         this.lineChartOptions = {
@@ -160,37 +202,11 @@ var LineChartComponent = (function () {
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
                 pointHoverBorderColor: 'rgba(148,159,177,0.8)'
-            },
-            {
-                backgroundColor: 'rgba(77,83,96,0.2)',
-                borderColor: 'rgba(77,83,96,1)',
-                pointBackgroundColor: 'rgba(77,83,96,1)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgba(77,83,96,1)'
-            },
-            {
-                backgroundColor: 'rgba(148,159,177,0.2)',
-                borderColor: 'rgba(148,159,177,1)',
-                pointBackgroundColor: 'rgba(148,159,177,1)',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: 'rgba(148,159,177,0.8)'
             }
         ];
         this.lineChartLegend = true;
         this.lineChartType = 'line';
     }
-    LineChartComponent.prototype.randomize = function () {
-        var _lineChartData = new Array(this.lineChartData.length);
-        for (var i = 0; i < this.lineChartData.length; i++) {
-            _lineChartData[i] = { data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label };
-            for (var j = 0; j < this.lineChartData[i].data.length; j++) {
-                _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
-            }
-        }
-        this.lineChartData = _lineChartData;
-    };
     // events
     LineChartComponent.prototype.chartClicked = function (e) {
         console.log(e);
@@ -198,20 +214,28 @@ var LineChartComponent = (function () {
     LineChartComponent.prototype.chartHovered = function (e) {
         console.log(e);
     };
+    LineChartComponent.prototype.ngOnInit = function () {
+        /*
+        this.dataService
+          .get()
+          .subscribe(res => this.lineChartData[0].data = res.data);
+          */
+    };
     LineChartComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'line-chart',
-            template: __webpack_require__(613)
+            template: __webpack_require__(672)
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === 'function' && _a) || Object])
     ], LineChartComponent);
     return LineChartComponent;
+    var _a;
 }());
 //# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/chart.component.js.map
 
 /***/ }),
 
-/***/ 454:
+/***/ 513:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -227,34 +251,34 @@ var environment = {
 
 /***/ }),
 
-/***/ 611:
+/***/ 670:
 /***/ (function(module, exports) {
 
 module.exports = "h1 {\r\n\tcolor: blue;\r\n}"
 
 /***/ }),
 
-/***/ 612:
+/***/ 671:
 /***/ (function(module, exports) {
 
 module.exports = "<h1>\r\n  {{title}}\r\n\r\n  <line-chart></line-chart>\r\n</h1>"
 
 /***/ }),
 
-/***/ 613:
+/***/ 672:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n    <div style=\"display: block;\">\r\n    <canvas baseChart width=\"400\" height=\"400\"\r\n                [datasets]=\"lineChartData\"\r\n                [labels]=\"lineChartLabels\"\r\n                [options]=\"lineChartOptions\"\r\n                [colors]=\"lineChartColors\"\r\n                [legend]=\"lineChartLegend\"\r\n                [chartType]=\"lineChartType\"\r\n                (chartHover)=\"chartHovered($event)\"\r\n                (chartClick)=\"chartClicked($event)\"></canvas>\r\n    </div>\r\n  </div>\r\n  <div class=\"col-md-6\" style=\"margin-bottom: 10px\">\r\n    <table class=\"table table-responsive table-condensed\">\r\n      <tr>\r\n        <th *ngFor=\"let label of lineChartLabels\">{{label}}</th>\r\n      </tr>\r\n      <tr *ngFor=\"let d of lineChartData\">\r\n        <td *ngFor=\"let label of lineChartLabels; let j=index\">{{d && d.data[j]}}</td>\r\n      </tr>\r\n    </table>\r\n    <button (click)=\"randomize()\">CLICK</button>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n    <div style=\"display: block;\">\r\n    <canvas baseChart width=\"400\" height=\"400\"\r\n                [datasets]=\"lineChartData\"\r\n                [labels]=\"lineChartLabels\"\r\n                [options]=\"lineChartOptions\"\r\n                [colors]=\"lineChartColors\"\r\n                [legend]=\"lineChartLegend\"\r\n                [chartType]=\"lineChartType\"\r\n                (chartHover)=\"chartHovered($event)\"\r\n                (chartClick)=\"chartClicked($event)\"></canvas>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
-/***/ 626:
+/***/ 948:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(343);
+module.exports = __webpack_require__(402);
 
 
 /***/ })
 
-},[626]);
+},[948]);
 //# sourceMappingURL=main.bundle.map
