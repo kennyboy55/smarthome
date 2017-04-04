@@ -28,7 +28,7 @@ var DashboardComponent = (function () {
     ], DashboardComponent);
     return DashboardComponent;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/dashboard.component.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/dashboard.component.js.map
 
 /***/ }),
 
@@ -103,7 +103,7 @@ function timeToData(r) {
     console.log('Parsed Time:', times);
     return times;
 }
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/data.service.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/data.service.js.map
 
 /***/ }),
 
@@ -138,7 +138,7 @@ if (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment *
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["enableProdMode"])();
 }
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/main.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/main.js.map
 
 /***/ }),
 
@@ -178,7 +178,7 @@ var AppRoutingModule = (function () {
     ], AppRoutingModule);
     return AppRoutingModule;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/app-routing.module.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/app-routing.module.js.map
 
 /***/ }),
 
@@ -212,7 +212,7 @@ var AppComponent = (function () {
     ], AppComponent);
     return AppComponent;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/app.component.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/app.component.js.map
 
 /***/ }),
 
@@ -275,7 +275,7 @@ var AppModule = (function () {
     ], AppModule);
     return AppModule;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/app.module.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/app.module.js.map
 
 /***/ }),
 
@@ -343,7 +343,7 @@ var LineChartComponent = (function () {
             var newLine = { data: res.lines.data, label: res.lines.label };
             newDataSet.push(newLine);
             _this.lineChartData = newDataSet;
-            _this.lineChartLabels = res.labels.data;
+            _this.lineChartLabels = res.labels.data.slice();
         });
         console.log("Init");
     };
@@ -357,7 +357,7 @@ var LineChartComponent = (function () {
     return LineChartComponent;
     var _a;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/chart.component.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/chart.component.js.map
 
 /***/ }),
 
@@ -371,7 +371,7 @@ var GraphData = (function () {
     }
     return GraphData;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/graph-data.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/graph-data.js.map
 
 /***/ }),
 
@@ -387,7 +387,7 @@ var GraphData = (function () {
 var environment = {
     production: false
 };
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/environment.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/environment.js.map
 
 /***/ }),
 
