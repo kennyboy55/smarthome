@@ -23,8 +23,6 @@ router.post('/device', function(req, res){
 
 
 
-
-
 router.get('/device', function(req, res){
   
   connection.query(
@@ -49,6 +47,24 @@ router.get('/', function(req, res) {
 });
 
 
+
+router.get('/data', function(req, res) {
+
+  connection.query(
+    'SELECT * FROM measurement ORDER BY time DESC LIMIT 0,10',
+                     function (error, results, fields) {
+   if (error) throw error;
+
+   if (results.length  > 0) {
+        console.log(results);
+
+        res.status(200);
+        res.send(results);
+    }
+
+  });
+
+});
 
 
 module.exports = router;
