@@ -51,16 +51,14 @@ var DataService = (function () {
 }());
 function mapData(response) {
     console.log('mapping data', __WEBPACK_IMPORTED_MODULE_3__line_data__["a" /* LineData */]);
-    return response.json().map(toData);
+    var nums = response.json().map(toData);
+    var line = ({ data: nums, label: "Line 1" });
+    return line;
 }
 function toData(r) {
-    var lineData = ({
-        data: r.TOE1,
-        label: r.time,
-        description: (r.description || "No description")
-    });
-    console.log('Parsed Data:', lineData);
-    return lineData;
+    var num = r.TOE1;
+    console.log('Parsed Data:', num);
+    return num;
 }
 //# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/data.service.js.map
 

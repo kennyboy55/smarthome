@@ -33,16 +33,15 @@ export class DataService {
 
 function mapData(response:Response): LineData {
   console.log('mapping data', LineData);
-  return response.json().map(toData)
+  let nums = response.json().map(toData);
+
+  let line = <LineData>({data: nums, label: "Line 1"});
+  return line;
 }
 
-function toData(r:any): LineData{
-  let lineData = <LineData>({
-    data: r.TOE1,
-    label: r.time,
-    description: (r.description || "No description")
-  });
-  console.log('Parsed Data:', lineData);
-  return lineData;
+function toData(r:any){
+  let num = r.TOE1;
+  console.log('Parsed Data:', num);
+  return num;
 }
 
