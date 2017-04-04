@@ -1,14 +1,44 @@
 webpackJsonp([1,4],{
 
-/***/ 302:
+/***/ 358:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(617);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(284);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__line_data__ = __webpack_require__(455);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DashboardComponent = (function () {
+    function DashboardComponent() {
+    }
+    DashboardComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'dashboard',
+            template: __webpack_require__(709)
+        }), 
+        __metadata('design:paramtypes', [])
+    ], DashboardComponent);
+    return DashboardComponent;
+}());
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/dashboard.component.js.map
+
+/***/ }),
+
+/***/ 359:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__ = __webpack_require__(711);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -21,53 +51,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-
-
 var DataService = (function () {
-    function DataService(http) {
-        this.http = http;
-        this.baseUrl = 'http://localhost:3000/webapi/data';
+    function DataService() {
     }
     DataService.prototype.get = function () {
-        console.log('Getting data');
-        var lineChartData$ = 
-        //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
-        this.http
-            .get(("" + this.baseUrl), { headers: this.getHeaders() })
-            .map(mapData);
-        console.log(lineChartData$);
-        return lineChartData$;
-    };
-    DataService.prototype.getHeaders = function () {
-        var headers = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["b" /* Headers */]();
-        headers.append('Accept', 'application/json');
-        return headers;
+        var lineChartData$ = ({ data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A' });
+        return __WEBPACK_IMPORTED_MODULE_1_rxjs_Rx__["Observable"].create(function (observer) {
+            observer.next(lineChartData$);
+            observer.complete();
+        });
     };
     DataService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_http__["c" /* Http */]) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [])
     ], DataService);
     return DataService;
-    var _a;
 }());
-function mapData(response) {
-    console.log('Mapping data', __WEBPACK_IMPORTED_MODULE_3__line_data__["a" /* LineData */]);
-    var nums = response.json().map(toData);
-    console.log(nums);
-    var line = ({ data: nums, label: "Series A" });
-    console.log(line);
-    return line;
-}
-function toData(r) {
-    var num = r.TOE1;
-    console.log('Parsed Data:', num);
-    return num;
-}
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/data.service.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/data.service.js.map
 
 /***/ }),
 
-/***/ 344:
+/***/ 425:
 /***/ (function(module, exports) {
 
 function webpackEmptyContext(req) {
@@ -76,20 +80,20 @@ function webpackEmptyContext(req) {
 webpackEmptyContext.keys = function() { return []; };
 webpackEmptyContext.resolve = webpackEmptyContext;
 module.exports = webpackEmptyContext;
-webpackEmptyContext.id = 344;
+webpackEmptyContext.id = 425;
 
 
 /***/ }),
 
-/***/ 345:
+/***/ 426:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(432);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(456);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(453);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(514);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(549);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(547);
 
 
 
@@ -98,15 +102,55 @@ if (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment *
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["enableProdMode"])();
 }
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/main.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/main.js.map
 
 /***/ }),
 
-/***/ 452:
+/***/ 545:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__(534);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__dashboard_component__ = __webpack_require__(358);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppRoutingModule; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var routes = [
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_2__dashboard_component__["a" /* DashboardComponent */] },
+];
+var AppRoutingModule = (function () {
+    function AppRoutingModule() {
+    }
+    AppRoutingModule = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
+            imports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */].forRoot(routes)],
+            exports: [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* RouterModule */]]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AppRoutingModule);
+    return AppRoutingModule;
+}());
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/app-routing.module.js.map
+
+/***/ }),
+
+/***/ 546:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -120,35 +164,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'app works!';
+        this.title = 'Energie';
     }
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
-            template: __webpack_require__(614),
-            styles: [__webpack_require__(613)]
+            template: __webpack_require__(707),
+            styles: [__webpack_require__(706)]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/app.component.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/app.component.js.map
 
 /***/ }),
 
-/***/ 453:
+/***/ 547:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(191);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(423);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(284);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts__ = __webpack_require__(611);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(504);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(510);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts__ = __webpack_require__(704);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_component__ = __webpack_require__(452);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chart_component__ = __webpack_require__(454);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__data_service__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_routing_module__ = __webpack_require__(545);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(546);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__chart_component__ = __webpack_require__(548);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__dashboard_component__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__data_service__ = __webpack_require__(359);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -167,38 +213,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_6__chart_component__["a" /* LineChartComponent */]
+                __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__chart_component__["a" /* LineChartComponent */],
+                __WEBPACK_IMPORTED_MODULE_8__dashboard_component__["a" /* DashboardComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* HttpModule */],
-                __WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts__["ChartsModule"]
+                __WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts__["ChartsModule"],
+                __WEBPACK_IMPORTED_MODULE_5__app_routing_module__["a" /* AppRoutingModule */]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_7__data_service__["a" /* DataService */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_5__app_component__["a" /* AppComponent */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_9__data_service__["a" /* DataService */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);
     return AppModule;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/app.module.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/app.module.js.map
 
 /***/ }),
 
-/***/ 454:
+/***/ 548:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_service__ = __webpack_require__(302);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_service__ = __webpack_require__(359);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LineChartComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -216,7 +266,7 @@ var LineChartComponent = (function () {
         this.dataService = dataService;
         // lineChart
         this.lineChartData = [
-            { data: [1, 0, 0, 0, 0, 0, 1], label: 'Series A' }
+            { data: [0, 0, 0, 0, 0, 0, 0], label: 'Series A' }
         ];
         this.lineChartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
         this.lineChartOptions = {
@@ -237,53 +287,32 @@ var LineChartComponent = (function () {
     }
     // events
     LineChartComponent.prototype.chartClicked = function (e) {
-        //console.log(e);
+        console.log(e);
     };
     LineChartComponent.prototype.chartHovered = function (e) {
-        //console.log(e);
+        console.log(e);
     };
     LineChartComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.dataService
             .get()
-            .subscribe(function (res) {
-            console.log(res);
-            var newDataSet = [];
-            var newLine = { data: res.data, label: res.label };
-            newDataSet.push(newLine);
-            _this.lineChartData = newDataSet;
-        });
-        console.log("Init");
+            .subscribe(function (res) { return _this.lineChartData[0].data = res.data; });
     };
     LineChartComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'line-chart',
-            template: __webpack_require__(615)
+            template: __webpack_require__(708)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === 'function' && _a) || Object])
     ], LineChartComponent);
     return LineChartComponent;
     var _a;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/chart.component.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/chart.component.js.map
 
 /***/ }),
 
-/***/ 455:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LineData; });
-var LineData = (function () {
-    function LineData() {
-    }
-    return LineData;
-}());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/line-data.js.map
-
-/***/ }),
-
-/***/ 456:
+/***/ 549:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -295,38 +324,45 @@ var LineData = (function () {
 var environment = {
     production: false
 };
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/environment.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/environment.js.map
 
 /***/ }),
 
-/***/ 613:
+/***/ 706:
 /***/ (function(module, exports) {
 
 module.exports = "h1 {\r\n\tcolor: blue;\r\n}"
 
 /***/ }),
 
-/***/ 614:
+/***/ 707:
 /***/ (function(module, exports) {
 
-module.exports = "<h1>\r\n  {{title}}\r\n\r\n  <line-chart></line-chart>\r\n</h1>"
+module.exports = "<div class=\"container\">\r\n\r\n  <nav class=\"navbar navbar-default\">\r\n    <div class=\"container-fluid\">\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n          <span class=\"sr-only\">Toggle navigation</span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\">Energiemeter</a>\r\n      </div>\r\n      <div id=\"navbar\" class=\"navbar-collapse collapse\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li routerLink=\"/dashboard\" routerLinkActive=\"active\"><a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a></li>\r\n        </ul>\r\n      </div><!--/.nav-collapse -->\r\n    </div><!--/.container-fluid -->\r\n  </nav>\r\n\r\n  <div class=\"row\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"page-header\">\r\n        <h1>{{title}} <small>Avans</small></h1>\r\n      </div>\r\n    </div>\r\n\r\n    <router-outlet></router-outlet>\r\n\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
-/***/ 615:
+/***/ 708:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n    <div style=\"display: block;\">\r\n    <canvas baseChart width=\"400\" height=\"400\"\r\n                [datasets]=\"lineChartData\"\r\n                [labels]=\"lineChartLabels\"\r\n                [options]=\"lineChartOptions\"\r\n                [colors]=\"lineChartColors\"\r\n                [legend]=\"lineChartLegend\"\r\n                [chartType]=\"lineChartType\"\r\n                (chartHover)=\"chartHovered($event)\"\r\n                (chartClick)=\"chartClicked($event)\"></canvas>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
-/***/ 630:
+/***/ 709:
+/***/ (function(module, exports) {
+
+module.exports = "<div>\r\n\t<line-chart></line-chart>\r\n</div>"
+
+/***/ }),
+
+/***/ 977:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(345);
+module.exports = __webpack_require__(426);
 
 
 /***/ })
 
-},[630]);
+},[977]);
 //# sourceMappingURL=main.bundle.map

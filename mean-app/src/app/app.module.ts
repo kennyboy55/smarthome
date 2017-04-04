@@ -4,21 +4,26 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 
+import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { LineChartComponent } from './chart.component';
+import { DashboardComponent } from './dashboard.component';
 
 import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LineChartComponent
+    LineChartComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    ChartsModule
+    ChartsModule,
+    AppRoutingModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
