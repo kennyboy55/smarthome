@@ -1,4 +1,4 @@
 export class LineData {
-  public data: Array<number>;
+  public data: number[];
   public label:string;
 }

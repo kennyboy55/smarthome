@@ -53,7 +53,7 @@ function mapData(response) {
     console.log('Mapping data', __WEBPACK_IMPORTED_MODULE_3__line_data__["a" /* LineData */]);
     var nums = response.json().map(toData);
     console.log(nums);
-    var line = ({ data: nums, label: "Line 1" });
+    var line = ({ data: [90, 67, 77, 56, 45, 89, 90], label: "Series A" });
     console.log(line);
     return line;
 }
