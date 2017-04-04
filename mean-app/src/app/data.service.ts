@@ -20,6 +20,8 @@ export class DataService {
           , {headers: this.getHeaders()})
         .map(mapData);
 
+    console.log(lineChartData$);
+
     return lineChartData$;
 
   }
@@ -37,7 +39,7 @@ function mapData(response:Response): LineData {
 
   console.log(nums);
 
-  let line:LineData = <LineData>({data: [90,67,77,56,45,89,90], label: "Series A"});
+  let line:LineData = <LineData>({data: nums, label: "Series A"});
   console.log(line);
   return line;
 }

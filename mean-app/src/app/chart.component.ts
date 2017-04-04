@@ -10,7 +10,7 @@ import { LineData } from './line-data';
 export class LineChartComponent implements OnInit {
   // lineChart
   public lineChartData:Array<any> = [
-    {data: [0,0,0,0,0,0,0], label: 'Series A'}
+    {data: [1,0,0,0,0,0,1], label: 'Series A'}
   ];
   public lineChartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public lineChartOptions:any = {
@@ -45,5 +45,7 @@ export class LineChartComponent implements OnInit {
     this.dataService
       .get()
       .subscribe(res => this.lineChartData[0].data = res.data);
+
+    console.log("Init");
   }
 }

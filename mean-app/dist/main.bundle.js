@@ -35,6 +35,7 @@ var DataService = (function () {
         this.http
             .get(("" + this.baseUrl), { headers: this.getHeaders() })
             .map(mapData);
+        console.log(lineChartData$);
         return lineChartData$;
     };
     DataService.prototype.getHeaders = function () {
@@ -53,7 +54,7 @@ function mapData(response) {
     console.log('Mapping data', __WEBPACK_IMPORTED_MODULE_3__line_data__["a" /* LineData */]);
     var nums = response.json().map(toData);
     console.log(nums);
-    var line = ({ data: [90, 67, 77, 56, 45, 89, 90], label: "Series A" });
+    var line = ({ data: nums, label: "Series A" });
     console.log(line);
     return line;
 }
@@ -215,7 +216,7 @@ var LineChartComponent = (function () {
         this.dataService = dataService;
         // lineChart
         this.lineChartData = [
-            { data: [0, 0, 0, 0, 0, 0, 0], label: 'Series A' }
+            { data: [1, 0, 0, 0, 0, 0, 1], label: 'Series A' }
         ];
         this.lineChartLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
         this.lineChartOptions = {
@@ -246,6 +247,7 @@ var LineChartComponent = (function () {
         this.dataService
             .get()
             .subscribe(function (res) { return _this.lineChartData[0].data = res.data; });
+        console.log("Init");
     };
     LineChartComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
