@@ -54,7 +54,7 @@ function toData(r:any){
 }
 
 function timeToData(r:any){
-  let times = r.time;
+  let times = r.time.substring(11,18);
   console.log('Parsed Time:', times);
   return times;
 }

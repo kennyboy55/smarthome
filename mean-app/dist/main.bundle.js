@@ -99,7 +99,7 @@ function toData(r) {
     return num;
 }
 function timeToData(r) {
-    var times = r.time;
+    var times = r.time.substring(11, 18);
     console.log('Parsed Time:', times);
     return times;
 }
