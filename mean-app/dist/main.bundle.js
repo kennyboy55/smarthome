@@ -248,8 +248,8 @@ var LineChartComponent = (function () {
             .get()
             .subscribe(function (res) {
             console.log(res);
-            _this.lineChartData[0].data = res.data;
-            console.log(_this.lineChartData[0]);
+            var newLine = { data: res.data, label: res.label };
+            _this.lineChartData[0] = newLine;
         });
         console.log("Init");
     };
