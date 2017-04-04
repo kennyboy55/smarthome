@@ -47,6 +47,7 @@ export class LineChartComponent implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.lineChartData[0].data = res.data;
+        console.log(this.lineChartData[0]);
       });
 
     console.log("Init");

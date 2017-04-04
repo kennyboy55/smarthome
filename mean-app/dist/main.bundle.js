@@ -249,6 +249,7 @@ var LineChartComponent = (function () {
             .subscribe(function (res) {
             console.log(res);
             _this.lineChartData[0].data = res.data;
+            console.log(_this.lineChartData[0]);
         });
         console.log("Init");
     };
