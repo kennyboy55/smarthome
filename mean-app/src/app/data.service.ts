@@ -12,7 +12,7 @@ export class DataService {
   constructor(private http : Http){}
 
   get(): Observable<LineData> {
-    console.log('getting data');
+    console.log('Getting data');
     let lineChartData$ =
       //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
       this.http
@@ -32,8 +32,10 @@ export class DataService {
 }
 
 function mapData(response:Response): LineData {
-  console.log('mapping data', LineData);
+  console.log('Mapping data', LineData);
   let nums = response.json().map(toData);
+
+  console.log(nums);
 
   let line = <LineData>({data: nums, label: "Line 1"});
   return line;

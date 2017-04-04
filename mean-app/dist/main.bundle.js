@@ -29,7 +29,7 @@ var DataService = (function () {
         this.baseUrl = 'http://localhost:3000/webapi/data';
     }
     DataService.prototype.get = function () {
-        console.log('getting data');
+        console.log('Getting data');
         var lineChartData$ = 
         //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
         this.http
@@ -50,8 +50,9 @@ var DataService = (function () {
     var _a;
 }());
 function mapData(response) {
-    console.log('mapping data', __WEBPACK_IMPORTED_MODULE_3__line_data__["a" /* LineData */]);
+    console.log('Mapping data', __WEBPACK_IMPORTED_MODULE_3__line_data__["a" /* LineData */]);
     var nums = response.json().map(toData);
+    console.log(nums);
     var line = ({ data: nums, label: "Line 1" });
     return line;
 }
