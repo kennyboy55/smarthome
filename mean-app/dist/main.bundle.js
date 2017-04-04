@@ -54,6 +54,7 @@ function mapData(response) {
     var nums = response.json().map(toData);
     console.log(nums);
     var line = ({ data: nums, label: "Line 1" });
+    console.log(line);
     return line;
 }
 function toData(r) {
@@ -235,10 +236,10 @@ var LineChartComponent = (function () {
     }
     // events
     LineChartComponent.prototype.chartClicked = function (e) {
-        console.log(e);
+        //console.log(e);
     };
     LineChartComponent.prototype.chartHovered = function (e) {
-        console.log(e);
+        //console.log(e);
     };
     LineChartComponent.prototype.ngOnInit = function () {
         var _this = this;

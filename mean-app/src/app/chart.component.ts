@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './data.service';
- 
+
 import { LineData } from './line-data';
 
 @Component({
@@ -28,14 +28,14 @@ export class LineChartComponent implements OnInit {
   ];
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
- 
+
   // events
   public chartClicked(e:any):void {
-    console.log(e);
+    //console.log(e);
   }
- 
+
   public chartHovered(e:any):void {
-    console.log(e);
+    //console.log(e);
   }
 
   constructor(private dataService: DataService) {}

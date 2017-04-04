@@ -37,7 +37,8 @@ function mapData(response:Response): LineData {
 
   console.log(nums);
 
-  let line = <LineData>({data: nums, label: "Line 1"});
+  let line:LineData = <LineData>({data: nums, label: "Line 1"});
+  console.log(line);
   return line;
 }
 
