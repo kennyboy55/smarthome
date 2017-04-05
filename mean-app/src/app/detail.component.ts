@@ -18,6 +18,8 @@ export class DetailComponent implements OnInit {
 
   public data2:LineData;
 
+  public loaded:boolean = false;
+
   constructor(private dataService: DataService,
              private route: ActivatedRoute) {}
 
@@ -33,6 +35,8 @@ export class DetailComponent implements OnInit {
         this.label = res.labels;
         this.data = res.HOV;
         this.data2 = res.TOE1;
+
+        this.loaded = true;
 
       });
 

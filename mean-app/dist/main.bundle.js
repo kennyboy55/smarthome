@@ -160,6 +160,7 @@ var DetailComponent = (function () {
     function DetailComponent(dataService, route) {
         this.dataService = dataService;
         this.route = route;
+        this.loaded = false;
     }
     DetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -171,6 +172,7 @@ var DetailComponent = (function () {
             _this.label = res.labels;
             _this.data = res.HOV;
             _this.data2 = res.TOE1;
+            _this.loaded = true;
         });
     };
     DetailComponent = __decorate([
@@ -588,7 +590,7 @@ module.exports = "<div>\r\n\t<line-chart></line-chart>\r\n</div>"
 /***/ 673:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"data\">\r\n\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\r\n    <line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"loaded\">\r\n\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\r\n    <line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n</div>\r\n"
 
 /***/ }),
 
