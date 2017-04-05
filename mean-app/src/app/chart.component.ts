@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef,Input } from '@angular/core';
 import { DataService } from './data.service';
 
 import { LineData } from './line-data';
@@ -10,6 +10,7 @@ import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 })
 export class LineChartComponent implements OnInit {
 
+  @Input()id:string;
   @ViewChild(BaseChartDirective) public chart: BaseChartDirective;
 
   // lineChart
@@ -43,7 +44,7 @@ export class LineChartComponent implements OnInit {
   ngOnInit(): void {
 
     this.dataService
-      .get("204B413655303031363639353836343132")
+      .get(this.id)
       .subscribe(res => {
         console.log("Received from service:");
         console.log(res);

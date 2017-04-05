@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 
 import { DataService } from './data.service';
+import {LineChartComponent} from "./chart.component";
 
 @Component({
   selector: 'detail',
@@ -17,12 +18,12 @@ export class DetailComponent implements OnInit {
 
     let id = this.route.snapshot.params['id'];
 
-    this.dataService
-      .get(id)
-      .subscribe(res => {
-        
+ //   this.dataService
+  //    .get(id)
+  //    .subscribe(res => {
 
-      });
+
+ //     });
 
   }
 
