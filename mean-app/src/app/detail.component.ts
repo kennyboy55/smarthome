@@ -30,9 +30,7 @@ export class DetailComponent implements OnInit {
       .get(id)
       .subscribe(res => {
 
-        //const newDataSet2 = [];
-        //newDataSet2.push(res.labels.data.slice());
-        this.label = res.labels; //newDataSet2;
+        this.label = res.labels;
         this.data = res.HOV;
         this.data2 = res.TOE1;
 

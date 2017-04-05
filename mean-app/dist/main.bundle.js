@@ -168,9 +168,7 @@ var DetailComponent = (function () {
         this.dataService
             .get(id)
             .subscribe(function (res) {
-            //const newDataSet2 = [];
-            //newDataSet2.push(res.labels.data.slice());
-            _this.label = res.labels; //newDataSet2;
+            _this.label = res.labels;
             _this.data = res.HOV;
             _this.data2 = res.TOE1;
         });
@@ -478,9 +476,7 @@ var LineChartComponent = (function () {
         this.lineChartType = 'line';
     }
     LineChartComponent.prototype.ngOnInit = function () {
-        //const newDataSet2 = [];
-        //newDataSet2.push(res.labels.data.slice());
-        this.lineChartLabels = this.label.data.slice(); //newDataSet2;
+        this.lineChartLabels = this.label.data.slice();
         console.log("Updated labels array");
         console.log(this.lineChartLabels);
         var newDataSet = [];
@@ -578,7 +574,7 @@ module.exports = "<div class=\"container\">\r\n\r\n  <nav class=\"navbar navbar-
 /***/ 671:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n    <div *ngIf=\"data\" style=\"display: block;\">\r\n    <canvas baseChart width=\"400\" height=\"400\"\r\n                [datasets]=\"lineChartData\"\r\n                [labels]=\"lineChartLabels\"\r\n                [options]=\"lineChartOptions\"\r\n                [colors]=\"lineChartColors\"\r\n                [legend]=\"lineChartLegend\"\r\n                [chartType]=\"lineChartType\"></canvas>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n    <div style=\"display: block;\">\r\n    <canvas baseChart width=\"400\" height=\"400\"\r\n                [datasets]=\"lineChartData\"\r\n                [labels]=\"lineChartLabels\"\r\n                [options]=\"lineChartOptions\"\r\n                [colors]=\"lineChartColors\"\r\n                [legend]=\"lineChartLegend\"\r\n                [chartType]=\"lineChartType\"></canvas>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
@@ -592,7 +588,7 @@ module.exports = "<div>\r\n\t<line-chart></line-chart>\r\n</div>"
 /***/ 673:
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\r\n    <line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"data\">\r\n\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\r\n    <line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n</div>\r\n"
 
 /***/ }),
 

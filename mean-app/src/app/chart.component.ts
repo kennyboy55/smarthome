@@ -46,9 +46,7 @@ export class LineChartComponent implements OnInit {
 
   ngOnInit(): void {
 
-        //const newDataSet2 = [];
-        //newDataSet2.push(res.labels.data.slice());
-        this.lineChartLabels = this.label.data.slice(); //newDataSet2;
+        this.lineChartLabels = this.label.data.slice();
 
         console.log("Updated labels array");
         console.log(this.lineChartLabels);
