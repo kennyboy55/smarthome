@@ -171,7 +171,7 @@ var DetailComponent = (function () {
             .subscribe(function (res) {
             _this.label = res.labels;
             _this.data = res.TOE1;
-            //this.data2 = res.TOE1;
+            _this.data2 = res.HOV;
             _this.loaded = true;
             console.log("Data loaded from API");
         });
@@ -592,7 +592,7 @@ module.exports = "<div>\r\n\t\r\n</div>"
 /***/ 673:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"loaded\">\r\n\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"loaded\">\r\n\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\r\n\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n</div>\r\n"
 
 /***/ }),
 
