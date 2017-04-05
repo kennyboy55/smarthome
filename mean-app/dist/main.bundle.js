@@ -173,6 +173,7 @@ var DetailComponent = (function () {
             _this.data = res.HOV;
             _this.data2 = res.TOE1;
             _this.loaded = true;
+            console.log("Data loaded from API");
         });
     };
     DetailComponent = __decorate([
@@ -478,6 +479,7 @@ var LineChartComponent = (function () {
         this.lineChartType = 'line';
     }
     LineChartComponent.prototype.ngOnInit = function () {
+        console.log("Initializing Chart");
         this.lineChartLabels = this.label.data.slice();
         console.log("Updated labels array");
         console.log(this.lineChartLabels);

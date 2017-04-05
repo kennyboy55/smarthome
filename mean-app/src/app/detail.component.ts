@@ -37,6 +37,7 @@ export class DetailComponent implements OnInit {
         this.data2 = res.TOE1;
 
         this.loaded = true;
+        console.log("Data loaded from API");
 
       });
 
