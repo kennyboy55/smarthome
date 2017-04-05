@@ -170,8 +170,8 @@ var DetailComponent = (function () {
             .get(id)
             .subscribe(function (res) {
             _this.label = res.labels;
-            _this.data = res.HOV;
-            _this.data2 = res.TOE1;
+            _this.data = res.TOE1;
+            //this.data2 = res.TOE1;
             _this.loaded = true;
             console.log("Data loaded from API");
         });
