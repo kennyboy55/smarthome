@@ -42,11 +42,10 @@ export class LineChartComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-
+    console.log("ChartComponentID=  "+ this.id);
     this.dataService
       .get(this.id)
       .subscribe(res => {
-        console.log("ChartComponentID=  "+ this.id);
         console.log("Received from service:");
         console.log(res);
 

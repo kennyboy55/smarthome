@@ -469,10 +469,10 @@ var LineChartComponent = (function () {
     }
     LineChartComponent.prototype.ngOnInit = function () {
         var _this = this;
+        console.log("ChartComponentID=  " + this.id);
         this.dataService
             .get(this.id)
             .subscribe(function (res) {
-            console.log("ChartComponentID=  " + _this.id);
             console.log("Received from service:");
             console.log(res);
             var newDataSet2 = [];
