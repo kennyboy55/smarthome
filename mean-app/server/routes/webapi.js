@@ -9,26 +9,11 @@ router.all('*', function(req, res){
   req.next();
 });
 
-router.post('/device', function(req, res){
-  console.log("Device received: ");
-  console.log(req.body);
-
-  connection.query(
-    'INSERT INTO device (SN, API) VALUES (?, 42)', [req.body.device],
-                     function (error, results, fields) {
-   if (error) throw error;
-
-  });
-
-  res.status(200);
-  res.send("{\"success\":\"true\"}");
-});
-
 
 router.get('/device', function(req, res){
   
   connection.query(
-    'SELECT * FROM device',
+    'SELECT SN, name FROM device',
                      function (error, results, fields) {
    if (error) throw error;
 
@@ -41,6 +26,25 @@ router.get('/device', function(req, res){
   });
 });
 
+
+router.get('/data/:device', function(req, res) {
+
+  let devid = req.params.device;
+
+  connection.query(
+    'SELECT TOE1, time FROM measurement WHERE device = ? ORDER BY time DESC LIMIT 0,10', [devid],
+                     function (error, results, fields) {
+   if (error) throw error;
+
+   if (results.length  > 0) {
+
+        res.status(200);
+        res.send(JSON.stringify(results));
+    }
+
+  });
+
+});
 
 router.get('/data', function(req, res) {
 

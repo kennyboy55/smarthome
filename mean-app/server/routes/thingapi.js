@@ -82,14 +82,23 @@ console.log(toe1);
     htv = found[1];
 
 
-
   connection.query(
       'INSERT INTO measurement (device, TOE1, TOE2, TTE1, TTE2, HT, HOV, HTV, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())', [device, toe1, toe2, tte1, tte2, ht, hov, htv],
                        function (error, results, fields) {
      if (error) throw error;
 
-      callback();
+
+      connection.query(
+          'INSERT INTO device (SN, name, API) VALUES (?, "New device", 42)', [device],
+                           function (error, results, fields) {
+         if (error) throw error;
+
+          callback();
+        });
     });
+
+
+  
 
 }
 
