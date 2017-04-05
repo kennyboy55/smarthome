@@ -583,14 +583,14 @@ module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n    <div 
 /***/ 672:
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n\t<line-chart></line-chart>\r\n</div>"
+module.exports = "<div>\r\n\t\r\n</div>"
 
 /***/ }),
 
 /***/ 673:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"loaded\">\r\n\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\r\n    <line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n</div>\r\n"
+module.exports = "<div *ngIf=\"loaded\">\r\n\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n</div>\r\n"
 
 /***/ }),
 
