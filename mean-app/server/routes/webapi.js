@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.all('*', function(req, res){
   console.log(req.path);
+  req.next();
 });
 
 router.post('/device', function(req, res){
