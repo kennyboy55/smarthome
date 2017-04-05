@@ -27,7 +27,7 @@ export class DeviceComponent implements OnInit {
 
   }
 
-  goToDetail(id:string): void {
+  goToDetails(id:string): void {
     this.router.navigate(['/detail', id]);
   }
 

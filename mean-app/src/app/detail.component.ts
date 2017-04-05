@@ -15,7 +15,7 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let id = this.route.params['id'];
+    let id = this.route.snapshot.params['id'];
 
     this.dataService
       .get(id)
