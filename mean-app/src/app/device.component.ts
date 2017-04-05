@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Device } from './device';
 
 import { DataService } from './data.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'device',
@@ -12,7 +13,7 @@ export class DeviceComponent implements OnInit {
 
   public devices:Device[];
 
-  constructor(private dataService: DataService) {}
+  constructor(private router: Router, private dataService: DataService) {}
 
   ngOnInit(): void {
 
@@ -24,6 +25,10 @@ export class DeviceComponent implements OnInit {
 
       });
 
+  }
+
+  goToDetail(id:string): void {
+    this.router.navigate(['/detail', id]);
   }
 
 }

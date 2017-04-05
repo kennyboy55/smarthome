@@ -1,7 +1,7 @@
 <div>
 
 <ul>
-        <li *ngFor="let device of devices">
+        <li *ngFor="let device of devices" (click)="goToDetails(device.sn)">
           <span class="badge"> {{device.sn}} </span> {{device.name}}
         </li>
 </ul>

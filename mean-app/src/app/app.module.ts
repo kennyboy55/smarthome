@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { LineChartComponent } from './chart.component';
 import { DashboardComponent } from './dashboard.component';
 import { DeviceComponent } from './device.component';
+import { DetailComponent } from './detail.component';
 
 import { DataService } from './data.service';
 
@@ -18,7 +19,8 @@ import { DataService } from './data.service';
     AppComponent,
     LineChartComponent,
     DashboardComponent,
-    DeviceComponent
+    DeviceComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
