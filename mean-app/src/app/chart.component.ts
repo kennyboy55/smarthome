@@ -43,7 +43,7 @@ export class LineChartComponent implements OnInit {
   ngOnInit(): void {
 
     this.dataService
-      .dashboard()
+      .get()
       .subscribe(res => {
         console.log("Received from service:");
         console.log(res);

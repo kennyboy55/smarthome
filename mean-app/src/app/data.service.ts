@@ -9,15 +9,15 @@ import { LabelData } from './label-data';
 
 @Injectable()
 export class DataService {
-  private dashboardURL: string = '/webapi/data';
+  private baseUrl: string = '/webapi/data';
 
   constructor(private http : Http){}
 
-  dashboard(): Observable<GraphData> {
+  get(): Observable<GraphData> {
     let lineChartData$ =
       //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
       this.http
-        .get((`${this.dashboardURL}`)
+        .get((`${this.baseUrl}`)
           , {headers: this.getHeaders()})
         .map(mapData);
 
