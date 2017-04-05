@@ -3,6 +3,7 @@ import { DataService } from './data.service';
 
 import { LineData } from './line-data';
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
+import {LabelData} from "./label-data";
 
 @Component({
   selector: 'line-chart',
@@ -10,7 +11,9 @@ import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 })
 export class LineChartComponent implements OnInit {
 
-  @Input()id:string;
+  @Input()data:LineData;
+  @Input()label:LabelData;
+
   @ViewChild(BaseChartDirective) public chart: BaseChartDirective;
 
   // lineChart
@@ -42,22 +45,16 @@ export class LineChartComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    console.log("ChartComponentID=  "+ this.id);
-    this.dataService
-      .get(this.id)
-      .subscribe(res => {
-        console.log("Received from service:");
-        console.log(res);
 
         //const newDataSet2 = [];
         //newDataSet2.push(res.labels.data.slice());
-        this.lineChartLabels = res.labels.data.slice(); //newDataSet2;
+        this.lineChartLabels = this.label.data.slice(); //newDataSet2;
 
         console.log("Updated labels array");
         console.log(this.lineChartLabels);
 
         const newDataSet = [];
-        const newLine = {data: res.TOE1.data, label: res.TOE1.label};
+        const newLine = {data: this.data.data, label: this.data.label};
         newDataSet.push(newLine);
         this.lineChartData = newDataSet;
 
@@ -66,8 +63,5 @@ export class LineChartComponent implements OnInit {
 
         this.chart.chart.update();
 
-      });
-
-    console.log("Init");
   }
 }

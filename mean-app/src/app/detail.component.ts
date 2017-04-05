@@ -3,6 +3,8 @@ import { ActivatedRoute, Params }   from '@angular/router';
 
 import { DataService } from './data.service';
 import {LineChartComponent} from "./chart.component";
+import {LineData} from "./line-data";
+import {LabelData} from "./label-data";
 
 @Component({
   selector: 'detail',
@@ -11,22 +13,30 @@ import {LineChartComponent} from "./chart.component";
 
 export class DetailComponent implements OnInit {
 
-  public id:string;
+  public data:LineData;
+  public label:LabelData;
+
+  public data2:LineData;
 
   constructor(private dataService: DataService,
              private route: ActivatedRoute) {}
 
   ngOnInit(): void {
 
-    this.id = this.route.snapshot.params['id'];
-    console.log("DetailComponentID= " + this.id);
+     let id = this.route.snapshot.params['id'];
+    console.log("DetailComponentID= " + id);
 
- //   this.dataService
-  //    .get(id)
-  //    .subscribe(res => {
+    this.dataService
+      .get(id)
+      .subscribe(res => {
 
+        //const newDataSet2 = [];
+        //newDataSet2.push(res.labels.data.slice());
+        this.label = res.labels; //newDataSet2;
+        this.data = res.HOV;
+        this.data2 = res.TOE1;
 
- //     });
+      });
 
   }
 

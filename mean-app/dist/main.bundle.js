@@ -5,7 +5,7 @@ webpackJsonp([1,4],{
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(675);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(677);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(308);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
@@ -126,7 +126,7 @@ var DashboardComponent = (function () {
     DashboardComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'dashboard',
-            template: __webpack_require__(669)
+            template: __webpack_require__(671)
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardComponent);
@@ -162,17 +162,23 @@ var DetailComponent = (function () {
         this.route = route;
     }
     DetailComponent.prototype.ngOnInit = function () {
-        this.id = this.route.snapshot.params['id'];
-        console.log("DetailComponentID= " + this.id);
-        //   this.dataService
-        //    .get(id)
-        //    .subscribe(res => {
-        //     });
+        var _this = this;
+        var id = this.route.snapshot.params['id'];
+        console.log("DetailComponentID= " + id);
+        this.dataService
+            .get(id)
+            .subscribe(function (res) {
+            //const newDataSet2 = [];
+            //newDataSet2.push(res.labels.data.slice());
+            _this.label = res.labels; //newDataSet2;
+            _this.data = res.HOV;
+            _this.data2 = res.TOE1;
+        });
     };
     DetailComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'detail',
-            template: __webpack_require__(670)
+            template: __webpack_require__(672)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__data_service__["a" /* DataService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === 'function' && _b) || Object])
     ], DetailComponent);
@@ -222,7 +228,7 @@ var DeviceComponent = (function () {
     DeviceComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'device',
-            template: __webpack_require__(671)
+            template: __webpack_require__(673)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === 'function' && _b) || Object])
     ], DeviceComponent);
@@ -254,7 +260,7 @@ webpackEmptyContext.id = 389;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(477);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(511);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(513);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(509);
 
 
@@ -337,8 +343,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
-            template: __webpack_require__(667),
-            styles: [__webpack_require__(666)]
+            template: __webpack_require__(669),
+            styles: [__webpack_require__(668)]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
@@ -423,8 +429,10 @@ var AppModule = (function () {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__data_service__ = __webpack_require__(151);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_charts_ng2_charts__ = __webpack_require__(371);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_charts_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_ng2_charts_ng2_charts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__line_data__ = __webpack_require__(512);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_charts_ng2_charts__ = __webpack_require__(371);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_charts_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_ng2_charts_ng2_charts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__label_data__ = __webpack_require__(511);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LineChartComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -435,6 +443,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -468,51 +478,74 @@ var LineChartComponent = (function () {
         this.lineChartType = 'line';
     }
     LineChartComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        console.log("ChartComponentID=  " + this.id);
-        this.dataService
-            .get(this.id)
-            .subscribe(function (res) {
-            console.log("Received from service:");
-            console.log(res);
-            //const newDataSet2 = [];
-            //newDataSet2.push(res.labels.data.slice());
-            _this.lineChartLabels = res.labels.data.slice(); //newDataSet2;
-            console.log("Updated labels array");
-            console.log(_this.lineChartLabels);
-            var newDataSet = [];
-            var newLine = { data: res.TOE1.data, label: res.TOE1.label };
-            newDataSet.push(newLine);
-            _this.lineChartData = newDataSet;
-            console.log("Updated lines array");
-            console.log(_this.lineChartData);
-            _this.chart.chart.update();
-        });
-        console.log("Init");
+        //const newDataSet2 = [];
+        //newDataSet2.push(res.labels.data.slice());
+        this.lineChartLabels = this.label.data.slice(); //newDataSet2;
+        console.log("Updated labels array");
+        console.log(this.lineChartLabels);
+        var newDataSet = [];
+        var newLine = { data: this.data.data, label: this.data.label };
+        newDataSet.push(newLine);
+        this.lineChartData = newDataSet;
+        console.log("Updated lines array");
+        console.log(this.lineChartData);
+        this.chart.chart.update();
     };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
-        __metadata('design:type', String)
-    ], LineChartComponent.prototype, "id", void 0);
+        __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__line_data__["a" /* LineData */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__line_data__["a" /* LineData */]) === 'function' && _a) || Object)
+    ], LineChartComponent.prototype, "data", void 0);
     __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_2_ng2_charts_ng2_charts__["BaseChartDirective"]), 
-        __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2_ng2_charts_ng2_charts__["BaseChartDirective"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2_ng2_charts_ng2_charts__["BaseChartDirective"]) === 'function' && _a) || Object)
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 
+        __metadata('design:type', (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4__label_data__["a" /* LabelData */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_4__label_data__["a" /* LabelData */]) === 'function' && _b) || Object)
+    ], LineChartComponent.prototype, "label", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])(__WEBPACK_IMPORTED_MODULE_3_ng2_charts_ng2_charts__["BaseChartDirective"]), 
+        __metadata('design:type', (typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3_ng2_charts_ng2_charts__["BaseChartDirective"] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3_ng2_charts_ng2_charts__["BaseChartDirective"]) === 'function' && _c) || Object)
     ], LineChartComponent.prototype, "chart", void 0);
     LineChartComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'line-chart',
-            template: __webpack_require__(668)
+            template: __webpack_require__(670)
         }), 
-        __metadata('design:paramtypes', [(typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === 'function' && _b) || Object])
+        __metadata('design:paramtypes', [(typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === 'function' && _d) || Object])
     ], LineChartComponent);
     return LineChartComponent;
-    var _a, _b;
+    var _a, _b, _c, _d;
 }());
 //# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/chart.component.js.map
 
 /***/ }),
 
 /***/ 511:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LabelData; });
+var LabelData = (function () {
+    function LabelData() {
+    }
+    return LabelData;
+}());
+//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/label-data.js.map
+
+/***/ }),
+
+/***/ 512:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LineData; });
+var LineData = (function () {
+    function LineData() {
+    }
+    return LineData;
+}());
+//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/line-data.js.map
+
+/***/ }),
+
+/***/ 513:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -528,49 +561,49 @@ var environment = {
 
 /***/ }),
 
-/***/ 666:
+/***/ 668:
 /***/ (function(module, exports) {
 
 module.exports = ""
 
 /***/ }),
 
-/***/ 667:
+/***/ 669:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\">\r\n\r\n  <nav class=\"navbar navbar-default\">\r\n    <div class=\"container-fluid\">\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n          <span class=\"sr-only\">Toggle navigation</span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\">Energiemeter</a>\r\n      </div>\r\n      <div id=\"navbar\" class=\"navbar-collapse collapse\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li routerLink=\"/dashboard\" routerLinkActive=\"active\"><a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a></li>\r\n          <li routerLink=\"/device\" routerLinkActive=\"active\"><a routerLink=\"/device\" routerLinkActive=\"active\">Device</a></li>\r\n        </ul>\r\n      </div><!--/.nav-collapse -->\r\n    </div><!--/.container-fluid -->\r\n  </nav>\r\n\r\n  <div class=\"row\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"page-header\">\r\n        <h1>{{title}} <small>Avans</small></h1>\r\n      </div>\r\n    </div>\r\n\r\n    <router-outlet></router-outlet>\r\n\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
-/***/ 668:
+/***/ 670:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n    <div style=\"display: block;\">\r\n    <canvas baseChart width=\"400\" height=\"400\"\r\n                [datasets]=\"lineChartData\"\r\n                [labels]=\"lineChartLabels\"\r\n                [options]=\"lineChartOptions\"\r\n                [colors]=\"lineChartColors\"\r\n                [legend]=\"lineChartLegend\"\r\n                [chartType]=\"lineChartType\"></canvas>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
-/***/ 669:
+/***/ 671:
 /***/ (function(module, exports) {
 
 module.exports = "<div>\r\n\t<line-chart></line-chart>\r\n</div>"
 
 /***/ }),
 
-/***/ 670:
+/***/ 672:
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n\t<line-chart [id]=\"id\"></line-chart>\r\n</div>\r\n"
+module.exports = "<div>\r\n\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\r\n  <line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n</div>\r\n"
 
 /***/ }),
 
-/***/ 671:
+/***/ 673:
 /***/ (function(module, exports) {
 
 module.exports = "<div>\r\n\r\n<ul>\r\n        <li *ngFor=\"let device of devices\" (click)=\"goToDetails(device.sn)\">\r\n          <span class=\"badge\"> {{device.sn}} </span> {{device.name}}\r\n        </li>\r\n</ul>\r\n\r\n</div>"
 
 /***/ }),
 
-/***/ 690:
+/***/ 692:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(390);
@@ -578,5 +611,5 @@ module.exports = __webpack_require__(390);
 
 /***/ })
 
-},[690]);
+},[692]);
 //# sourceMappingURL=main.bundle.map
