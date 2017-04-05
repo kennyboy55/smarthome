@@ -475,9 +475,9 @@ var LineChartComponent = (function () {
             .subscribe(function (res) {
             console.log("Received from service:");
             console.log(res);
-            var newDataSet2 = [];
-            newDataSet2.push(res.labels.data.slice());
-            _this.lineChartLabels = newDataSet2;
+            //const newDataSet2 = [];
+            //newDataSet2.push(res.labels.data.slice());
+            _this.lineChartLabels = res.labels.data.slice(); //newDataSet2;
             console.log("Updated labels array");
             console.log(_this.lineChartLabels);
             var newDataSet = [];
