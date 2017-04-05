@@ -144,7 +144,7 @@ var DetailComponent = (function () {
         this.route = route;
     }
     DetailComponent.prototype.ngOnInit = function () {
-        var id = this.route.params['id'];
+        var id = this.route.snapshot.params['id'];
         this.dataService
             .get(id)
             .subscribe(function (res) {
@@ -197,7 +197,7 @@ var DeviceComponent = (function () {
             _this.devices = res;
         });
     };
-    DeviceComponent.prototype.goToDetail = function (id) {
+    DeviceComponent.prototype.goToDetails = function (id) {
         this.router.navigate(['/detail', id]);
     };
     DeviceComponent = __decorate([
