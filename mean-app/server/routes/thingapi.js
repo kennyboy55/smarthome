@@ -91,7 +91,6 @@ console.log(toe1);
       connection.query(
           'INSERT INTO device (SN, name, API) VALUES (?, "New device", 42)', [device],
                            function (error, results, fields) {
-         if (error) throw error;
 
           callback();
         });

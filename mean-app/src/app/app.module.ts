@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LineChartComponent } from './chart.component';
 import { DashboardComponent } from './dashboard.component';
+import { DeviceComponent } from './device.component';
 
 import { DataService } from './data.service';
 
@@ -16,7 +17,8 @@ import { DataService } from './data.service';
   declarations: [
     AppComponent,
     LineChartComponent,
-    DashboardComponent
+    DashboardComponent,
+    DeviceComponent
   ],
   imports: [
     BrowserModule,
