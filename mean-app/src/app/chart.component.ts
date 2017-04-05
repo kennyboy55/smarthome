@@ -46,6 +46,7 @@ export class LineChartComponent implements OnInit {
     this.dataService
       .get(this.id)
       .subscribe(res => {
+        console.log("ChartComponentID=  "+ this.id);
         console.log("Received from service:");
         console.log(res);
 

@@ -163,6 +163,7 @@ var DetailComponent = (function () {
     }
     DetailComponent.prototype.ngOnInit = function () {
         var id = this.route.snapshot.params['id'];
+        console.log("DetailComponentID= " + id);
         //   this.dataService
         //    .get(id)
         //    .subscribe(res => {
@@ -471,6 +472,7 @@ var LineChartComponent = (function () {
         this.dataService
             .get(this.id)
             .subscribe(function (res) {
+            console.log("ChartComponentID=  " + _this.id);
             console.log("Received from service:");
             console.log(res);
             var newDataSet2 = [];
