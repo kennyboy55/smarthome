@@ -44,17 +44,21 @@ export class LineChartComponent implements OnInit {
         console.log("Received from service:");
         console.log(res);
 
-        const newDataSet = [];
-        const newLine = {data: res.lines.data, label: res.lines.label};
-        newDataSet.push(newLine);
-        this.lineChartData = newDataSet;
-
         const newDataSet2 = [];
         newDataSet2.push(res.labels.data.slice());
         this.lineChartLabels = newDataSet2;
 
         console.log("Updated labels array");
         console.log(this.lineChartLabels);
+
+        const newDataSet = [];
+        const newLine = {data: res.lines.data, label: res.lines.label};
+        newDataSet.push(newLine);
+        this.lineChartData = newDataSet;
+
+        console.log("Updated lines array");
+        console.log(this.lineChartData);
+
       });
 
     console.log("Init");

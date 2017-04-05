@@ -324,15 +324,17 @@ var LineChartComponent = (function () {
             .subscribe(function (res) {
             console.log("Received from service:");
             console.log(res);
-            var newDataSet = [];
-            var newLine = { data: res.lines.data, label: res.lines.label };
-            newDataSet.push(newLine);
-            _this.lineChartData = newDataSet;
             var newDataSet2 = [];
             newDataSet2.push(res.labels.data.slice());
             _this.lineChartLabels = newDataSet2;
             console.log("Updated labels array");
             console.log(_this.lineChartLabels);
+            var newDataSet = [];
+            var newLine = { data: res.lines.data, label: res.lines.label };
+            newDataSet.push(newLine);
+            _this.lineChartData = newDataSet;
+            console.log("Updated lines array");
+            console.log(_this.lineChartData);
         });
         console.log("Init");
     };
