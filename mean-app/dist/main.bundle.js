@@ -22,7 +22,7 @@ var DashboardComponent = (function () {
     DashboardComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'dashboard',
-            template: __webpack_require__(669)
+            template: __webpack_require__(668)
         }), 
         __metadata('design:paramtypes', [])
     ], DashboardComponent);
@@ -37,10 +37,9 @@ var DashboardComponent = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(673);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(672);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(306);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__graph_data__ = __webpack_require__(508);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -54,20 +53,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
 var DataService = (function () {
     function DataService(http) {
         this.http = http;
         this.baseUrl = '/webapi/data';
     }
     DataService.prototype.get = function () {
-        console.log('Getting data');
         var lineChartData$ = 
         //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
         this.http
             .get(("" + this.baseUrl), { headers: this.getHeaders() })
             .map(mapData);
-        console.log(lineChartData$);
         return lineChartData$;
     };
     DataService.prototype.getHeaders = function () {
@@ -83,24 +79,19 @@ var DataService = (function () {
     var _a;
 }());
 function mapData(response) {
-    console.log('Mapping data', __WEBPACK_IMPORTED_MODULE_3__graph_data__["a" /* GraphData */]);
     var nums = response.json().map(toData);
     var times = response.json().map(timeToData);
-    console.log(nums);
-    var line = ({ data: nums, label: "Series A" });
+    var line = ({ data: nums, label: "Energieverbruik" });
     var label = ({ data: times });
-    console.log(line);
     var graph = ({ lines: line, labels: label });
     return graph;
 }
 function toData(r) {
     var num = r.TOE1;
-    console.log('Parsed Data:', num);
     return num;
 }
 function timeToData(r) {
     var times = r.time.substring(11, 18);
-    console.log('Parsed Time:', times);
     return times;
 }
 //# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/data.service.js.map
@@ -128,7 +119,7 @@ webpackEmptyContext.id = 385;
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(473);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(509);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__environments_environment__ = __webpack_require__(508);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_app_module__ = __webpack_require__(506);
 
 
@@ -205,8 +196,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
-            template: __webpack_require__(667),
-            styles: [__webpack_require__(666)]
+            template: __webpack_require__(666),
+            styles: [__webpack_require__(665)]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
@@ -224,7 +215,7 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__(464);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(306);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts__ = __webpack_require__(664);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts__ = __webpack_require__(663);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__app_routing_module__ = __webpack_require__(504);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(505);
@@ -302,9 +293,9 @@ var LineChartComponent = (function () {
         this.dataService = dataService;
         // lineChart
         this.lineChartData = [
-            { data: [1, 0, 0, 0, 0, 0, 1], label: 'Series A' }
+            { data: [0, 0, 0, 0, 0, 0, 0], label: 'Totaal verbruik' }
         ];
-        this.lineChartLabels = ['', '', '', '', '', '', ''];
+        this.lineChartLabels = ['-1', '-2', '-3', '-4', '-5', '-6', '-7'];
         this.lineChartOptions = {
             responsive: true,
             title: {
@@ -326,18 +317,12 @@ var LineChartComponent = (function () {
         this.lineChartLegend = true;
         this.lineChartType = 'line';
     }
-    // events
-    LineChartComponent.prototype.chartClicked = function (e) {
-        //console.log(e);
-    };
-    LineChartComponent.prototype.chartHovered = function (e) {
-        //console.log(e);
-    };
     LineChartComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.dataService
             .get()
             .subscribe(function (res) {
+            console.log("Received from service:");
             console.log(res);
             var newDataSet = [];
             var newLine = { data: res.lines.data, label: res.lines.label };
@@ -346,13 +331,15 @@ var LineChartComponent = (function () {
             var newDataSet2 = [];
             newDataSet2.push(res.labels.data.slice());
             _this.lineChartLabels = newDataSet2;
+            console.log("Updated labels array");
+            console.log(_this.lineChartLabels);
         });
         console.log("Init");
     };
     LineChartComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'line-chart',
-            template: __webpack_require__(668)
+            template: __webpack_require__(667)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === 'function' && _a) || Object])
     ], LineChartComponent);
@@ -364,20 +351,6 @@ var LineChartComponent = (function () {
 /***/ }),
 
 /***/ 508:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GraphData; });
-var GraphData = (function () {
-    function GraphData() {
-    }
-    return GraphData;
-}());
-//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/graph-data.js.map
-
-/***/ }),
-
-/***/ 509:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -393,35 +366,35 @@ var environment = {
 
 /***/ }),
 
-/***/ 666:
+/***/ 665:
 /***/ (function(module, exports) {
 
-module.exports = "h1 {\r\n\tcolor: blue;\r\n}"
+module.exports = ""
 
 /***/ }),
 
-/***/ 667:
+/***/ 666:
 /***/ (function(module, exports) {
 
 module.exports = "<div class=\"container\">\r\n\r\n  <nav class=\"navbar navbar-default\">\r\n    <div class=\"container-fluid\">\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n          <span class=\"sr-only\">Toggle navigation</span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\">Energiemeter</a>\r\n      </div>\r\n      <div id=\"navbar\" class=\"navbar-collapse collapse\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li routerLink=\"/dashboard\" routerLinkActive=\"active\"><a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a></li>\r\n        </ul>\r\n      </div><!--/.nav-collapse -->\r\n    </div><!--/.container-fluid -->\r\n  </nav>\r\n\r\n  <div class=\"row\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"page-header\">\r\n        <h1>{{title}} <small>Avans</small></h1>\r\n      </div>\r\n    </div>\r\n\r\n    <router-outlet></router-outlet>\r\n\r\n  </div>\r\n</div>\r\n"
 
 /***/ }),
 
-/***/ 668:
+/***/ 667:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n    <div style=\"display: block;\">\r\n    <canvas baseChart width=\"400\" height=\"400\"\r\n                [datasets]=\"lineChartData\"\r\n                [labels]=\"lineChartLabels\"\r\n                [options]=\"lineChartOptions\"\r\n                [colors]=\"lineChartColors\"\r\n                [legend]=\"lineChartLegend\"\r\n                [chartType]=\"lineChartType\"\r\n                (chartHover)=\"chartHovered($event)\"\r\n                (chartClick)=\"chartClicked($event)\"></canvas>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n    <div style=\"display: block;\">\r\n    <canvas baseChart width=\"400\" height=\"400\"\r\n                [datasets]=\"lineChartData\"\r\n                [labels]=\"lineChartLabels\"\r\n                [options]=\"lineChartOptions\"\r\n                [colors]=\"lineChartColors\"\r\n                [legend]=\"lineChartLegend\"\r\n                [chartType]=\"lineChartType\"></canvas>\r\n    </div>\r\n  </div>\r\n</div>"
 
 /***/ }),
 
-/***/ 669:
+/***/ 668:
 /***/ (function(module, exports) {
 
 module.exports = "<div>\r\n\t<line-chart></line-chart>\r\n</div>"
 
 /***/ }),
 
-/***/ 688:
+/***/ 687:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(386);
@@ -429,5 +402,5 @@ module.exports = __webpack_require__(386);
 
 /***/ })
 
-},[688]);
+},[687]);
 //# sourceMappingURL=main.bundle.map

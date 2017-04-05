@@ -14,7 +14,6 @@ export class DataService {
   constructor(private http : Http){}
 
   get(): Observable<GraphData> {
-    console.log('Getting data');
     let lineChartData$ =
       //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
       this.http
@@ -22,7 +21,6 @@ export class DataService {
           , {headers: this.getHeaders()})
         .map(mapData);
 
-    console.log(lineChartData$);
     return lineChartData$;
   }
 
@@ -34,28 +32,22 @@ export class DataService {
 }
 
 function mapData(response:Response): GraphData {
-  console.log('Mapping data', GraphData);
   let nums = response.json().map(toData);
   let times = response.json().map(timeToData)
 
-  console.log(nums);
-
-  let line:LineData = <LineData>({data: nums, label: "Series A"});
+  let line:LineData = <LineData>({data: nums, label: "Energieverbruik"});
   let label:LabelData = <LabelData>({data: times});
-  console.log(line);
   let graph:GraphData = <GraphData>({lines:line,labels:label});
   return graph;
 }
 
 function toData(r:any){
   let num = r.TOE1;
-  console.log('Parsed Data:', num);
   return num;
 }
 
 function timeToData(r:any){
   let times = r.time.substring(11,18);
-  console.log('Parsed Time:', times);
   return times;
 }
 

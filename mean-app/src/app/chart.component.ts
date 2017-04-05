@@ -10,9 +10,9 @@ import { LineData } from './line-data';
 export class LineChartComponent implements OnInit {
   // lineChart
   public lineChartData:Array<any> = [
-    {data: [1,0,0,0,0,0,1], label: 'Series A'}
+    {data: [0,0,0,0,0,0,0], label: 'Totaal verbruik'}
   ];
-  public lineChartLabels:Array<any> = ['', '', '', '', '', '', ''];
+  public lineChartLabels:Array<any> = ['-1', '-2', '-3', '-4', '-5', '-6', '-7'];
   public lineChartOptions:any = {
     responsive: true,
     title: {
@@ -34,15 +34,6 @@ export class LineChartComponent implements OnInit {
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
 
-  // events
-  public chartClicked(e:any):void {
-    //console.log(e);
-  }
-
-  public chartHovered(e:any):void {
-    //console.log(e);
-  }
-
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
@@ -50,6 +41,7 @@ export class LineChartComponent implements OnInit {
     this.dataService
       .get()
       .subscribe(res => {
+        console.log("Received from service:");
         console.log(res);
 
         const newDataSet = [];
@@ -60,6 +52,9 @@ export class LineChartComponent implements OnInit {
         const newDataSet2 = [];
         newDataSet2.push(res.labels.data.slice());
         this.lineChartLabels = newDataSet2;
+
+        console.log("Updated labels array");
+        console.log(this.lineChartLabels);
       });
 
     console.log("Init");
