@@ -343,7 +343,9 @@ var LineChartComponent = (function () {
             var newLine = { data: res.lines.data, label: res.lines.label };
             newDataSet.push(newLine);
             _this.lineChartData = newDataSet;
-            _this.lineChartLabels = res.labels.data.slice();
+            var newDataSet2 = [];
+            newDataSet2.push(res.labels.data.slice());
+            _this.lineChartLabels = newDataSet2;
         });
         console.log("Init");
     };
