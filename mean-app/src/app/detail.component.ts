@@ -11,13 +11,15 @@ import {LineChartComponent} from "./chart.component";
 
 export class DetailComponent implements OnInit {
 
+  public id:string;
+
   constructor(private dataService: DataService,
              private route: ActivatedRoute) {}
 
   ngOnInit(): void {
 
-    let id = this.route.snapshot.params['id'];
-    console.log("DetailComponentID= " +id);
+    this.id = this.route.snapshot.params['id'];
+    console.log("DetailComponentID= " + this.id);
 
  //   this.dataService
   //    .get(id)

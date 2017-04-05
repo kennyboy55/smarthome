@@ -162,8 +162,8 @@ var DetailComponent = (function () {
         this.route = route;
     }
     DetailComponent.prototype.ngOnInit = function () {
-        var id = this.route.snapshot.params['id'];
-        console.log("DetailComponentID= " + id);
+        this.id = this.route.snapshot.params['id'];
+        console.log("DetailComponentID= " + this.id);
         //   this.dataService
         //    .get(id)
         //    .subscribe(res => {
