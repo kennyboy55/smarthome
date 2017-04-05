@@ -56,7 +56,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var DataService = (function () {
     function DataService(http) {
         this.http = http;
-        this.dashboardURL = '/webapi/dashboard';
+        this.dashboardURL = '/webapi/data';
     }
     DataService.prototype.dashboard = function () {
         var lineChartData$ = 
