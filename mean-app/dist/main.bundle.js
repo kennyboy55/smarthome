@@ -56,13 +56,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var DataService = (function () {
     function DataService(http) {
         this.http = http;
-        this.baseUrl = '/webapi/data';
+        this.dashboardURL = '/webapi/dashboard';
     }
-    DataService.prototype.get = function () {
+    DataService.prototype.dashboard = function () {
         var lineChartData$ = 
         //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
         this.http
-            .get(("" + this.baseUrl), { headers: this.getHeaders() })
+            .get(("" + this.dashboardURL), { headers: this.getHeaders() })
             .map(mapData);
         return lineChartData$;
     };
@@ -323,7 +323,7 @@ var LineChartComponent = (function () {
     LineChartComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.dataService
-            .get()
+            .dashboard()
             .subscribe(function (res) {
             console.log("Received from service:");
             console.log(res);

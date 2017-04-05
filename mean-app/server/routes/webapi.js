@@ -50,7 +50,7 @@ router.get('/', function(req, res) {
 
 
 
-router.get('/data', function(req, res) {
+router.get('/dashboard', function(req, res) {
 
   connection.query(
     'SELECT TOE1`, time FROM measurement ORDER BY time DESC LIMIT 0,10',
