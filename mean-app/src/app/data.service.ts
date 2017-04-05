@@ -16,11 +16,11 @@ export class DataService {
 
   constructor(private http : Http){}
 
-  get(): Observable<GraphData> {
+  get(id:string): Observable<GraphData> {
     let lineChartData$ =
       //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
       this.http
-        .get((`${this.baseUrl}`)
+        .get((`${this.baseUrl}/${id}`)
           , {headers: this.getHeaders()})
         .map(mapData);
 

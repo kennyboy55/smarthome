@@ -27,11 +27,11 @@ var DataService = (function () {
         this.baseUrl = '/webapi/data';
         this.deviceUrl = '/webapi/device';
     }
-    DataService.prototype.get = function () {
+    DataService.prototype.get = function (id) {
         var lineChartData$ = 
         //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
         this.http
-            .get(("" + this.baseUrl), { headers: this.getHeaders() })
+            .get((this.baseUrl + "/" + id), { headers: this.getHeaders() })
             .map(mapData);
         return lineChartData$;
     };
@@ -393,7 +393,7 @@ var LineChartComponent = (function () {
     LineChartComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.dataService
-            .get()
+            .get("204B413655303031363639353836343132")
             .subscribe(function (res) {
             console.log("Received from service:");
             console.log(res);

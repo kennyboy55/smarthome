@@ -49,7 +49,7 @@ router.get('/data/:device', function(req, res) {
 router.get('/data', function(req, res) {
 
   connection.query(
-    'SELECT TOE1, time FROM measurement ORDER BY time DESC LIMIT 0,10',
+    'SELECT TOE1, TOE2, HOV, HT, time FROM measurement ORDER BY time DESC LIMIT 0,10',
                      function (error, results, fields) {
    if (error) throw error;
 
