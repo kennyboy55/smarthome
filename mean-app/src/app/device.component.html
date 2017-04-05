@@ -1,1 +1,9 @@
-<line-chart></line-chart>
+<div>
+
+<ul>
+        <li *ngFor="let device of devices">
+          <span class="badge"> {{device.sn}} </span> {{device.name}}
+        </li>
+</ul>
+
+</div>

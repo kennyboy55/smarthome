@@ -1,10 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Device } from './device';
+
+import { DataService } from './data.service';
 
 @Component({
   selector: 'device',
   templateUrl: './device.component.html'
 })
 
-export class DeviceComponent {
+export class DeviceComponent implements OnInit {
+
+  public devices:Device[];
+
+  constructor(private dataService: DataService) {}
+
+  ngOnInit(): void {
+
+    this.dataService
+      .devices()
+      .subscribe(res => {
+        
+      		this.devices = res;
+
+      });
+
+  }
 
 }

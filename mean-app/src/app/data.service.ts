@@ -7,9 +7,12 @@ import { LineData } from './line-data';
 import { GraphData } from './graph-data';
 import { LabelData } from './label-data';
 
+import { Device } from './device';
+
 @Injectable()
 export class DataService {
   private baseUrl: string = '/webapi/data';
+  private deviceUrl: string = '/webapi/device';
 
   constructor(private http : Http){}
 
@@ -22,6 +25,18 @@ export class DataService {
         .map(mapData);
 
     return lineChartData$;
+  }
+
+
+  devices(): Observable<Device[]> {
+    let devices$ =
+      //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
+      this.http
+        .get((`${this.deviceUrl}`)
+          , {headers: this.getHeaders()})
+        .map(mapDevice);
+
+    return devices$;
   }
 
   private getHeaders(){
@@ -51,3 +66,19 @@ function timeToData(r:any){
   return times;
 }
 
+
+
+function mapDevice(response:Response): Device[] {
+  let devices = response.json().map(toDevice);
+  return devices;
+}
+
+
+function toDevice(r:any){
+  let device = <Device>({
+      sn: r.SN,
+      name: r.name
+  });
+
+  return device;
+}
