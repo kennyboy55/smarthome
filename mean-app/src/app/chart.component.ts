@@ -1,13 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DataService } from './data.service';
 
 import { LineData } from './line-data';
+import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 
 @Component({
   selector: 'line-chart',
   templateUrl: './chart.component.html'
 })
 export class LineChartComponent implements OnInit {
+
+  @ViewChild(BaseChartDirective) public chart: BaseChartDirective;
+
   // lineChart
   public lineChartData:Array<any> = [
     {data: [0,0,0,0,0,0,0], label: 'Totaal verbruik'}
@@ -58,6 +62,8 @@ export class LineChartComponent implements OnInit {
 
         console.log("Updated lines array");
         console.log(this.lineChartData);
+
+        this.chart.chart.update();
 
       });
 

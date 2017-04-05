@@ -47,7 +47,7 @@ function toData(r:any){
 }
 
 function timeToData(r:any){
-  let times = r.time.substring(11,18);
+  let times = r.time.substring(11,19);
   return times;
 }
 
