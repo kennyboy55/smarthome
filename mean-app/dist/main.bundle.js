@@ -489,7 +489,7 @@ var LineChartComponent = (function () {
         this.lineChartData = newDataSet;
         console.log("Updated lines array");
         console.log(this.lineChartData);
-        this.chart.chart.update();
+        //this.chart.chart.update();
     };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 

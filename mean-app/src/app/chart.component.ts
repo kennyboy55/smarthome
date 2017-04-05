@@ -61,7 +61,7 @@ export class LineChartComponent implements OnInit {
         console.log("Updated lines array");
         console.log(this.lineChartData);
 
-        this.chart.chart.update();
+        //this.chart.chart.update();
 
   }
 }
