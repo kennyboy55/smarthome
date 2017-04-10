@@ -111,7 +111,7 @@ function timeToData(r:any){
 
 function mapUsage(response:Response): Usage {
   let usage = response.json().map(toUsage);
-  return usage;
+  return usage[0];
 }
 
 function toUsage(r:any): Usage
@@ -127,7 +127,7 @@ function toUsage(r:any): Usage
 
 function mapName(response:Response): string {
   let name = response.json().map(toName);
-  return name;
+  return name[0];
 }
 
 function toName(r:any): string

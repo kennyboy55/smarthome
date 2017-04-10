@@ -101,7 +101,7 @@ function timeToData(r) {
 }
 function mapUsage(response) {
     var usage = response.json().map(toUsage);
-    return usage;
+    return usage[0];
 }
 function toUsage(r) {
     var usage = ({
@@ -113,7 +113,7 @@ function toUsage(r) {
 }
 function mapName(response) {
     var name = response.json().map(toName);
-    return name;
+    return name[0];
 }
 function toName(r) {
     return r.name;
@@ -209,7 +209,7 @@ var DetailComponent = (function () {
         this.dataService
             .usage(id)
             .subscribe(function (res) {
-            console.log("RES:");
+            console.log("Usage:");
             console.log(res);
             _this.hov = res.hov;
             _this.htv = res.htv;
@@ -218,7 +218,7 @@ var DetailComponent = (function () {
         this.dataService
             .name(id)
             .subscribe(function (res) {
-            console.log("RES:");
+            console.log("Name:");
             console.log(res);
             _this.name = res;
         });

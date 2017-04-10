@@ -49,7 +49,7 @@ export class DetailComponent implements OnInit {
       .usage(id)
       .subscribe(res => {
 
-        console.log("RES:");
+        console.log("Usage:");
         console.log(res);
 
         this.hov = res.hov;
@@ -62,7 +62,7 @@ export class DetailComponent implements OnInit {
       .name(id)
       .subscribe(res => {
 
-        console.log("RES:");
+        console.log("Name:");
         console.log(res);
 
         this.name = res;
