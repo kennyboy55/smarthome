@@ -13,8 +13,8 @@ import { Usage } from './usage';
 @Injectable()
 export class DataService {
   private getUrl: string = '/webapi/data';
-  private usageUrl: string = 'webapi/usage';
-  private nameUrl: string = 'webapi/name';
+  private usageUrl: string = '/webapi/usage';
+  private nameUrl: string = '/webapi/name';
   private deviceUrl: string = '/webapi/device';
 
   constructor(private http : Http){}

@@ -25,8 +25,8 @@ var DataService = (function () {
     function DataService(http) {
         this.http = http;
         this.getUrl = '/webapi/data';
-        this.usageUrl = 'webapi/usage';
-        this.nameUrl = 'webapi/name';
+        this.usageUrl = '/webapi/usage';
+        this.nameUrl = '/webapi/name';
         this.deviceUrl = '/webapi/device';
     }
     DataService.prototype.get = function (id) {
