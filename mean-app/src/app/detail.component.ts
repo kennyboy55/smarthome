@@ -14,7 +14,7 @@ import {LabelData} from "./label-data";
   templateUrl: './detail.component.html'
 })
 
-export class DetailComponent implements OnInit {
+export class DetailComponent implements OnInit, OnDestroy {
 
   public id:string = 'Loading';
   public name:string = "Loading";

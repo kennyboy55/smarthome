@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef,Input } from '@angular/core';
+import { Component, OnInit, OnChanges, ViewChild, ElementRef,Input } from '@angular/core';
 import { DataService } from './data.service';
 
 import { LineData } from './line-data';
@@ -9,7 +9,7 @@ import {LabelData} from "./label-data";
   selector: 'line-chart',
   templateUrl: './chart.component.html'
 })
-export class LineChartComponent implements OnInit {
+export class LineChartComponent implements OnInit, OnChanges {
 
   @Input()data:LineData;
   @Input()label:LabelData;
@@ -52,7 +52,11 @@ export class LineChartComponent implements OnInit {
         const newLine = {data: this.data.data, label: this.data.label};
         newDataSet.push(newLine);
         this.lineChartData = newDataSet;
-
-        //this.chart.chart.update();
   }
+
+  ngOnChanges(): void {
+    this.chart.chart.update();
+  }
+
+
 }
