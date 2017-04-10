@@ -3,7 +3,8 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'asdf1239',
-  database : 'smarthome'
+  database : 'smarthome',
+  timezone : 'utc'
 });
 
 connection.connect(function(err) {
