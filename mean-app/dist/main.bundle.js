@@ -106,6 +106,10 @@ function mapUsage(response) {
         htv: r.HTV,
         ht: r.HT
     });
+    console.log("Service json");
+    console.log(r);
+    console.log("Service: usage");
+    console.log(usage);
     return usage;
 }
 function mapName(response) {
