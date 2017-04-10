@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 
+import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
+
 import { DataService } from './data.service';
 import {LineChartComponent} from "./chart.component";
 import {LineData} from "./line-data";
@@ -13,6 +15,7 @@ import {LabelData} from "./label-data";
 
 export class DetailComponent implements OnInit {
 
+  public id:string = 'Loading';
   public name:string = "Loading";
 
   public data:LineData;
@@ -31,9 +34,17 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
 
-     let id = this.route.snapshot.params['id'];
+    this.id = this.route.snapshot.params['id'];
 
-    this.dataService
+    this.refreshData(this.id);
+
+    IntervalObservable.create(1000).subscribe(n => this.refreshData(this.id));
+
+  }
+
+  refreshData(id:string)
+  {
+      this.dataService
       .get(id)
       .subscribe(res => {
 
@@ -68,7 +79,6 @@ export class DetailComponent implements OnInit {
         this.name = res;
 
       });
-
   }
 
 }
