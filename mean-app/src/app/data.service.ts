@@ -71,15 +71,21 @@ function mapData(response:Response): GraphData {
   let TOE1S = response.json().map(toe1ToData);
   let TOE2S = response.json().map(toe2ToData);
   let HOV = response.json().map(hovToData);
+  let TTE1S = response.json().map(tte1ToData);
+  let TTE2S = response.json().map(tte2ToData);
+  let HTV = response.json().map(htvToData);
   let HT = response.json().map(htToData);
   let times = response.json().map(timeToData);
 
   let Toe1Line:LineData = <LineData>({data: TOE1S, label: "Totaal Energieverbruik tarief 1"});
   let Toe2Line:LineData = <LineData>({data: TOE2S, label: "Totaal Energieverbruik tarief 2"});
   let HovLine:LineData = <LineData>({data: HOV, label: "Huidig Energieverbruik"});
+  let Tte1Line:LineData = <LineData>({data: TTE1S, label: "Totaal terug Energieverbruik tarief 1"});
+  let Tte2Line:LineData = <LineData>({data: TTE2S, label: "Totaal terug Energieverbruik tarief 2"});
+  let HtvLine:LineData = <LineData>({data: HTV, label: "Huidig terug Energieverbruik"});
   let HtLine:LineData = <LineData>({data: HT, label: "Huidig Tarief"});
   let label:LabelData = <LabelData>({data: times});
-  let graph:GraphData = <GraphData>({TOE1:Toe1Line,TOE2:Toe2Line,HOV:HovLine,HT:HtLine,labels:label});
+  let graph:GraphData = <GraphData>({TOE1:Toe1Line,TOE2:Toe2Line,HOV:HovLine,TTE1:Tte1Line,TTE2:Tte2Line,HTV:HtvLine,HT:HtLine,labels:label});
   return graph;
 }
 
@@ -96,6 +102,21 @@ function toe2ToData(r:any){
 function hovToData(r:any){
   let HOV = r.HOV;
   return HOV;
+}
+
+function tte1ToData(r:any){
+  let TTE1 = r.TTE1;
+  return TTE1;
+}
+
+function tte2ToData(r:any){
+  let TTE2 = r.TTE2;
+  return TTE2;
+}
+
+function htvToData(r:any){
+  let HTV = r.HTV;
+  return HTV;
 }
 
 function htToData(r:any){

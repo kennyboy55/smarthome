@@ -69,14 +69,20 @@ function mapData(response) {
     var TOE1S = response.json().map(toe1ToData);
     var TOE2S = response.json().map(toe2ToData);
     var HOV = response.json().map(hovToData);
+    var TTE1S = response.json().map(tte1ToData);
+    var TTE2S = response.json().map(tte2ToData);
+    var HTV = response.json().map(htvToData);
     var HT = response.json().map(htToData);
     var times = response.json().map(timeToData);
     var Toe1Line = ({ data: TOE1S, label: "Totaal Energieverbruik tarief 1" });
     var Toe2Line = ({ data: TOE2S, label: "Totaal Energieverbruik tarief 2" });
     var HovLine = ({ data: HOV, label: "Huidig Energieverbruik" });
+    var Tte1Line = ({ data: TTE1S, label: "Totaal terug Energieverbruik tarief 1" });
+    var Tte2Line = ({ data: TTE2S, label: "Totaal terug Energieverbruik tarief 2" });
+    var HtvLine = ({ data: HTV, label: "Huidig terug Energieverbruik" });
     var HtLine = ({ data: HT, label: "Huidig Tarief" });
     var label = ({ data: times });
-    var graph = ({ TOE1: Toe1Line, TOE2: Toe2Line, HOV: HovLine, HT: HtLine, labels: label });
+    var graph = ({ TOE1: Toe1Line, TOE2: Toe2Line, HOV: HovLine, TTE1: Tte1Line, TTE2: Tte2Line, HTV: HtvLine, HT: HtLine, labels: label });
     return graph;
 }
 function toe1ToData(r) {
@@ -90,6 +96,18 @@ function toe2ToData(r) {
 function hovToData(r) {
     var HOV = r.HOV;
     return HOV;
+}
+function tte1ToData(r) {
+    var TTE1 = r.TTE1;
+    return TTE1;
+}
+function tte2ToData(r) {
+    var TTE2 = r.TTE2;
+    return TTE2;
+}
+function htvToData(r) {
+    var HTV = r.HTV;
+    return HTV;
 }
 function htToData(r) {
     var HT = r.HT;
@@ -202,8 +220,8 @@ var DetailComponent = (function () {
             .get(id)
             .subscribe(function (res) {
             _this.label = res.labels;
-            _this.data = res.TOE1;
-            _this.data2 = res.HOV;
+            _this.data = res.TTE1;
+            _this.data2 = res.HTV;
             _this.loaded = true;
         });
         this.dataService

@@ -38,8 +38,8 @@ export class DetailComponent implements OnInit {
       .subscribe(res => {
 
         this.label = res.labels;
-        this.data = res.TOE1;
-        this.data2 = res.HOV;
+        this.data = res.TTE1;
+        this.data2 = res.HTV;
 
         this.loaded = true;
 
