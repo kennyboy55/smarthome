@@ -221,10 +221,14 @@ var DetailComponent = (function () {
         var _this = this;
         this.id = this.route.snapshot.params['id'];
         this.refreshData(this.id);
-        __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_IntervalObservable__["IntervalObservable"].create(1000).subscribe(function (n) { return _this.refreshData(_this.id); });
+        this.subscription = __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_IntervalObservable__["IntervalObservable"].create(7500).subscribe(function (n) { return _this.refreshData(_this.id); });
+    };
+    DetailComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
     };
     DetailComponent.prototype.refreshData = function (id) {
         var _this = this;
+        console.log("Refreshing data for ", this.id);
         this.dataService
             .get(id)
             .subscribe(function (res) {
@@ -236,8 +240,6 @@ var DetailComponent = (function () {
         this.dataService
             .usage(id)
             .subscribe(function (res) {
-            console.log("Usage:");
-            console.log(res);
             _this.hov = res.hov;
             _this.htv = res.htv;
             _this.ht = res.ht;
@@ -245,8 +247,6 @@ var DetailComponent = (function () {
         this.dataService
             .name(id)
             .subscribe(function (res) {
-            console.log("Name:");
-            console.log(res);
             _this.name = res;
         });
     };

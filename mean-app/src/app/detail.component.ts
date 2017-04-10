@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
+import { Subscription } from 'rxjs/Subscription';
 
 import { DataService } from './data.service';
 import {LineChartComponent} from "./chart.component";
@@ -29,6 +30,8 @@ export class DetailComponent implements OnInit {
 
   public loaded:boolean = false;
 
+  public subscription:Subscription;
+
   constructor(private dataService: DataService,
              private route: ActivatedRoute) {}
 
@@ -38,12 +41,18 @@ export class DetailComponent implements OnInit {
 
     this.refreshData(this.id);
 
-    IntervalObservable.create(1000).subscribe(n => this.refreshData(this.id));
+    this.subscription = IntervalObservable.create(7500).subscribe(n => this.refreshData(this.id));
 
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   refreshData(id:string)
   {
+      console.log("Refreshing data for ", this.id);
+
       this.dataService
       .get(id)
       .subscribe(res => {
@@ -60,9 +69,6 @@ export class DetailComponent implements OnInit {
       .usage(id)
       .subscribe(res => {
 
-        console.log("Usage:");
-        console.log(res);
-
         this.hov = res.hov;
         this.htv = res.htv;
         this.ht = res.ht;
@@ -72,9 +78,6 @@ export class DetailComponent implements OnInit {
       this.dataService
       .name(id)
       .subscribe(res => {
-
-        console.log("Name:");
-        console.log(res);
 
         this.name = res;
 
