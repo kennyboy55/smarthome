@@ -559,7 +559,9 @@ var LineChartComponent = (function () {
         this.lineChartData = newDataSet;
     };
     LineChartComponent.prototype.ngOnChanges = function () {
-        this.chart.chart.update();
+        if (this.chart.chart != undefined) {
+            this.chart.chart.update();
+        }
     };
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(), 

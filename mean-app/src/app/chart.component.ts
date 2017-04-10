@@ -55,7 +55,10 @@ export class LineChartComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
-    this.chart.chart.update();
+    if(this.chart.chart != undefined){
+      this.chart.chart.update();
+    }
+    
   }
 
 
