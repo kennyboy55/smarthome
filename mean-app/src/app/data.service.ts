@@ -8,29 +8,39 @@ import { GraphData } from './graph-data';
 import { LabelData } from './label-data';
 
 import { Device } from './device';
+import { Usage } from './usage';
 
 @Injectable()
 export class DataService {
-  private baseUrl: string = '/webapi/data';
+  private getUrl: string = '/webapi/data';
+  private usageUrl: string = 'webapi/usage';
   private deviceUrl: string = '/webapi/device';
 
   constructor(private http : Http){}
 
   get(id:string): Observable<GraphData> {
     let lineChartData$ =
-      //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
       this.http
-        .get((`${this.baseUrl}/${id}`)
+        .get((`${this.getUrl}/${id}`)
           , {headers: this.getHeaders()})
         .map(mapData);
 
     return lineChartData$;
   }
 
+  usage(id:string): Observable<Usage> {
+    let usageData$ =
+      this.http
+        .get((`${this.usageUrl}/${id}`)
+          , {headers: this.getHeaders()})
+        .map(mapUsage);
+
+    return usageData$;
+  }
+
 
   devices(): Observable<Device[]> {
     let devices$ =
-      //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
       this.http
         .get((`${this.deviceUrl}`)
           , {headers: this.getHeaders()})
@@ -87,6 +97,21 @@ function timeToData(r:any){
   return times;
 }
 
+
+function mapUsage(response:Response): Usage {
+  let usage = response.json().map(toUsage);
+  return usage;
+}
+
+function toUsage(r:any){
+  let usage = <Usage>({
+      hov: r.HOV,
+      htv: r.HTV,
+      ht: r.HT
+  });
+
+  return usage;
+}
 
 
 function mapDevice(response:Response): Device[] {

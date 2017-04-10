@@ -47,6 +47,25 @@ router.get('/data/:device', function(req, res) {
 });
 
 
+router.get('/usage/:device', function(req, res) {
+
+  let devid = req.params.device;
+
+  connection.query(
+    'SELECT TOP 1 HOV, HTV, HT FROM measurement WHERE device = ? ORDER BY time DESC', [devid],
+                     function (error, results, fields) {
+   if (error) throw error;
+
+   if (results.length  > 0) {
+
+        res.status(200);
+        res.send(JSON.stringify(results));
+    }
+
+  });
+
+});
+
 /* GET api listing. */
 router.get('/', function(req, res) {
   res.status(200);

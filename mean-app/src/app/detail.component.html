@@ -1,5 +1,16 @@
-<div *ngIf="loaded">
-	<line-chart [label]="label" [data]="data"></line-chart>
+<span *ngIf="loaded">
 
-	<line-chart [label]="label" [data]="data2"></line-chart>
-</div>
+	<div class="col-md-6">
+		HOV: {{hov}}, HTV: {{htv}}, HT: {{ht}}
+	</div>
+
+
+	<div class="col-md-6">
+		<line-chart [label]="label" [data]="data"></line-chart>
+	</div>
+
+	<div class="col-md-6">
+		<line-chart [label]="label" [data]="data2"></line-chart>
+	</div>
+
+</span>

@@ -18,6 +18,10 @@ export class DetailComponent implements OnInit {
 
   public data2:LineData;
 
+  public hov:number = 0;
+  public htv:number = 0;
+  public ht:number = 0;  
+
   public loaded:boolean = false;
 
   constructor(private dataService: DataService,
@@ -38,6 +42,16 @@ export class DetailComponent implements OnInit {
 
         this.loaded = true;
         console.log("Data loaded from API");
+
+      });
+
+      this.dataService
+      .usage(id)
+      .subscribe(res => {
+
+        this.hov = res.hov;
+        this.htv = res.htv;
+        this.ht = res.ht;
 
       });
 

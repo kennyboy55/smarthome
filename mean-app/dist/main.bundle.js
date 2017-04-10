@@ -24,21 +24,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var DataService = (function () {
     function DataService(http) {
         this.http = http;
-        this.baseUrl = '/webapi/data';
+        this.getUrl = '/webapi/data';
+        this.usageUrl = 'webapi/usage';
         this.deviceUrl = '/webapi/device';
     }
     DataService.prototype.get = function (id) {
-        var lineChartData$ = 
-        //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
-        this.http
-            .get((this.baseUrl + "/" + id), { headers: this.getHeaders() })
+        var lineChartData$ = this.http
+            .get((this.getUrl + "/" + id), { headers: this.getHeaders() })
             .map(mapData);
         return lineChartData$;
     };
+    DataService.prototype.usage = function (id) {
+        var usageData$ = this.http
+            .get((this.usageUrl + "/" + id), { headers: this.getHeaders() })
+            .map(mapUsage);
+        return usageData$;
+    };
     DataService.prototype.devices = function () {
-        var devices$ = 
-        //<LineData>( {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'} );
-        this.http
+        var devices$ = this.http
             .get(("" + this.deviceUrl), { headers: this.getHeaders() })
             .map(mapDevice);
         return devices$;
@@ -88,6 +91,18 @@ function htToData(r) {
 function timeToData(r) {
     var times = r.time.substring(11, 19);
     return times;
+}
+function mapUsage(response) {
+    var usage = response.json().map(toUsage);
+    return usage;
+}
+function toUsage(r) {
+    var usage = ({
+        hov: r.HOV,
+        htv: r.HTV,
+        ht: r.HT
+    });
+    return usage;
 }
 function mapDevice(response) {
     var devices = response.json().map(toDevice);
@@ -160,6 +175,9 @@ var DetailComponent = (function () {
     function DetailComponent(dataService, route) {
         this.dataService = dataService;
         this.route = route;
+        this.hov = 0;
+        this.htv = 0;
+        this.ht = 0;
         this.loaded = false;
     }
     DetailComponent.prototype.ngOnInit = function () {
@@ -174,6 +192,13 @@ var DetailComponent = (function () {
             _this.data2 = res.HOV;
             _this.loaded = true;
             console.log("Data loaded from API");
+        });
+        this.dataService
+            .usage(id)
+            .subscribe(function (res) {
+            _this.hov = res.hov;
+            _this.htv = res.htv;
+            _this.ht = res.ht;
         });
     };
     DetailComponent = __decorate([
@@ -339,7 +364,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var AppComponent = (function () {
     function AppComponent() {
-        this.title = 'Energie';
     }
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -571,7 +595,7 @@ module.exports = ""
 /***/ 670:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n\r\n  <nav class=\"navbar navbar-default\">\r\n    <div class=\"container-fluid\">\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n          <span class=\"sr-only\">Toggle navigation</span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\">Energiemeter</a>\r\n      </div>\r\n      <div id=\"navbar\" class=\"navbar-collapse collapse\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li routerLink=\"/dashboard\" routerLinkActive=\"active\"><a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a></li>\r\n          <li routerLink=\"/device\" routerLinkActive=\"active\"><a routerLink=\"/device\" routerLinkActive=\"active\">Device</a></li>\r\n        </ul>\r\n      </div><!--/.nav-collapse -->\r\n    </div><!--/.container-fluid -->\r\n  </nav>\r\n\r\n  <div class=\"row\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"page-header\">\r\n        <h1>{{title}} <small>Avans</small></h1>\r\n      </div>\r\n    </div>\r\n\r\n    <router-outlet></router-outlet>\r\n\r\n  </div>\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n\r\n  <nav class=\"navbar navbar-default\">\r\n    <div class=\"container-fluid\">\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n          <span class=\"sr-only\">Toggle navigation</span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\">Energiemeter</a>\r\n      </div>\r\n      <div id=\"navbar\" class=\"navbar-collapse collapse\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li routerLink=\"/dashboard\" routerLinkActive=\"active\"><a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a></li>\r\n          <li routerLink=\"/device\" routerLinkActive=\"active\"><a routerLink=\"/device\" routerLinkActive=\"active\">Device</a></li>\r\n        </ul>\r\n      </div><!--/.nav-collapse -->\r\n    </div><!--/.container-fluid -->\r\n  </nav>\r\n\r\n  <div class=\"row\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"page-header\">\r\n        <h1>Energiemeter <small>Avans</small></h1>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <router-outlet></router-outlet>\r\n  </div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
@@ -592,7 +616,7 @@ module.exports = "<div>\r\n\t\r\n</div>"
 /***/ 673:
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf=\"loaded\">\r\n\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\r\n\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n</div>\r\n"
+module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\tHOV: {{hov}}, HTV: {{htv}}, HT: {{ht}}\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
 
 /***/ }),
 
