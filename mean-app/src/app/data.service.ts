@@ -110,27 +110,31 @@ function timeToData(r:any){
 
 
 function mapUsage(response:Response): Usage {
-  let r = response.json();
-
-  let usage = <Usage>({
-      hov: r.HOV,
-      htv: r.HTV,
-      ht: r.HT
-  });
-
-  console.log("Service json");
-  console.log(r);
-
-  console.log("Service: usage");
-  console.log(usage);
-
+  let usage = response.json().map(toUsage);
   return usage;
 }
 
+function toUsage(r:any): Usage
+{
+    let usage = <Usage>({
+      hov: r.HOV,
+      htv: r.HTV,
+      ht: r.HT
+    });
+
+    return usage;
+}
+
 function mapName(response:Response): string {
-  let name = response.json().name;
+  let name = response.json().map(toName);
   return name;
 }
+
+function toName(r:any): string
+{
+    return r.name;
+}
+
 
 function mapDevice(response:Response): Device[] {
   let devices = response.json().map(toDevice);

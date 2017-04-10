@@ -100,21 +100,23 @@ function timeToData(r) {
     return times;
 }
 function mapUsage(response) {
-    var r = response.json();
+    var usage = response.json().map(toUsage);
+    return usage;
+}
+function toUsage(r) {
     var usage = ({
         hov: r.HOV,
         htv: r.HTV,
         ht: r.HT
     });
-    console.log("Service json");
-    console.log(r);
-    console.log("Service: usage");
-    console.log(usage);
     return usage;
 }
 function mapName(response) {
-    var name = response.json().name;
+    var name = response.json().map(toName);
     return name;
+}
+function toName(r) {
+    return r.name;
 }
 function mapDevice(response) {
     var devices = response.json().map(toDevice);
