@@ -26,6 +26,7 @@ var DataService = (function () {
         this.http = http;
         this.getUrl = '/webapi/data';
         this.usageUrl = 'webapi/usage';
+        this.nameUrl = 'webapi/name';
         this.deviceUrl = '/webapi/device';
     }
     DataService.prototype.get = function (id) {
@@ -39,6 +40,12 @@ var DataService = (function () {
             .get((this.usageUrl + "/" + id), { headers: this.getHeaders() })
             .map(mapUsage);
         return usageData$;
+    };
+    DataService.prototype.name = function (id) {
+        var nameData$ = this.http
+            .get((this.nameUrl + "/" + id), { headers: this.getHeaders() })
+            .map(mapName);
+        return nameData$;
     };
     DataService.prototype.devices = function () {
         var devices$ = this.http
@@ -103,6 +110,10 @@ function toUsage(r) {
         ht: r.HT
     });
     return usage;
+}
+function mapName(response) {
+    var name = response.json().name;
+    return name;
 }
 function mapDevice(response) {
     var devices = response.json().map(toDevice);
@@ -175,6 +186,7 @@ var DetailComponent = (function () {
     function DetailComponent(dataService, route) {
         this.dataService = dataService;
         this.route = route;
+        this.name = "Loading";
         this.hov = 0;
         this.htv = 0;
         this.ht = 0;
@@ -199,6 +211,11 @@ var DetailComponent = (function () {
             _this.hov = res.hov;
             _this.htv = res.htv;
             _this.ht = res.ht;
+        });
+        this.dataService
+            .name(id)
+            .subscribe(function (res) {
+            _this.name = res;
         });
     };
     DetailComponent = __decorate([
@@ -616,7 +633,7 @@ module.exports = "<div>\r\n\t\r\n</div>"
 /***/ 673:
 /***/ (function(module, exports) {
 
-module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\tHOV: {{hov}}, HTV: {{htv}}, HT: {{ht}}\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
+module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<h2>{{name}}</h2>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<b>HOV:</b> {{hov}}, <b>HTV:</b> {{htv}}, <b>HT:</b> {{ht}}\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
 
 /***/ }),
 

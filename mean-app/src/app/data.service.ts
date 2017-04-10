@@ -14,6 +14,7 @@ import { Usage } from './usage';
 export class DataService {
   private getUrl: string = '/webapi/data';
   private usageUrl: string = 'webapi/usage';
+  private nameUrl: string = 'webapi/name';
   private deviceUrl: string = '/webapi/device';
 
   constructor(private http : Http){}
@@ -36,6 +37,16 @@ export class DataService {
         .map(mapUsage);
 
     return usageData$;
+  }
+
+  name(id:string): Observable<string> {
+    let nameData$ =
+      this.http
+        .get((`${this.nameUrl}/${id}`)
+          , {headers: this.getHeaders()})
+        .map(mapName);
+
+    return nameData$;
   }
 
 
@@ -113,6 +124,10 @@ function toUsage(r:any){
   return usage;
 }
 
+function mapName(response:Response): string {
+  let name = response.json().name;
+  return name;
+}
 
 function mapDevice(response:Response): Device[] {
   let devices = response.json().map(toDevice);

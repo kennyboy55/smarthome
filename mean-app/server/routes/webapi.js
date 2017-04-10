@@ -66,6 +66,26 @@ router.get('/usage/:device', function(req, res) {
 
 });
 
+
+router.get('/name/:device', function(req, res) {
+
+  let devid = req.params.device;
+
+  connection.query(
+    'SELECT name FROM device WHERE SN = ?', [devid],
+                     function (error, results, fields) {
+   if (error) throw error;
+
+   if (results.length  > 0) {
+
+        res.status(200);
+        res.send(JSON.stringify(results));
+    }
+
+  });
+
+});
+
 /* GET api listing. */
 router.get('/', function(req, res) {
   res.status(200);

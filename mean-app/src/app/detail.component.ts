@@ -13,6 +13,8 @@ import {LabelData} from "./label-data";
 
 export class DetailComponent implements OnInit {
 
+  public name:string = "Loading";
+
   public data:LineData;
   public label:LabelData;
 
@@ -54,6 +56,16 @@ export class DetailComponent implements OnInit {
         this.ht = res.ht;
 
       });
+
+      this.dataService
+      .name(id)
+      .subscribe(res => {
+
+        this.name = res;
+        
+      });
+
+
 
   }
 
