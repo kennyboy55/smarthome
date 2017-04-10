@@ -100,10 +100,7 @@ function timeToData(r) {
     return times;
 }
 function mapUsage(response) {
-    var usage = response.json().map(toUsage);
-    return usage;
-}
-function toUsage(r) {
+    var r = response.json();
     var usage = ({
         hov: r.HOV,
         htv: r.HTV,
@@ -195,7 +192,6 @@ var DetailComponent = (function () {
     DetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         var id = this.route.snapshot.params['id'];
-        console.log("DetailComponentID= " + id);
         this.dataService
             .get(id)
             .subscribe(function (res) {
@@ -203,11 +199,12 @@ var DetailComponent = (function () {
             _this.data = res.TOE1;
             _this.data2 = res.HOV;
             _this.loaded = true;
-            console.log("Data loaded from API");
         });
         this.dataService
             .usage(id)
             .subscribe(function (res) {
+            console.log("RES:");
+            console.log(res);
             _this.hov = res.hov;
             _this.htv = res.htv;
             _this.ht = res.ht;
@@ -215,6 +212,8 @@ var DetailComponent = (function () {
         this.dataService
             .name(id)
             .subscribe(function (res) {
+            console.log("RES:");
+            console.log(res);
             _this.name = res;
         });
     };
@@ -520,16 +519,11 @@ var LineChartComponent = (function () {
         this.lineChartType = 'line';
     }
     LineChartComponent.prototype.ngOnInit = function () {
-        console.log("Initializing Chart");
         this.lineChartLabels = this.label.data.slice();
-        console.log("Updated labels array");
-        console.log(this.lineChartLabels);
         var newDataSet = [];
         var newLine = { data: this.data.data, label: this.data.label };
         newDataSet.push(newLine);
         this.lineChartData = newDataSet;
-        console.log("Updated lines array");
-        console.log(this.lineChartData);
         //this.chart.chart.update();
     };
     __decorate([
@@ -619,7 +613,7 @@ module.exports = "<div class=\"container\">\r\n\r\n  <nav class=\"navbar navbar-
 /***/ 671:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\r\n  <div class=\"col-md-6\">\r\n    <div style=\"display: block;\">\r\n    <canvas baseChart width=\"400\" height=\"400\"\r\n                [datasets]=\"lineChartData\"\r\n                [labels]=\"lineChartLabels\"\r\n                [options]=\"lineChartOptions\"\r\n                [colors]=\"lineChartColors\"\r\n                [legend]=\"lineChartLegend\"\r\n                [chartType]=\"lineChartType\"></canvas>\r\n    </div>\r\n  </div>\r\n</div>"
+module.exports = "<div style=\"display: block;\">\r\n<canvas baseChart width=\"400\" height=\"400\"\r\n            [datasets]=\"lineChartData\"\r\n            [labels]=\"lineChartLabels\"\r\n            [options]=\"lineChartOptions\"\r\n            [colors]=\"lineChartColors\"\r\n            [legend]=\"lineChartLegend\"\r\n            [chartType]=\"lineChartType\"></canvas>\r\n</div>"
 
 /***/ }),
 

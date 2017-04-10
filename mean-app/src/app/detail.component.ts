@@ -32,7 +32,6 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
 
      let id = this.route.snapshot.params['id'];
-    console.log("DetailComponentID= " + id);
 
     this.dataService
       .get(id)
@@ -43,13 +42,15 @@ export class DetailComponent implements OnInit {
         this.data2 = res.HOV;
 
         this.loaded = true;
-        console.log("Data loaded from API");
 
       });
 
       this.dataService
       .usage(id)
       .subscribe(res => {
+
+        console.log("RES:");
+        console.log(res);
 
         this.hov = res.hov;
         this.htv = res.htv;
@@ -61,11 +62,12 @@ export class DetailComponent implements OnInit {
       .name(id)
       .subscribe(res => {
 
+        console.log("RES:");
+        console.log(res);
+
         this.name = res;
-        
+
       });
-
-
 
   }
 

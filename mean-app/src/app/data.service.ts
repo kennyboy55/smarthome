@@ -110,11 +110,8 @@ function timeToData(r:any){
 
 
 function mapUsage(response:Response): Usage {
-  let usage = response.json().map(toUsage);
-  return usage;
-}
+  let r = response.json();
 
-function toUsage(r:any){
   let usage = <Usage>({
       hov: r.HOV,
       htv: r.HTV,

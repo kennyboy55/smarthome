@@ -52,7 +52,7 @@ router.get('/usage/:device', function(req, res) {
   let devid = req.params.device;
 
   connection.query(
-    'SELECT TOP 1 HOV, HTV, HT FROM measurement WHERE device = ? ORDER BY time DESC', [devid],
+    'SELECT HOV, HTV, HT FROM measurement WHERE device = ? ORDER BY time DESC LIMIT 0,1', [devid],
                      function (error, results, fields) {
    if (error) throw error;
 
