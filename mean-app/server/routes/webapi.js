@@ -165,7 +165,7 @@ router.get('/data/:device/group/:group', function(req, res) {
    if (results.length  > 0) {
 
         res.status(200);
-        res.send(JSON.stringify(results));
+        res.send(JSON.stringify(results[1]));
     }
 
   });
