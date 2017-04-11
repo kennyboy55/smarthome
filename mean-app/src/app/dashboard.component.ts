@@ -43,11 +43,13 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.dataService
       .usage("4530303035303031353538313833363134")
       .subscribe(res => {
-        console.log("result ");
-        console.log(res);
-        this.data1 = <LineData> ({data: [res.HOV, res.HTV], label: "Verbruik Martijn"});
+
+        //this.data1 = <LineData> ({data: [res.HOV, res.HTV], label: "Verbruik Martijn"});
+        this.data1 = <LineData> ({data: [21, 25], label: "Verbruik Martijn"});
+
         console.log("data ");
         console.log(this.data1);
+
         this.mloaded = true;
 
       });
@@ -56,7 +58,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .usage("4530303235303030303636383733323136")
       .subscribe(res => {
 
-        this.data2 = <LineData> ({data: [res.HOV, res.HTV], label: "Verbruik Kenneth"});
+        //this.data1 = <LineData> ({data: [res.HOV, res.HTV], label: "Verbruik Kenneth"});
+        this.data2 = <LineData> ({data: [18, 13], label: "Verbruik Kenneth"});
+
         this.kloaded = true;
 
       });
