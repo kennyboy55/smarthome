@@ -978,7 +978,7 @@ module.exports = "<div class=\"col-md-12\">\r\n\t<h2>{{name}}</h2>\r\n</div>\r\n
 /***/ 678:
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n\r\n<ul>\r\n        <li *ngFor=\"let device of devices\" (click)=\"goToDetails(device.sn)\">\r\n          {{device.name}}\r\n        </li>\r\n</ul>\r\n\r\n</div>"
+module.exports = "<div class=\"col-md-12\">\r\n\r\n <div class=\"row\">\r\n\r\n    <div class=\"col-md-4\" *ngFor=\"let device of devices\">\r\n\r\n    \t<div class=\"well\" style=\"cursor:pointer;\" (click)=\"goToDetails(device.sn)\">\r\n\r\n      \t\t<h3>{{device.name}}</h3>\r\n\r\n      \t</div>\r\n    </div>\r\n\r\n </div>\r\n</div>"
 
 /***/ }),
 
