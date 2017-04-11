@@ -158,7 +158,7 @@ router.get('/data/:device/group/:group', function(req, res) {
   }
 
   connection.query(
-    'SET @i:= 0; SELECT MIN(grp.`time`) AS time, AVG(grp.`HOV`) AS HOV, AVG(grp.`HTV`) AS HTV FROM (SELECT @i:=@i+1 AS `rownum`, FLOOR(@i/?) AS `datagrp`, `time`, `HOV`, `HTV` FROM `measurement` WHERE `device` = ? ORDER BY `time` DESC ) grp GROUP BY `datagrp`;', [groupdiv, devid],
+    'SET @i:= 0; SELECT MIN(grp.`time`) AS time, AVG(grp.`HOV`) AS HOV, AVG(grp.`HTV`) AS HTV, MAX(grp.`TOE1`) as TOE1, MAX(grp.`TOE2`) as TOE2, MAX(grp.`TTE1`) as TTE1, MAX(grp.`TTE2`) as TTE2, MAX(grp.`HT`) AS HT FROM (SELECT @i:=@i+1 AS `rownum`, FLOOR(@i/?) AS `datagrp`, `time`, `HOV`, `HTV`, `TOE1`, `TOE2`, `TTE1`, `TTE2`, `HT` FROM `measurement` WHERE `device` = ? ORDER BY `time` DESC ) grp GROUP BY `datagrp`;', [groupdiv, devid],
                      function (error, results, fields) {
    if (error) throw error;
 
