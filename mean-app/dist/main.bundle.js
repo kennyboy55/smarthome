@@ -335,8 +335,8 @@ var DetailComponent = (function () {
             _this.data2 = res.HTV;
             _this.data3 = res.TOE2;
             _this.data4 = res.TTE2;
-            _this.data3 = res.TOE1;
-            _this.data4 = res.TTE1;
+            _this.data5 = res.TOE1;
+            _this.data6 = res.TTE1;
             _this.loaded = true;
         });
         this.dataService

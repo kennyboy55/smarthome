@@ -75,14 +75,15 @@ export class DetailComponent implements OnInit, OnDestroy {
       .subscribe(res => {
 
         this.label = res.labels;
+
         this.data1 = res.HOV;
         this.data2 = res.HTV;
 
         this.data3 = res.TOE2;
         this.data4 = res.TTE2;
 
-        this.data3 = res.TOE1;
-        this.data4 = res.TTE1;
+        this.data5 = res.TOE1;
+        this.data6 = res.TTE1;
 
         this.loaded = true;
 
