@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .usage("4530303235303030303636383733323136")
       .subscribe(res => {
 
-        this.data1 = <LineData> ({data: [res.HOV, res.HTV], label: "Verbruik Kenneth"});
+        this.data2 = <LineData> ({data: [res.HOV, res.HTV], label: "Verbruik Kenneth"});
         this.kloaded = true;
 
       });

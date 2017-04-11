@@ -216,7 +216,7 @@ var DashboardComponent = (function () {
         this.dataService
             .usage("4530303235303030303636383733323136")
             .subscribe(function (res) {
-            _this.data1 = ({ data: [res.HOV, res.HTV], label: "Verbruik Kenneth" });
+            _this.data2 = ({ data: [res.HOV, res.HTV], label: "Verbruik Kenneth" });
             _this.kloaded = true;
         });
         this.dataService
