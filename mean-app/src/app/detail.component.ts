@@ -1,5 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
+
+import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 
 import { IntervalObservable } from 'rxjs/observable/IntervalObservable';
 import { Subscription } from 'rxjs/Subscription';
@@ -15,6 +17,8 @@ import {LabelData} from "./label-data";
 })
 
 export class DetailComponent implements OnInit, OnDestroy {
+
+  @ViewChild(BaseChartDirective) public chart: BaseChartDirective;
 
   public id:string = 'Loading';
   public name:string = "Loading";
@@ -89,6 +93,8 @@ export class DetailComponent implements OnInit, OnDestroy {
         this.data4 = res.TTE2;
 
         this.loaded = true;
+
+        this.chart.chart.update();
 
       });
 
