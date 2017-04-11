@@ -272,6 +272,7 @@ var DetailComponent = (function () {
         this.ht = "loading";
         this.money = 0;
         this.loaded = false;
+        this.pieloaded = false;
     }
     DetailComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -285,6 +286,9 @@ var DetailComponent = (function () {
     DetailComponent.prototype.refreshData = function (id) {
         var _this = this;
         console.log("Refreshing data for ", this.id);
+        this.labelpie1 = ({ data: ["Huidig opgenomen", "Huidig terug"] });
+        this.labelpie2 = ({ data: ["Totaal opgenomen 2", "Totaal terug 2"] });
+        this.labelpie3 = ({ data: ["Totaal opgenomen 1", "Totaal terug 1"] });
         this.dataService
             .get(id)
             .subscribe(function (res) {
@@ -302,6 +306,10 @@ var DetailComponent = (function () {
             _this.htv = res.HTV;
             _this.ht = res.HTN;
             _this.money = ((res.TOE1 - res.TTE1) * res.tarief1) + ((res.TOE2 - res.TTE2) * res.tarief2);
+            _this.datapie1 = ({ data: [res.HOV, res.HTV], label: "Huidig verbruik" });
+            _this.datapie2 = ({ data: [res.TOE2, res.TTE2], label: "Totaal 2" });
+            _this.datapie3 = ({ data: [res.TOE1, res.TTE1], label: "Totaal 1" });
+            _this.pieloaded = true;
         });
         this.dataService
             .name(id)
@@ -765,9 +773,6 @@ var PieChartComponent = (function () {
         this.pieChartType = 'pie';
     }
     PieChartComponent.prototype.ngOnInit = function () {
-        console.log("Data in piechart");
-        console.log(this.data);
-        console.log(this.label);
         this.pieChartLabels = this.label.data.slice();
         this.pieChartData = this.data.data.slice();
     };
@@ -849,7 +854,7 @@ module.exports = "<span *ngIf=\"mloaded\">\r\n\r\n\t<div class=\"col-md-6\">\r\n
 /***/ 676:
 /***/ (function(module, exports) {
 
-module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<h2>{{name}}</h2>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<div class=\"well\">\r\n\t\t\t<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>\r\n\t\t\t<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>\r\n\t\t\t<b>Huidig tarief:</b> {{ht}} <br>\r\n\t\t\t<b>Totale kosten:</b> €{{money}}\r\n\t\t</div>\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data1\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data3\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data4\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
+module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<h2>{{name}}</h2>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<div class=\"well\">\r\n\t\t\t<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>\r\n\t\t\t<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>\r\n\t\t\t<b>Huidig tarief:</b> {{ht}} <br>\r\n\t\t\t<b>Totale kosten:</b> €{{money}}\r\n\t\t</div>\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data1\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data3\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data4\"></line-chart>\r\n\t</div>\r\n</span>\r\n\r\n<span *ngIf=\"pieloaded\">\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie1\" [data]=\"datapie1\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie2\" [data]=\"datapie2\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie3\" [data]=\"datapie3\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
 
 /***/ }),
 
