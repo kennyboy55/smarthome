@@ -122,10 +122,21 @@ function mapUsage(response) {
     return usage[0];
 }
 function toUsage(r) {
+    var htname = "night";
+    if (r.HT == 2) {
+        htname = "day";
+    }
     var usage = ({
-        hov: r.HOV,
-        htv: r.HTV,
-        ht: r.HT
+        HOV: r.HOV,
+        HTV: r.HTV,
+        HT: r.HT,
+        HTN: htname,
+        TOE1: r.TOE1,
+        TOE2: r.TOE2,
+        TTE1: r.TTE1,
+        TTE2: r.TTE2,
+        tarief1: r.tarief1,
+        tarief2: r.tarief2
     });
     return usage;
 }
@@ -214,7 +225,8 @@ var DetailComponent = (function () {
         this.name = "Loading";
         this.hov = 0;
         this.htv = 0;
-        this.ht = 0;
+        this.ht = "loading";
+        this.money = 0;
         this.loaded = false;
     }
     DetailComponent.prototype.ngOnInit = function () {
@@ -242,9 +254,10 @@ var DetailComponent = (function () {
         this.dataService
             .usage(id)
             .subscribe(function (res) {
-            _this.hov = res.hov;
-            _this.htv = res.htv;
-            _this.ht = res.ht;
+            _this.hov = res.HOV;
+            _this.htv = res.HTV;
+            _this.ht = res.HTN;
+            _this.money = ((res.TOE1 - res.TTE1) * res.tarief1) + ((res.TOE2 - res.TTE2) * res.tarief2);
         });
         this.dataService
             .name(id)
@@ -666,7 +679,7 @@ module.exports = "<div>\r\n\t\r\n</div>"
 /***/ 673:
 /***/ (function(module, exports) {
 
-module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<h2>{{name}}</h2>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<b>HOV:</b> {{hov}}, <b>HTV:</b> {{htv}}, <b>HT:</b> {{ht}}\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data1\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data3\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data4\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
+module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<h2>{{name}}</h2>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<div class=\"well\">\r\n\t\t\t<b>Huidig opgenomen vermogen:</b> {{hov}} kW</br>\r\n\t\t\t<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW</br>\r\n\t\t\t<b>Huidig tarief:</b> {{ht}} </br>\r\n\t\t\t<b>Totale kosten:</b> €{{money}}\r\n\t\t</div>\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data1\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data3\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data4\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
 
 /***/ }),
 

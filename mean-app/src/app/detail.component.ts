@@ -28,7 +28,8 @@ export class DetailComponent implements OnInit, OnDestroy {
 
   public hov:number = 0;
   public htv:number = 0;
-  public ht:number = 0;  
+  public ht:string = "loading";  
+  public money:number = 0;
 
   public loaded:boolean = false;
 
@@ -74,9 +75,11 @@ export class DetailComponent implements OnInit, OnDestroy {
       .usage(id)
       .subscribe(res => {
 
-        this.hov = res.hov;
-        this.htv = res.htv;
-        this.ht = res.ht;
+        this.hov = res.HOV;
+        this.htv = res.HTV;
+        this.ht = res.HTN;
+
+        this.money = ((res.TOE1 - res.TTE1) * res.tarief1) + ((res.TOE2 - res.TTE2) * res.tarief2);
 
       });
 

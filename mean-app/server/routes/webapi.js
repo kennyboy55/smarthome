@@ -84,7 +84,7 @@ router.get('/data/:device/group/:group/:year1-:month1-:day1/:year2-:month2-:day2
    if (results.length  > 0) {
 
         res.status(200);
-        res.send(JSON.stringify(results));
+        res.send(JSON.stringify(results[1]));
     }
 
   });

@@ -137,10 +137,24 @@ function mapUsage(response:Response): Usage {
 
 function toUsage(r:any): Usage
 {
+    let htname = "night";
+
+    if(r.HT == 2)
+    {
+        htname = "day";
+    }
+
     let usage = <Usage>({
-      hov: r.HOV,
-      htv: r.HTV,
-      ht: r.HT
+      HOV: r.HOV,
+      HTV: r.HTV,
+      HT: r.HT,
+      HTN: htname,
+      TOE1: r.TOE1,
+      TOE2: r.TOE2,
+      TTE1: r.TTE1,
+      TTE2: r.TTE2,
+      tarief1: r.tarief1,
+      tarief2: r.tarief2
     });
 
     return usage;
