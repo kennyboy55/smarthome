@@ -15,15 +15,7 @@
 
 
 	<div class="col-md-6">
-		<div style="display: block;">
-			<canvas baseChart width="400" height="400"
-		            [datasets]="data1.data"
-		            [labels]="label.data"
-		            [options]="lineChartOptions"
-		            [colors]="lineChartColors"
-		            [legend]="lineChartLegend"
-		            [chartType]="lineChartType"></canvas>
-		</div>
+		<line-chart [label]="label" [data]="data1"></line-chart>
 	</div>
 
 	<div class="col-md-6">
