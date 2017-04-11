@@ -19,7 +19,7 @@ export class DoubleLineChartComponent implements OnInit, OnChanges {
   // line2Chart
   public doublelineChartData:Array<any> = [
     {data: [0,0,0,0,0,0,0], label: 'Verbruik'},
-    {data2:[0,0,0,0,0,0,0], label: 'Verbruik2'}
+    {data: [0,0,0,0,0,0,0], label: 'Verbruik2'}
 ];
   public doublelineChartLabels:Array<any> = ['-1', '-2', '-3', '-4', '-5', '-6', '-7'];
   public doublelineChartOptions:any = {
@@ -38,6 +38,14 @@ export class DoubleLineChartComponent implements OnInit, OnChanges {
       pointBorderColor: '#fff',
       pointHoverBackgroundColor: '#fff',
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    },
+    { // grey
+      backgroundColor: 'rgba(148,159,255,0.2)',
+      borderColor: 'rgba(148,159,255,1)',
+      pointBackgroundColor: 'rgba(148,159,255,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,255,0.8)'
     }
   ];
   public doublelineChartLegend:boolean = true;
@@ -50,8 +58,10 @@ export class DoubleLineChartComponent implements OnInit, OnChanges {
     this.doublelineChartLabels = this.label.data.slice();
 
     const newDataSet = [];
-    const newLine = {data: this.data.data,data2: this.data2.data, label: this.data.label};
+    const newLine =  {data: this.data.data, label: this.data.label};
+    const newLine2 = {data: this.data2.data, label: this.data2.label};
     newDataSet.push(newLine);
+    newDataSet.push(newLine2);
     this.doublelineChartData = newDataSet;
   }
 

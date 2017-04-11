@@ -5,7 +5,7 @@ webpackJsonp([1,4],{
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(685);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__ = __webpack_require__(686);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_http__ = __webpack_require__(312);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DataService; });
@@ -164,7 +164,7 @@ function toDevice(r) {
     });
     return device;
 }
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/data.service.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/data.service.js.map
 
 /***/ }),
 
@@ -178,7 +178,7 @@ var LabelData = (function () {
     }
     return LabelData;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/label-data.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/label-data.js.map
 
 /***/ }),
 
@@ -192,7 +192,7 @@ var LineData = (function () {
     }
     return LineData;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/line-data.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/line-data.js.map
 
 /***/ }),
 
@@ -222,6 +222,7 @@ var DashboardComponent = (function () {
         this.dataService = dataService;
         this.mloaded = false;
         this.kloaded = false;
+        this.dbloaded = false;
     }
     DashboardComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -250,19 +251,26 @@ var DashboardComponent = (function () {
         this.dataService
             .get("4530303235303030303636383733323136")
             .subscribe(function (res) {
+            _this.data3 = res.HOV;
+        });
+        this.dataService
+            .get("4530303035303031353538313833363134")
+            .subscribe(function (res) {
+            _this.data4 = res.HOV;
+            _this.dbloaded = true;
         });
     };
     DashboardComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'dashboard',
-            template: __webpack_require__(675)
+            template: __webpack_require__(676)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__data_service__["a" /* DataService */]) === 'function' && _a) || Object])
     ], DashboardComponent);
     return DashboardComponent;
     var _a;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/dashboard.component.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/dashboard.component.js.map
 
 /***/ }),
 
@@ -348,14 +356,14 @@ var DetailComponent = (function () {
     DetailComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'detail',
-            template: __webpack_require__(676)
+            template: __webpack_require__(677)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_3__data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_3__data_service__["a" /* DataService */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* ActivatedRoute */]) === 'function' && _b) || Object])
     ], DetailComponent);
     return DetailComponent;
     var _a, _b;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/detail.component.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/detail.component.js.map
 
 /***/ }),
 
@@ -398,14 +406,14 @@ var DeviceComponent = (function () {
     DeviceComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'device',
-            template: __webpack_require__(677)
+            template: __webpack_require__(678)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__angular_router__["c" /* Router */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === 'function' && _b) || Object])
     ], DeviceComponent);
     return DeviceComponent;
     var _a, _b;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/device.component.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/device.component.js.map
 
 /***/ }),
 
@@ -450,14 +458,14 @@ var PickerComponent = (function () {
     PickerComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'picker',
-            template: __webpack_require__(679)
+            template: __webpack_require__(680)
         }), 
         __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__data_service__["a" /* DataService */]) === 'function' && _a) || Object])
     ], PickerComponent);
     return PickerComponent;
     var _a;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/picker.component.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/picker.component.js.map
 
 /***/ }),
 
@@ -492,7 +500,7 @@ if (__WEBPACK_IMPORTED_MODULE_2__environments_environment__["a" /* environment *
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["enableProdMode"])();
 }
 __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__app_app_module__["a" /* AppModule */]);
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/main.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/main.js.map
 
 /***/ }),
 
@@ -541,7 +549,7 @@ var AppRoutingModule = (function () {
     ], AppRoutingModule);
     return AppRoutingModule;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/app-routing.module.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/app-routing.module.js.map
 
 /***/ }),
 
@@ -567,14 +575,14 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-root',
-            template: __webpack_require__(673),
-            styles: [__webpack_require__(672)]
+            template: __webpack_require__(674),
+            styles: [__webpack_require__(673)]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/app.component.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/app.component.js.map
 
 /***/ }),
 
@@ -652,7 +660,7 @@ var AppModule = (function () {
     ], AppModule);
     return AppModule;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/app.module.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/app.module.js.map
 
 /***/ }),
 
@@ -734,14 +742,14 @@ var LineChartComponent = (function () {
     LineChartComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'line-chart',
-            template: __webpack_require__(674)
+            template: __webpack_require__(675)
         }), 
         __metadata('design:paramtypes', [])
     ], LineChartComponent);
     return LineChartComponent;
     var _a, _b, _c;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/chart.component.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/chart.component.js.map
 
 /***/ }),
 
@@ -773,7 +781,7 @@ var DoubleLineChartComponent = (function () {
         // line2Chart
         this.doublelineChartData = [
             { data: [0, 0, 0, 0, 0, 0, 0], label: 'Verbruik' },
-            { data2: [0, 0, 0, 0, 0, 0, 0], label: 'Verbruik2' }
+            { data: [0, 0, 0, 0, 0, 0, 0], label: 'Verbruik2' }
         ];
         this.doublelineChartLabels = ['-1', '-2', '-3', '-4', '-5', '-6', '-7'];
         this.doublelineChartOptions = {
@@ -792,6 +800,14 @@ var DoubleLineChartComponent = (function () {
                 pointBorderColor: '#fff',
                 pointHoverBackgroundColor: '#fff',
                 pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+            },
+            {
+                backgroundColor: 'rgba(148,159,255,0.2)',
+                borderColor: 'rgba(148,159,255,1)',
+                pointBackgroundColor: 'rgba(148,159,255,1)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(148,159,255,0.8)'
             }
         ];
         this.doublelineChartLegend = true;
@@ -800,8 +816,10 @@ var DoubleLineChartComponent = (function () {
     DoubleLineChartComponent.prototype.ngOnInit = function () {
         this.doublelineChartLabels = this.label.data.slice();
         var newDataSet = [];
-        var newLine = { data: this.data.data, data2: this.data2.data, label: this.data.label };
+        var newLine = { data: this.data.data, label: this.data.label };
+        var newLine2 = { data: this.data2.data, label: this.data2.label };
         newDataSet.push(newLine);
+        newDataSet.push(newLine2);
         this.doublelineChartData = newDataSet;
     };
     DoubleLineChartComponent.prototype.ngOnChanges = function () {
@@ -828,14 +846,14 @@ var DoubleLineChartComponent = (function () {
     DoubleLineChartComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'doubleline-chart',
-            template: __webpack_require__(678)
+            template: __webpack_require__(679)
         }), 
         __metadata('design:paramtypes', [])
     ], DoubleLineChartComponent);
     return DoubleLineChartComponent;
     var _a, _b, _c, _d;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/doublelinechart.component.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/doublelinechart.component.js.map
 
 /***/ }),
 
@@ -893,14 +911,14 @@ var PieChartComponent = (function () {
     PieChartComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'pie-chart',
-            template: __webpack_require__(680)
+            template: __webpack_require__(681)
         }), 
         __metadata('design:paramtypes', [])
     ], PieChartComponent);
     return PieChartComponent;
     var _a, _b, _c;
 }());
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/piechart.component.js.map
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/piechart.component.js.map
 
 /***/ }),
 
@@ -916,74 +934,74 @@ var PieChartComponent = (function () {
 var environment = {
     production: false
 };
-//# sourceMappingURL=C:/Users/martijn/Documents/GitHub/smarthome/mean-app/src/environment.js.map
-
-/***/ }),
-
-/***/ 672:
-/***/ (function(module, exports) {
-
-module.exports = ""
+//# sourceMappingURL=C:/Users/avans/Documents/Angular/Smarthome-local/mean-app/src/environment.js.map
 
 /***/ }),
 
 /***/ 673:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n\r\n  <nav class=\"navbar navbar-default\">\r\n    <div class=\"container-fluid\">\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n          <span class=\"sr-only\">Toggle navigation</span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\">Energiemeter</a>\r\n      </div>\r\n      <div id=\"navbar\" class=\"navbar-collapse collapse\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li routerLink=\"/dashboard\" routerLinkActive=\"active\"><a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a></li>\r\n          <li routerLink=\"/device\" routerLinkActive=\"active\"><a routerLink=\"/device\" routerLinkActive=\"active\">Device</a></li>\r\n          <li routerLink=\"/picker\" routerLinkActive=\"active\"><a routerLink=\"/picker\" routerLinkActive=\"active\">Picker</a></li>\r\n        </ul>\r\n      </div><!--/.nav-collapse -->\r\n    </div><!--/.container-fluid -->\r\n  </nav>\r\n\r\n  <div class=\"row\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"page-header\">\r\n        <h1>Energiemeter <small>Avans</small></h1>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <router-outlet></router-outlet>\r\n  </div>\r\n\r\n</div>\r\n"
+module.exports = ""
 
 /***/ }),
 
 /***/ 674:
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"display: block;\">\r\n<canvas baseChart width=\"400\" height=\"200\"\r\n            [datasets]=\"lineChartData\"\r\n            [labels]=\"lineChartLabels\"\r\n            [options]=\"lineChartOptions\"\r\n            [colors]=\"lineChartColors\"\r\n            [legend]=\"lineChartLegend\"\r\n            [chartType]=\"lineChartType\"></canvas>\r\n</div>"
+module.exports = "<div class=\"container\">\r\n\r\n  <nav class=\"navbar navbar-default\">\r\n    <div class=\"container-fluid\">\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n          <span class=\"sr-only\">Toggle navigation</span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\">Energiemeter</a>\r\n      </div>\r\n      <div id=\"navbar\" class=\"navbar-collapse collapse\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li routerLink=\"/dashboard\" routerLinkActive=\"active\"><a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a></li>\r\n          <li routerLink=\"/device\" routerLinkActive=\"active\"><a routerLink=\"/device\" routerLinkActive=\"active\">Device</a></li>\r\n          <li routerLink=\"/picker\" routerLinkActive=\"active\"><a routerLink=\"/picker\" routerLinkActive=\"active\">Picker</a></li>\r\n        </ul>\r\n      </div><!--/.nav-collapse -->\r\n    </div><!--/.container-fluid -->\r\n  </nav>\r\n\r\n  <div class=\"row\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"page-header\">\r\n        <h1>Energiemeter <small>Avans</small></h1>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <router-outlet></router-outlet>\r\n  </div>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 675:
 /***/ (function(module, exports) {
 
-module.exports = "<span *ngIf=\"mloaded\">\r\n\r\n\t<div class=\"col-md-6\">\r\n    <h3>Martijn</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data1\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"kloaded\">\r\n\t<div class=\"col-md-6\">\r\n    <h3>Kenneth</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data2\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
+module.exports = "<div style=\"display: block;\">\r\n<canvas baseChart width=\"400\" height=\"200\"\r\n            [datasets]=\"lineChartData\"\r\n            [labels]=\"lineChartLabels\"\r\n            [options]=\"lineChartOptions\"\r\n            [colors]=\"lineChartColors\"\r\n            [legend]=\"lineChartLegend\"\r\n            [chartType]=\"lineChartType\"></canvas>\r\n</div>"
 
 /***/ }),
 
 /***/ 676:
 /***/ (function(module, exports) {
 
-module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<h2>{{name}}</h2>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<div class=\"well\">\r\n\t\t\t<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>\r\n\t\t\t<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>\r\n\t\t\t<b>Huidig tarief:</b> {{ht}} <br>\r\n\t\t\t<b>Totale kosten:</b> €{{money}}\r\n\t\t</div>\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data1\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data3\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data4\"></line-chart>\r\n\t</div>\r\n</span>\r\n\r\n<span *ngIf=\"pieloaded\">\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie1\" [data]=\"datapie1\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie2\" [data]=\"datapie2\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie3\" [data]=\"datapie3\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
+module.exports = "<span *ngIf=\"mloaded\">\r\n\r\n\t<div class=\"col-md-6\">\r\n    <h3>Martijn</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data1\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"kloaded\">\r\n\t<div class=\"col-md-6\">\r\n    <h3>Kenneth</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data2\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"dbloaded\">\r\n\t<div class=\"col-md-12\">\r\n    <h3>Vergelijking</h3>\r\n\t\t<doubleline-chart [label]=\"label\" [data]=\"data3\" [data2]=\"data4\"></doubleline-chart>\r\n\t</div>\r\n\r\n</span>"
 
 /***/ }),
 
 /***/ 677:
 /***/ (function(module, exports) {
 
-module.exports = "<div>\r\n\r\n<ul>\r\n        <li *ngFor=\"let device of devices\" (click)=\"goToDetails(device.sn)\">\r\n          {{device.name}}\r\n        </li>\r\n</ul>\r\n\r\n</div>"
+module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<h2>{{name}}</h2>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<div class=\"well\">\r\n\t\t\t<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>\r\n\t\t\t<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>\r\n\t\t\t<b>Huidig tarief:</b> {{ht}} <br>\r\n\t\t\t<b>Totale kosten:</b> €{{money}}\r\n\t\t</div>\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data1\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data3\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data4\"></line-chart>\r\n\t</div>\r\n</span>\r\n\r\n<span *ngIf=\"pieloaded\">\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie1\" [data]=\"datapie1\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie2\" [data]=\"datapie2\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie3\" [data]=\"datapie3\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
 
 /***/ }),
 
 /***/ 678:
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"display: block;\">\r\n  <canvas baseChart width=\"400\" height=\"200\"\r\n          [datasets]=\"lineChartData\"\r\n          [labels]=\"lineChartLabels\"\r\n          [options]=\"lineChartOptions\"\r\n          [colors]=\"lineChartColors\"\r\n          [legend]=\"lineChartLegend\"\r\n          [chartType]=\"lineChartType\"></canvas>\r\n</div>\r\n"
+module.exports = "<div>\r\n\r\n<ul>\r\n        <li *ngFor=\"let device of devices\" (click)=\"goToDetails(device.sn)\">\r\n          {{device.name}}\r\n        </li>\r\n</ul>\r\n\r\n</div>"
 
 /***/ }),
 
 /***/ 679:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"col-md-12\">\r\n\r\n <form #form=\"ngForm\" (ngSubmit)=\"onSubmit(form.value)\">\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Meter</label>  \r\n    <select name=\"meter\" class=\"form-control\" required ngModel>\r\n    \t<option value=\"4530303035303031353538313833363134\" selected>Martijn</option>\r\n    \t<option value=\"4530303235303030303636383733323136\">Kenneth</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Data type</label>  \r\n    <select name=\"datatype\" class=\"form-control\" required ngModel>\r\n    \t<optgroup label=\"Huidig\">\r\n        \t<option value=\"HOV\" selected>Huidig opgenomen vermogen</option>\r\n        \t<option value=\"HTV\">Huidig teruggeleverd vermogen</option>\r\n        </optgroup>\r\n    \t<optgroup label=\"Tarief 1\">\r\n        \t<option value=\"TOE1\">Totaal opgenomen energie</option>\r\n        \t<option value=\"TTE1\">Totaal teruggeleverde energie</option>\r\n        </optgroup>\r\n        <optgroup label=\"Tarief 2\">\r\n        \t<option value=\"TOE2\">Totaal opgenomen energie</option>\r\n        \t<option value=\"TTE2\">Totaal teruggeleverde energie</option>\r\n        </optgroup>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Groupering</label>  \r\n    <select name=\"group\" class=\"form-control\" required ngModel>\r\n    \t<option value=\"minute\">Minuut</option>\r\n    \t<option value=\"hour\" selected>Uur</option>\r\n    \t<option value=\"day\">Dag</option>\r\n    \t<option value=\"month\">Maand</option>\r\n    \t<option value=\"year\">Jaar</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n  \t<label>Startdatum</label>\r\n  \t<input type=\"date\" name=\"date1\" class=\"form-control\" required ngModel>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n  \t<label>Einddatum</label>\r\n  \t<input type=\"date\" name=\"date2\" class=\"form-control\" required ngModel>\r\n  </div>\r\n\r\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Update\" />\r\n\r\n  </form>\r\n</div>\r\n\r\n<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
+module.exports = "<div style=\"display: block;\">\r\n  <canvas baseChart width=\"400\" height=\"200\"\r\n          [datasets]=\"lineChartData\"\r\n          [labels]=\"lineChartLabels\"\r\n          [options]=\"lineChartOptions\"\r\n          [colors]=\"lineChartColors\"\r\n          [legend]=\"lineChartLegend\"\r\n          [chartType]=\"lineChartType\"></canvas>\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 680:
 /***/ (function(module, exports) {
 
+module.exports = "\r\n<div class=\"col-md-12\">\r\n\r\n <form #form=\"ngForm\" (ngSubmit)=\"onSubmit(form.value)\">\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Meter</label>  \r\n    <select name=\"meter\" class=\"form-control\" required ngModel>\r\n    \t<option value=\"4530303035303031353538313833363134\" selected>Martijn</option>\r\n    \t<option value=\"4530303235303030303636383733323136\">Kenneth</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Data type</label>  \r\n    <select name=\"datatype\" class=\"form-control\" required ngModel>\r\n    \t<optgroup label=\"Huidig\">\r\n        \t<option value=\"HOV\" selected>Huidig opgenomen vermogen</option>\r\n        \t<option value=\"HTV\">Huidig teruggeleverd vermogen</option>\r\n        </optgroup>\r\n    \t<optgroup label=\"Tarief 1\">\r\n        \t<option value=\"TOE1\">Totaal opgenomen energie</option>\r\n        \t<option value=\"TTE1\">Totaal teruggeleverde energie</option>\r\n        </optgroup>\r\n        <optgroup label=\"Tarief 2\">\r\n        \t<option value=\"TOE2\">Totaal opgenomen energie</option>\r\n        \t<option value=\"TTE2\">Totaal teruggeleverde energie</option>\r\n        </optgroup>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Groupering</label>  \r\n    <select name=\"group\" class=\"form-control\" required ngModel>\r\n    \t<option value=\"minute\">Minuut</option>\r\n    \t<option value=\"hour\" selected>Uur</option>\r\n    \t<option value=\"day\">Dag</option>\r\n    \t<option value=\"month\">Maand</option>\r\n    \t<option value=\"year\">Jaar</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n  \t<label>Startdatum</label>\r\n  \t<input type=\"date\" name=\"date1\" class=\"form-control\" required ngModel>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n  \t<label>Einddatum</label>\r\n  \t<input type=\"date\" name=\"date2\" class=\"form-control\" required ngModel>\r\n  </div>\r\n\r\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Update\" />\r\n\r\n  </form>\r\n</div>\r\n\r\n<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
+
+/***/ }),
+
+/***/ 681:
+/***/ (function(module, exports) {
+
 module.exports = "<div style=\"display: block;\">\r\n  <canvas baseChart\r\n          [data]=\"pieChartData\"\r\n          [labels]=\"pieChartLabels\"\r\n          [chartType]=\"pieChartType\"></canvas>\r\n</div>\r\n"
 
 /***/ }),
 
-/***/ 705:
+/***/ 706:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(394);
@@ -991,5 +1009,5 @@ module.exports = __webpack_require__(394);
 
 /***/ })
 
-},[705]);
+},[706]);
 //# sourceMappingURL=main.bundle.map

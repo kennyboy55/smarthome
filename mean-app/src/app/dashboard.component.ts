@@ -17,10 +17,14 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public data1:LineData;
   public data2:LineData;
 
+  public data3:LineData;
+  public data4:LineData;
+
   public label:LabelData;
 
   public mloaded:boolean = false;
   public kloaded:boolean = false;
+  public dbloaded:boolean = false;
 
   public subscription:Subscription;
 
@@ -64,6 +68,17 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.dataService
       .get("4530303235303030303636383733323136")
       .subscribe(res => {
+
+          this.data3 = res.HOV;
+
+      });
+
+    this.dataService
+      .get("4530303035303031353538313833363134")
+      .subscribe(res => {
+
+          this.data4 = res.HOV;
+          this.dbloaded = true;
 
       });
 
