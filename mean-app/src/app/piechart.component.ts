@@ -25,10 +25,7 @@ export class PieChartComponent implements OnInit, OnChanges {
   ngOnInit(): void {
 
     this.pieChartLabels = this.label.data.slice();
-
-    const newDataSet = [];
-    newDataSet.push(this.data.data);
-    this.pieChartData = newDataSet;
+    this.pieChartData = this.data.data.slice();
   }
 
   ngOnChanges(): void {

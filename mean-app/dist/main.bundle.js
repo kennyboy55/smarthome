@@ -769,9 +769,7 @@ var PieChartComponent = (function () {
     }
     PieChartComponent.prototype.ngOnInit = function () {
         this.pieChartLabels = this.label.data.slice();
-        var newDataSet = [];
-        newDataSet.push(this.data.data);
-        this.pieChartData = newDataSet;
+        this.pieChartData = this.data.data.slice();
     };
     PieChartComponent.prototype.ngOnChanges = function () {
         if (this.chart.chart != undefined) {
