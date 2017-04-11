@@ -87,13 +87,13 @@ function mapData(response:Response): GraphData {
   let HT = response.json().map(htToData);
   let times = response.json().map(timeToData);
 
-  let Toe1Line:LineData = <LineData>({data: TOE1S, label: "Totaal Energieverbruik tarief 1"});
-  let Toe2Line:LineData = <LineData>({data: TOE2S, label: "Totaal Energieverbruik tarief 2"});
-  let HovLine:LineData = <LineData>({data: HOV, label: "Huidig Energieverbruik"});
-  let Tte1Line:LineData = <LineData>({data: TTE1S, label: "Totaal terug Energieverbruik tarief 1"});
-  let Tte2Line:LineData = <LineData>({data: TTE2S, label: "Totaal terug Energieverbruik tarief 2"});
-  let HtvLine:LineData = <LineData>({data: HTV, label: "Huidig terug Energieverbruik"});
-  let HtLine:LineData = <LineData>({data: HT, label: "Huidig Tarief"});
+  let Toe1Line:LineData = <LineData>({data: TOE1S, label: "Totaal opgenomen energie (T1)"});
+  let Toe2Line:LineData = <LineData>({data: TOE2S, label: "Totaal opgenomen energie (T2)"});
+  let HovLine:LineData = <LineData>({data: HOV, label: "Huidig opgenomen energie"});
+  let Tte1Line:LineData = <LineData>({data: TTE1S, label: "Totaal teruggeleverde energie (T1)"});
+  let Tte2Line:LineData = <LineData>({data: TTE2S, label: "Totaal teruggeleverde energie (T2)"});
+  let HtvLine:LineData = <LineData>({data: HTV, label: "Huidig teruggeleverde energie"});
+  let HtLine:LineData = <LineData>({data: HT, label: "Huidig tarief"});
   let label:LabelData = <LabelData>({data: times});
   let graph:GraphData = <GraphData>({TOE1:Toe1Line,TOE2:Toe2Line,HOV:HovLine,TTE1:Tte1Line,TTE2:Tte2Line,HTV:HtvLine,HT:HtLine,labels:label});
   return graph;
@@ -190,7 +190,8 @@ function mapDevice(response:Response): Device[] {
 function toDevice(r:any){
   let device = <Device>({
       sn: r.SN,
-      name: r.name
+      name: r.name,
+      desc: r.desc
   });
 
   return device;

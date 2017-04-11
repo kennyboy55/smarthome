@@ -12,7 +12,7 @@ router.all('*', function(req, res){
 router.get('/device', function(req, res){
   
   connection.query(
-    'SELECT SN, name FROM device',
+    'SELECT SN, name, desc FROM device',
                      function (error, results, fields) {
    if (error) throw error;
 

@@ -80,13 +80,13 @@ function mapData(response) {
     var HTV = response.json().map(htvToData);
     var HT = response.json().map(htToData);
     var times = response.json().map(timeToData);
-    var Toe1Line = ({ data: TOE1S, label: "Totaal Energieverbruik tarief 1" });
-    var Toe2Line = ({ data: TOE2S, label: "Totaal Energieverbruik tarief 2" });
-    var HovLine = ({ data: HOV, label: "Huidig Energieverbruik" });
-    var Tte1Line = ({ data: TTE1S, label: "Totaal terug Energieverbruik tarief 1" });
-    var Tte2Line = ({ data: TTE2S, label: "Totaal terug Energieverbruik tarief 2" });
-    var HtvLine = ({ data: HTV, label: "Huidig terug Energieverbruik" });
-    var HtLine = ({ data: HT, label: "Huidig Tarief" });
+    var Toe1Line = ({ data: TOE1S, label: "Totaal opgenomen energie (T1)" });
+    var Toe2Line = ({ data: TOE2S, label: "Totaal opgenomen energie (T2)" });
+    var HovLine = ({ data: HOV, label: "Huidig opgenomen energie" });
+    var Tte1Line = ({ data: TTE1S, label: "Totaal teruggeleverde energie (T1)" });
+    var Tte2Line = ({ data: TTE2S, label: "Totaal teruggeleverde energie (T2)" });
+    var HtvLine = ({ data: HTV, label: "Huidig teruggeleverde energie" });
+    var HtLine = ({ data: HT, label: "Huidig tarief" });
     var label = ({ data: times });
     var graph = ({ TOE1: Toe1Line, TOE2: Toe2Line, HOV: HovLine, TTE1: Tte1Line, TTE2: Tte2Line, HTV: HtvLine, HT: HtLine, labels: label });
     return graph;
@@ -160,7 +160,8 @@ function mapDevice(response) {
 function toDevice(r) {
     var device = ({
         sn: r.SN,
-        name: r.name
+        name: r.name,
+        desc: r.desc
     });
     return device;
 }
@@ -250,12 +251,16 @@ var DashboardComponent = (function () {
         this.dataService
             .get("4530303235303030303636383733323136")
             .subscribe(function (res) {
+            //Kenneth
+            res.HOV.label = "Gebruik Kenneth";
             _this.data3 = res.HOV;
             _this.label2 = res.labels;
         });
         this.dataService
             .get("4530303035303031353538313833363134")
             .subscribe(function (res) {
+            //Martijn
+            res.HOV.label = "Gebruik Martijn";
             _this.data4 = res.HOV;
             _this.dbloaded = true;
         });
@@ -306,7 +311,7 @@ var DetailComponent = (function () {
         this.hov = 0;
         this.htv = 0;
         this.ht = "loading";
-        this.money = 0;
+        this.money = "calculating";
         this.loaded = false;
         this.pieloaded = false;
     }
@@ -321,10 +326,10 @@ var DetailComponent = (function () {
     };
     DetailComponent.prototype.refreshData = function (id) {
         var _this = this;
-        this.labelpie = ({ data: ["Totaal opgenomen 2", "Totaal opgenomen 1"] });
-        this.labelpie1 = ({ data: ["Huidig opgenomen", "Huidig terug"] });
-        this.labelpie2 = ({ data: ["Totaal opgenomen 2", "Totaal terug 2"] });
-        this.labelpie3 = ({ data: ["Totaal opgenomen 1", "Totaal terug 1"] });
+        this.labelpie = ({ data: ["Totaal opgenomen energie (T2)", "Totaal opgenomen energie (T1)"] });
+        this.labelpie1 = ({ data: ["Huidig opgenomen energie", "Huidig teruggeleverde energie"] });
+        this.labelpie2 = ({ data: ["Totaal opgenomen energie (T2)", "Totaal teruggeleverde energie (T2)"] });
+        this.labelpie3 = ({ data: ["Totaal opgenomen energie (T1)", "Totaal teruggeleverde energie (T1)"] });
         this.dataService
             .get(id)
             .subscribe(function (res) {
@@ -343,7 +348,7 @@ var DetailComponent = (function () {
             _this.hov = res.HOV;
             _this.htv = res.HTV;
             _this.ht = res.HTN;
-            _this.money = ((res.TOE1 - res.TTE1) * res.tarief1) + ((res.TOE2 - res.TTE2) * res.tarief2);
+            _this.money = ((res.TOE1 - res.TTE1) * res.tarief1) + ((res.TOE2 - res.TTE2) * res.tarief2).toFixed(3);
             _this.datapie = ({ data: [res.TOE2, res.TOE1], label: "Opgenomen" });
             _this.datapie1 = ({ data: [res.HOV, res.HTV], label: "Huidig verbruik" });
             _this.datapie2 = ({ data: [res.TOE2, res.TTE2], label: "Totaal 2" });
@@ -950,7 +955,7 @@ module.exports = ""
 /***/ 674:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n\r\n  <nav class=\"navbar navbar-default\">\r\n    <div class=\"container-fluid\">\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n          <span class=\"sr-only\">Toggle navigation</span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\">Energiemeter</a>\r\n      </div>\r\n      <div id=\"navbar\" class=\"navbar-collapse collapse\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li routerLink=\"/dashboard\" routerLinkActive=\"active\"><a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a></li>\r\n          <li routerLink=\"/device\" routerLinkActive=\"active\"><a routerLink=\"/device\" routerLinkActive=\"active\">Device</a></li>\r\n          <li routerLink=\"/picker\" routerLinkActive=\"active\"><a routerLink=\"/picker\" routerLinkActive=\"active\">Picker</a></li>\r\n        </ul>\r\n      </div><!--/.nav-collapse -->\r\n    </div><!--/.container-fluid -->\r\n  </nav>\r\n\r\n  <div class=\"row\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"page-header\">\r\n        <h1>Energiemeter <small>Avans</small></h1>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n  <div class=\"row\">\r\n    <router-outlet></router-outlet>\r\n  </div>\r\n\r\n</div>\r\n"
+module.exports = "<div class=\"container\">\r\n\r\n  <nav class=\"navbar navbar-default\">\r\n    <div class=\"container-fluid\">\r\n      <div class=\"navbar-header\">\r\n        <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\r\n          <span class=\"sr-only\">Toggle navigation</span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n          <span class=\"icon-bar\"></span>\r\n        </button>\r\n        <a class=\"navbar-brand\">Energiemeter</a>\r\n      </div>\r\n      <div id=\"navbar\" class=\"navbar-collapse collapse\">\r\n        <ul class=\"nav navbar-nav\">\r\n          <li routerLink=\"/dashboard\" routerLinkActive=\"active\"><a routerLink=\"/dashboard\" routerLinkActive=\"active\">Dashboard</a></li>\r\n          <li routerLink=\"/device\" routerLinkActive=\"active\"><a routerLink=\"/device\" routerLinkActive=\"active\">Device</a></li>\r\n          <li routerLink=\"/picker\" routerLinkActive=\"active\"><a routerLink=\"/picker\" routerLinkActive=\"active\">Picker</a></li>\r\n        </ul>\r\n      </div><!--/.nav-collapse -->\r\n    </div><!--/.container-fluid -->\r\n  </nav>\r\n\r\n  \r\n  <router-outlet></router-outlet>\r\n  \r\n</div>\r\n"
 
 /***/ }),
 
@@ -964,21 +969,21 @@ module.exports = "<div style=\"display: block;\">\r\n<canvas baseChart width=\"4
 /***/ 676:
 /***/ (function(module, exports) {
 
-module.exports = "<span *ngIf=\"mloaded\">\r\n\r\n\t<div class=\"col-md-6\">\r\n    \t<h3>Martijn</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data1\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"kloaded\">\r\n\t<div class=\"col-md-6\">\r\n    \t<h3>Kenneth</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data2\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"dbloaded\">\r\n\t<div class=\"col-md-12\">\r\n\t\t<br>\r\n    \t<h3>Vergelijking</h3>\r\n\t\t<doubleline-chart [label]=\"label2\" [data]=\"data3\" [data2]=\"data4\"></doubleline-chart>\r\n\t</div>\r\n\r\n</span>"
+module.exports = "<div class=\"row\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"page-header\">\r\n        <h1>Energiemeter <small>Dashboard</small></h1>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n<div class=\"row\">\r\n\r\n    <span *ngIf=\"mloaded\">\r\n\r\n    \t<div class=\"col-md-6\">\r\n        \t<h3 routerLink=\"/detail/4530303035303031353538313833363134\">Martijn</h3>\r\n        \t<p>\r\n        \tDe slimme meter van Martijn staat bij zijn ouders thuis in Zeeland. Het huis is ook voorzien van zonnepanelen.\r\n        \t</p>\r\n    \t\t<pie-chart [label]=\"label\" [data]=\"data1\"></pie-chart>\r\n    \t</div>\r\n\r\n    </span>\r\n\r\n    <span *ngIf=\"kloaded\">\r\n    \t<div class=\"col-md-6\">\r\n        \t<h3 routerLink=\"/detail/4530303235303030303636383733323136\">Kenneth</h3>\r\n        \t<p>\r\n        \tDe slimme meter van Kenneth staat in zijn appartement in Breda.\r\n        \t</p>\r\n    \t\t<pie-chart [label]=\"label\" [data]=\"data2\"></pie-chart>\r\n    \t</div>\r\n\r\n    </span>\r\n\r\n    <span *ngIf=\"dbloaded\">\r\n    \t<div class=\"col-md-12\">\r\n    \t\t<br>\r\n        \t<h3>Vergelijking</h3>\r\n        \t<p>\r\n        \tIn de onderstaane grafiek is het verschil in huidig gebruik te zien van Kenneth en Martijn.\r\n        \t</p>\r\n    \t\t<doubleline-chart [label]=\"label2\" [data]=\"data3\" [data2]=\"data4\"></doubleline-chart>\r\n    \t</div>\r\n\r\n    </span>\r\n\r\n</div>"
 
 /***/ }),
 
 /***/ 677:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-12\">\r\n\t<h2>{{name}}</h2>\r\n</div>\r\n\r\n<div class=\"col-md-12\">\r\n\t<br>\r\n\t<div class=\"well\">\r\n\t\t<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>\r\n\t\t<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>\r\n\t\t<b>Huidig tarief:</b> {{ht}} <br>\r\n\t\t<b>Totale kosten:</b> €{{money}}\r\n\t</div>\r\n\t<br>\r\n</div>\r\n\r\n<span *ngIf=\"pieloaded\">\r\n\r\n\t<div class=\"col-md-3 col-xs-6\">\r\n\t\t<br>\r\n\t\t<pie-chart [label]=\"labelpie\" [data]=\"datapie\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-3 col-xs-6\">\r\n\t\t<br>\r\n\t\t<pie-chart [label]=\"labelpie1\" [data]=\"datapie1\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-3 col-xs-6\">\r\n\t\t<br>\r\n\t\t<pie-chart [label]=\"labelpie2\" [data]=\"datapie2\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-3 col-xs-6\">\r\n\t\t<br>\r\n\t\t<pie-chart [label]=\"labelpie3\" [data]=\"datapie3\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<br>\r\n\t\t<doubleline-chart [label]=\"label\" [data]=\"data1\" [data2]=\"data2\"></doubleline-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<br>\r\n\t\t<line-chart [label]=\"label\" [data]=\"data3\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<br>\r\n\t\t<line-chart [label]=\"label\" [data]=\"data4\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<br>\r\n\t\t<line-chart [label]=\"label\" [data]=\"data5\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<br>\r\n\t\t<line-chart [label]=\"label\" [data]=\"data6\"></line-chart>\r\n\t</div>\r\n</span>\r\n\r\n"
+module.exports = "<div class=\"row\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"page-header\">\r\n        <h1>Energiemeter <small>{{name}}</small></h1>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n<div class=\"row\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<br>\r\n\t\t<div class=\"well\">\r\n\t\t\t<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>\r\n\t\t\t<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>\r\n\t\t\t<b>Huidig tarief:</b> {{ht}} <br>\r\n\t\t\t<b>Totale kosten:</b> €{{money}}\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n\r\n<div class=\"row\">\r\n\r\n\t<span *ngIf=\"!pieloaded\">\r\n\t\t<div class=\"col-md-12\">\r\n\t\t\tLoading...\r\n\t\t</div>\r\n\t</span>\r\n\r\n\r\n\t<span *ngIf=\"pieloaded\">\r\n\r\n\t\t<div class=\"col-md-3 col-sm-6 col-xs-12\">\r\n\t\t\t<p>De totaal opgenomen energie overdag samen met de totaal opgenomen energie 's nachts.</p>\r\n\t\t\t<br>\r\n\t\t\t<pie-chart [label]=\"labelpie\" [data]=\"datapie\"></pie-chart>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"col-md-3 col-sm-6 col-xs-12\">\r\n\t\t\t<p>De huidige opgenomen energie samen met de huidig teruggeleverde energie.</p>\r\n\t\t\t<br>\r\n\t\t\t<pie-chart [label]=\"labelpie1\" [data]=\"datapie1\"></pie-chart>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"col-md-3 col-sm-6 col-xs-12\">\r\n\t\t\t<p>De totaal opgenomen energie samen met de totaal teruggeleverde energie tijdens tarief 2</p>\r\n\t\t\t<br>\r\n\t\t\t<pie-chart [label]=\"labelpie2\" [data]=\"datapie2\"></pie-chart>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"col-md-3 col-sm-6 col-xs-12\">\r\n\t\t\t<p>De totaal opgenomen energie samen met de totaal teruggeleverde energie tijdens tarief 1</p>\r\n\t\t\t<br>\r\n\t\t\t<pie-chart [label]=\"labelpie3\" [data]=\"datapie3\"></pie-chart>\r\n\t\t</div>\r\n\r\n\t</span>\r\n\r\n</div>\r\n\r\n<div class=\"row\">\r\n\r\n\t<span *ngIf=\"!loaded\">\r\n\t\t<div class=\"col-md-12\">\r\n\t\t\tLoading...\r\n\t\t</div>\r\n\t</span>\r\n\r\n\t<span *ngIf=\"loaded\">\r\n\r\n\t\t<div class=\"col-md-12\">\r\n\t\t\t<p>Huidig opgenomen energie tegen de huidig teruggeleverde energie van de laatste 24 uur.</p>\r\n\t\t\t<br>\r\n\t\t\t<doubleline-chart [label]=\"label\" [data]=\"data1\" [data2]=\"data2\"></doubleline-chart>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"col-md-6\">\r\n\t\t\t<p>Totaal opgenomen energie tijdens tarief 2.</p>\r\n\t\t\t<br>\r\n\t\t\t<line-chart [label]=\"label\" [data]=\"data3\"></line-chart>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"col-md-6\">\r\n\t\t\t<p>Totaal teruggeleverde energie tijdens tarief 2.</p>\r\n\t\t\t<br>\r\n\t\t\t<line-chart [label]=\"label\" [data]=\"data4\"></line-chart>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"col-md-6\">\r\n\t\t\t<p>Totaal opgenomen energie tijdens tarief 1.</p>\r\n\t\t\t<br>\r\n\t\t\t<line-chart [label]=\"label\" [data]=\"data5\"></line-chart>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"col-md-6\">\r\n\t\t\t<p>Totaal teruggeleverde energie tijdens tarief 1.</p>\r\n\t\t\t<br>\r\n\t\t\t<line-chart [label]=\"label\" [data]=\"data6\"></line-chart>\r\n\t\t</div>\r\n\t</span>\r\n\r\n</div>\r\n"
 
 /***/ }),
 
 /***/ 678:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-12\">\r\n\r\n <div class=\"row\">\r\n\r\n    <div class=\"col-md-4\" *ngFor=\"let device of devices\">\r\n\r\n    \t<div class=\"well\" style=\"cursor:pointer;\" (click)=\"goToDetails(device.sn)\">\r\n\r\n      \t\t<h3>{{device.name}}</h3>\r\n\r\n      \t</div>\r\n    </div>\r\n\r\n </div>\r\n</div>"
+module.exports = "<div class=\"row\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"page-header\">\r\n        <h1>Energiemeter <small>Devices</small></h1>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n<div class=\"row\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\r\n\t <div class=\"row\">\r\n\r\n\t    <div class=\"col-md-4\" *ngFor=\"let device of devices\">\r\n\r\n\t    \t<div class=\"well\" style=\"cursor:pointer;\" (click)=\"goToDetails(device.sn)\">\r\n\r\n\t      \t\t<h3>{{device.name}}</h3>\r\n\t      \t\t<p>\r\n\t      \t\t\t{{device.description}}\r\n\t      \t\t</p>\r\n\r\n\t      \t</div>\r\n\t    </div>\r\n\r\n\t </div>\r\n\t</div>\r\n\r\n</div>"
 
 /***/ }),
 
@@ -992,7 +997,7 @@ module.exports = "<div style=\"display: block;\">\r\n  <canvas baseChart width=\
 /***/ 680:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"col-md-12\">\r\n\r\n <form #form=\"ngForm\" (ngSubmit)=\"onSubmit(form.value)\">\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Meter</label>  \r\n    <select name=\"meter\" class=\"form-control\" required ngModel>\r\n    \t<option value=\"4530303035303031353538313833363134\" selected>Martijn</option>\r\n    \t<option value=\"4530303235303030303636383733323136\">Kenneth</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Data type</label>  \r\n    <select name=\"datatype\" class=\"form-control\" required ngModel>\r\n    \t<optgroup label=\"Huidig\">\r\n        \t<option value=\"HOV\" selected>Huidig opgenomen vermogen</option>\r\n        \t<option value=\"HTV\">Huidig teruggeleverd vermogen</option>\r\n        </optgroup>\r\n    \t<optgroup label=\"Tarief 1\">\r\n        \t<option value=\"TOE1\">Totaal opgenomen energie</option>\r\n        \t<option value=\"TTE1\">Totaal teruggeleverde energie</option>\r\n        </optgroup>\r\n        <optgroup label=\"Tarief 2\">\r\n        \t<option value=\"TOE2\">Totaal opgenomen energie</option>\r\n        \t<option value=\"TTE2\">Totaal teruggeleverde energie</option>\r\n        </optgroup>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Groupering</label>  \r\n    <select name=\"group\" class=\"form-control\" required ngModel>\r\n    \t<option value=\"minute\">Minuut</option>\r\n    \t<option value=\"hour\" selected>Uur</option>\r\n    \t<option value=\"day\">Dag</option>\r\n    \t<option value=\"month\">Maand</option>\r\n    \t<option value=\"year\">Jaar</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n  \t<label>Startdatum</label>\r\n  \t<input type=\"date\" name=\"date1\" class=\"form-control\" required ngModel>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n  \t<label>Einddatum</label>\r\n  \t<input type=\"date\" name=\"date2\" class=\"form-control\" required ngModel>\r\n  </div>\r\n\r\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Update\" />\r\n\r\n  </form>\r\n</div>\r\n\r\n<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
+module.exports = "<div class=\"row\">\r\n\r\n    <div class=\"col-md-12\">\r\n      <div class=\"page-header\">\r\n        <h1>Energiemeter <small>Picker</small></h1>\r\n      </div>\r\n    </div>\r\n\r\n  </div>\r\n\r\n<div class=\"row\">\r\n\r\n  <form #form=\"ngForm\" (ngSubmit)=\"onSubmit(form.value)\">\r\n\r\n    <div class=\"col-md-4\">\r\n\r\n      <div class=\"form-group\">  \r\n        <label>Meter</label>  \r\n        <select name=\"meter\" class=\"form-control\" required ngModel>\r\n        \t<option value=\"4530303035303031353538313833363134\">Martijn</option>\r\n        \t<option value=\"4530303235303030303636383733323136\">Kenneth</option>\r\n        </select>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"col-md-4\">\r\n\r\n      <div class=\"form-group\">  \r\n        <label>Data type</label>  \r\n        <select name=\"datatype\" class=\"form-control\" required ngModel>\r\n        \t<optgroup label=\"Huidig\">\r\n            \t<option value=\"HOV\">Huidig opgenomen vermogen</option>\r\n            \t<option value=\"HTV\">Huidig teruggeleverd vermogen</option>\r\n            </optgroup>\r\n        \t<optgroup label=\"Tarief 1\">\r\n            \t<option value=\"TOE1\">Totaal opgenomen energie</option>\r\n            \t<option value=\"TTE1\">Totaal teruggeleverde energie</option>\r\n            </optgroup>\r\n            <optgroup label=\"Tarief 2\">\r\n            \t<option value=\"TOE2\">Totaal opgenomen energie</option>\r\n            \t<option value=\"TTE2\">Totaal teruggeleverde energie</option>\r\n            </optgroup>\r\n        </select>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"col-md-4\">\r\n\r\n      <div class=\"form-group\">  \r\n        <label>Groupering</label>  \r\n        <select name=\"group\" class=\"form-control\" required ngModel>\r\n        \t<option value=\"minute\">Minuut</option>\r\n        \t<option value=\"hour\">Uur</option>\r\n        \t<option value=\"day\">Dag</option>\r\n        \t<option value=\"month\">Maand</option>\r\n        \t<option value=\"year\">Jaar</option>\r\n        </select>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"col-md-6\">\r\n\r\n      <div class=\"form-group\">\r\n      \t<label>Startdatum</label>\r\n      \t<input type=\"date\" name=\"date1\" class=\"form-control\" required ngModel>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"col-md-6\">\r\n\r\n      <div class=\"form-group\">\r\n      \t<label>Einddatum</label>\r\n      \t<input type=\"date\" name=\"date2\" class=\"form-control\" required ngModel>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"col-md-12\">\r\n\r\n      <input type=\"submit\" class=\"btn btn-primary\" value=\"Update\" />\r\n\r\n    </div>\r\n\r\n    </div>\r\n\r\n  </form>\r\n\r\n</div>\r\n\r\n<div class=\"row\">\r\n\r\n  <span *ngIf=\"loaded\">\r\n\r\n  \t<div class=\"col-md-12\">\r\n      <br>\r\n  \t\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n  \t</div>\r\n\r\n  </span>\r\n</div>"
 
 /***/ }),
 

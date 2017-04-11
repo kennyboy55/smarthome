@@ -1,25 +1,48 @@
-<span *ngIf="mloaded">
+<div class="row">
 
-	<div class="col-md-6">
-    	<h3>Martijn</h3>
-		<pie-chart [label]="label" [data]="data1"></pie-chart>
-	</div>
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>Energiemeter <small>Dashboard</small></h1>
+      </div>
+    </div>
 
-</span>
+  </div>
 
-<span *ngIf="kloaded">
-	<div class="col-md-6">
-    	<h3>Kenneth</h3>
-		<pie-chart [label]="label" [data]="data2"></pie-chart>
-	</div>
+<div class="row">
 
-</span>
+    <span *ngIf="mloaded">
 
-<span *ngIf="dbloaded">
-	<div class="col-md-12">
-		<br>
-    	<h3>Vergelijking</h3>
-		<doubleline-chart [label]="label2" [data]="data3" [data2]="data4"></doubleline-chart>
-	</div>
+    	<div class="col-md-6">
+        	<h3 routerLink="/detail/4530303035303031353538313833363134">Martijn</h3>
+        	<p>
+        	De slimme meter van Martijn staat bij zijn ouders thuis in Zeeland. Het huis is ook voorzien van zonnepanelen.
+        	</p>
+    		<pie-chart [label]="label" [data]="data1"></pie-chart>
+    	</div>
 
-</span>
+    </span>
+
+    <span *ngIf="kloaded">
+    	<div class="col-md-6">
+        	<h3 routerLink="/detail/4530303235303030303636383733323136">Kenneth</h3>
+        	<p>
+        	De slimme meter van Kenneth staat in zijn appartement in Breda.
+        	</p>
+    		<pie-chart [label]="label" [data]="data2"></pie-chart>
+    	</div>
+
+    </span>
+
+    <span *ngIf="dbloaded">
+    	<div class="col-md-12">
+    		<br>
+        	<h3>Vergelijking</h3>
+        	<p>
+        	In de onderstaane grafiek is het verschil in huidig gebruik te zien van Kenneth en Martijn.
+        	</p>
+    		<doubleline-chart [label]="label2" [data]="data3" [data2]="data4"></doubleline-chart>
+    	</div>
+
+    </span>
+
+</div>

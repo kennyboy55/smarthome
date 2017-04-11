@@ -69,6 +69,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .get("4530303235303030303636383733323136")
       .subscribe(res => {
 
+          //Kenneth
+          res.HOV.label = "Gebruik Kenneth";
           this.data3 = res.HOV;
           this.label2 = res.labels;
 
@@ -78,6 +80,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .get("4530303035303031353538313833363134")
       .subscribe(res => {
 
+          //Martijn
+          res.HOV.label = "Gebruik Martijn";
           this.data4 = res.HOV;
           this.dbloaded = true;
 

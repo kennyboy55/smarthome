@@ -1,67 +1,104 @@
-<div class="col-md-12">
-	<h2>{{name}}</h2>
-</div>
+<div class="row">
 
-<div class="col-md-12">
-	<br>
-	<div class="well">
-		<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>
-		<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>
-		<b>Huidig tarief:</b> {{ht}} <br>
-		<b>Totale kosten:</b> €{{money}}
-	</div>
-	<br>
-</div>
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1>Energiemeter <small>{{name}}</small></h1>
+      </div>
+    </div>
 
-<span *ngIf="pieloaded">
+  </div>
 
-	<div class="col-md-3 col-xs-6">
-		<br>
-		<pie-chart [label]="labelpie" [data]="datapie"></pie-chart>
-	</div>
-
-	<div class="col-md-3 col-xs-6">
-		<br>
-		<pie-chart [label]="labelpie1" [data]="datapie1"></pie-chart>
-	</div>
-
-	<div class="col-md-3 col-xs-6">
-		<br>
-		<pie-chart [label]="labelpie2" [data]="datapie2"></pie-chart>
-	</div>
-
-	<div class="col-md-3 col-xs-6">
-		<br>
-		<pie-chart [label]="labelpie3" [data]="datapie3"></pie-chart>
-	</div>
-
-</span>
-
-<span *ngIf="loaded">
+<div class="row">
 
 	<div class="col-md-12">
 		<br>
-		<doubleline-chart [label]="label" [data]="data1" [data2]="data2"></doubleline-chart>
+		<div class="well">
+			<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>
+			<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>
+			<b>Huidig tarief:</b> {{ht}} <br>
+			<b>Totale kosten:</b> €{{money}}
+		</div>
 	</div>
+</div>
 
-	<div class="col-md-6">
-		<br>
-		<line-chart [label]="label" [data]="data3"></line-chart>
-	</div>
+<div class="row">
 
-	<div class="col-md-6">
-		<br>
-		<line-chart [label]="label" [data]="data4"></line-chart>
-	</div>
+	<span *ngIf="!pieloaded">
+		<div class="col-md-12">
+			Loading...
+		</div>
+	</span>
 
-	<div class="col-md-6">
-		<br>
-		<line-chart [label]="label" [data]="data5"></line-chart>
-	</div>
 
-	<div class="col-md-6">
-		<br>
-		<line-chart [label]="label" [data]="data6"></line-chart>
-	</div>
-</span>
+	<span *ngIf="pieloaded">
 
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<p>De totaal opgenomen energie overdag samen met de totaal opgenomen energie 's nachts.</p>
+			<br>
+			<pie-chart [label]="labelpie" [data]="datapie"></pie-chart>
+		</div>
+
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<p>De huidige opgenomen energie samen met de huidig teruggeleverde energie.</p>
+			<br>
+			<pie-chart [label]="labelpie1" [data]="datapie1"></pie-chart>
+		</div>
+
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<p>De totaal opgenomen energie samen met de totaal teruggeleverde energie tijdens tarief 2</p>
+			<br>
+			<pie-chart [label]="labelpie2" [data]="datapie2"></pie-chart>
+		</div>
+
+		<div class="col-md-3 col-sm-6 col-xs-12">
+			<p>De totaal opgenomen energie samen met de totaal teruggeleverde energie tijdens tarief 1</p>
+			<br>
+			<pie-chart [label]="labelpie3" [data]="datapie3"></pie-chart>
+		</div>
+
+	</span>
+
+</div>
+
+<div class="row">
+
+	<span *ngIf="!loaded">
+		<div class="col-md-12">
+			Loading...
+		</div>
+	</span>
+
+	<span *ngIf="loaded">
+
+		<div class="col-md-12">
+			<p>Huidig opgenomen energie tegen de huidig teruggeleverde energie van de laatste 24 uur.</p>
+			<br>
+			<doubleline-chart [label]="label" [data]="data1" [data2]="data2"></doubleline-chart>
+		</div>
+
+		<div class="col-md-6">
+			<p>Totaal opgenomen energie tijdens tarief 2.</p>
+			<br>
+			<line-chart [label]="label" [data]="data3"></line-chart>
+		</div>
+
+		<div class="col-md-6">
+			<p>Totaal teruggeleverde energie tijdens tarief 2.</p>
+			<br>
+			<line-chart [label]="label" [data]="data4"></line-chart>
+		</div>
+
+		<div class="col-md-6">
+			<p>Totaal opgenomen energie tijdens tarief 1.</p>
+			<br>
+			<line-chart [label]="label" [data]="data5"></line-chart>
+		</div>
+
+		<div class="col-md-6">
+			<p>Totaal teruggeleverde energie tijdens tarief 1.</p>
+			<br>
+			<line-chart [label]="label" [data]="data6"></line-chart>
+		</div>
+	</span>
+
+</div>
