@@ -233,8 +233,10 @@ var DetailComponent = (function () {
             .get(id)
             .subscribe(function (res) {
             _this.label = res.labels;
-            _this.data = res.TTE1;
+            _this.data1 = res.HOV;
             _this.data2 = res.HTV;
+            _this.data3 = res.TOE2;
+            _this.data4 = res.TTE2;
             _this.loaded = true;
         });
         this.dataService
@@ -527,7 +529,7 @@ var LineChartComponent = (function () {
         this.dataService = dataService;
         // lineChart
         this.lineChartData = [
-            { data: [0, 0, 0, 0, 0, 0, 0], label: 'Totaal verbruik' }
+            { data: [0, 0, 0, 0, 0, 0, 0], label: 'Verbruik' }
         ];
         this.lineChartLabels = ['-1', '-2', '-3', '-4', '-5', '-6', '-7'];
         this.lineChartOptions = {
@@ -664,7 +666,7 @@ module.exports = "<div>\r\n\t\r\n</div>"
 /***/ 673:
 /***/ (function(module, exports) {
 
-module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<h2>{{name}}</h2>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<b>HOV:</b> {{hov}}, <b>HTV:</b> {{htv}}, <b>HT:</b> {{ht}}\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
+module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<h2>{{name}}</h2>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<b>HOV:</b> {{hov}}, <b>HTV:</b> {{htv}}, <b>HT:</b> {{ht}}\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data1\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data3\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data4\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
 
 /***/ }),
 

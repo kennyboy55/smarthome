@@ -32,7 +32,7 @@ router.get('/data/:device', function(req, res) {
   let devid = req.params.device;
 
   connection.query(
-    'SELECT s.* FROM ( SELECT TOE1, TOE2, TTE1, TTE2, HOV, HTV, HT, time FROM measurement WHERE device = ? ORDER BY time DESC LIMIT 0,25 ) s ORDER BY s.time ASC', [devid],
+    'SELECT s.* FROM ( SELECT TOE1, TOE2, TTE1, TTE2, HOV, HTV, HT, time FROM measurement WHERE device = ? ORDER BY time DESC LIMIT 0,250 ) s ORDER BY s.time ASC', [devid],
                      function (error, results, fields) {
    if (error) throw error;
 

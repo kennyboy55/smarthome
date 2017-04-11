@@ -18,7 +18,7 @@ export class LineChartComponent implements OnInit, OnChanges {
 
   // lineChart
   public lineChartData:Array<any> = [
-    {data: [0,0,0,0,0,0,0], label: 'Totaal verbruik'}
+    {data: [0,0,0,0,0,0,0], label: 'Verbruik'}
   ];
   public lineChartLabels:Array<any> = ['-1', '-2', '-3', '-4', '-5', '-6', '-7'];
   public lineChartOptions:any = {

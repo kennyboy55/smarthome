@@ -19,10 +19,12 @@ export class DetailComponent implements OnInit, OnDestroy {
   public id:string = 'Loading';
   public name:string = "Loading";
 
-  public data:LineData;
   public label:LabelData;
-
+  
+  public data1:LineData;
   public data2:LineData;
+  public data3:LineData;
+  public data4:LineData;
 
   public hov:number = 0;
   public htv:number = 0;
@@ -58,8 +60,11 @@ export class DetailComponent implements OnInit, OnDestroy {
       .subscribe(res => {
 
         this.label = res.labels;
-        this.data = res.TTE1;
+        this.data1 = res.HOV;
         this.data2 = res.HTV;
+
+        this.data3 = res.TOE2;
+        this.data4 = res.TTE2;
 
         this.loaded = true;
 
