@@ -122,9 +122,9 @@ function mapUsage(response) {
     return usage[0];
 }
 function toUsage(r) {
-    var htname = "night";
+    var htname = "nacht";
     if (r.HT == 2) {
-        htname = "day";
+        htname = "dag";
     }
     var usage = ({
         HOV: r.HOV,
@@ -361,6 +361,9 @@ var PickerComponent = (function () {
             _this.data = res.HOV;
             _this.loaded = true;
         });
+    };
+    PickerComponent.prototype.onSubmit = function (form) {
+        console.log(form);
     };
     PickerComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -746,7 +749,7 @@ module.exports = "<div>\r\n\r\n<ul>\r\n        <li *ngFor=\"let device of device
 /***/ 676:
 /***/ (function(module, exports) {
 
-module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
+module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\r\n\t <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f.value)\">\r\n \r\n      <div class=\"form-group\">  \r\n        <label>Meter</label>  \r\n        <select name=\"meter\">\r\n        \t<option value=\"4530303035303031353538313833363134\">Martijn</option>\r\n        \t<option value=\"4530303235303030303636383733323136\">Kenneth</option>\r\n        </select>\r\n      </div>\r\n\r\n      <div class=\"form-group\">  \r\n        <label>Data type</label>  \r\n        <select name=\"datatype\">\r\n        \t<optgroup label=\"Huidig\">\r\n\t        \t<option value=\"HOV\">Huidig opgenomen vermogen</option>\r\n\t        \t<option value=\"HTV\">Huidig teruggeleverd vermogen</option>\r\n\t        </optgroup>\r\n        \t<optgroup label=\"Tarief 1\">\r\n\t        \t<option value=\"TOE1\">Totaal opgenomen energie</option>\r\n\t        \t<option value=\"TTE1\">Totaal teruggeleverde energie</option>\r\n\t        </optgroup>\r\n\t        <optgroup label=\"Tarief 2\">\r\n\t        \t<option value=\"TOE2\">Totaal opgenomen energie</option>\r\n\t        \t<option value=\"TTE2\">Totaal teruggeleverde energie</option>\r\n\t        </optgroup>\r\n        </select>\r\n      </div>\r\n\r\n      <div class=\"form-group\">  \r\n        <label>Groupering</label>  \r\n        <select name=\"group\">\r\n        \t<option value=\"minute\">Minuut</option>\r\n        \t<option value=\"hour\">Uur</option>\r\n        \t<option value=\"day\">Dag</option>\r\n        \t<option value=\"month\">Maand</option>\r\n        \t<option value=\"year\">Jaar</option>\r\n        </select>\r\n      </div>\r\n\r\n      <input type=\"submit\" value=\"Update\" />\r\n\r\n      </form>\r\n    </div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
 
 /***/ }),
 

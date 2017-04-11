@@ -137,11 +137,11 @@ function mapUsage(response:Response): Usage {
 
 function toUsage(r:any): Usage
 {
-    let htname = "night";
+    let htname = "nacht";
 
     if(r.HT == 2)
     {
-        htname = "day";
+        htname = "dag";
     }
 
     let usage = <Usage>({

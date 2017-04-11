@@ -33,4 +33,9 @@ export class PickerComponent {
 
       });
   }
+
+  onSubmit(form:any)
+  {
+    console.log(form);
+  }
 }
