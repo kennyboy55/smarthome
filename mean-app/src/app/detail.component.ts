@@ -26,12 +26,21 @@ export class DetailComponent implements OnInit, OnDestroy {
   public data3:LineData;
   public data4:LineData;
 
+  public datapie1:LineData;
+  public datapie2:LineData;
+  public datapie3:LineData;
+
+  public labelpie1:LabelData;
+  public labelpie2:LabelData;
+  public labelpie3:LabelData;
+
   public hov:number = 0;
   public htv:number = 0;
   public ht:string = "loading";  
   public money:number = 0;
 
   public loaded:boolean = false;
+  public pieloaded:boolean = false;
 
   public subscription:Subscription;
 
@@ -55,6 +64,9 @@ export class DetailComponent implements OnInit, OnDestroy {
   refreshData(id:string)
   {
       console.log("Refreshing data for ", this.id);
+      this.labelpie1 = <LabelData> ({data: ["Huidig opgenomen", "Huidig terug"]});
+      this.labelpie2 = <LabelData> ({data: ["Totaal opgenomen 2", "Totaal terug 2"]});
+      this.labelpie3 = <LabelData> ({data: ["Totaal opgenomen 1", "Totaal terug 1"]});
 
       this.dataService
       .get(id)
@@ -80,6 +92,12 @@ export class DetailComponent implements OnInit, OnDestroy {
         this.ht = res.HTN;
 
         this.money = ((res.TOE1 - res.TTE1) * res.tarief1) + ((res.TOE2 - res.TTE2) * res.tarief2);
+
+        this.datapie1 = <LineData> ({data: [res.HOV, res.HTV], label: "Huidig verbruik"});
+        this.datapie2 = <LineData> ({data: [res.TOE2, res.TTE2], label: "Totaal 2"});
+        this.datapie3 = <LineData> ({data: [res.TOE1, res.TTE1], label: "Totaal 1"});
+
+        this.pieloaded = true;
 
       });
 

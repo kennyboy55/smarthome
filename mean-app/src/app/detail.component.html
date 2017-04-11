@@ -29,5 +29,20 @@
 	<div class="col-md-6">
 		<line-chart [label]="label" [data]="data4"></line-chart>
 	</div>
+</span>
+
+<span *ngIf="pieloaded">
+
+	<div class="col-md-4">
+		<pie-chart [label]="labelpie1" [data]="datapie1"></pie-chart>
+	</div>
+
+	<div class="col-md-4">
+		<pie-chart [label]="labelpie2" [data]="datapie2"></pie-chart>
+	</div>
+
+	<div class="col-md-4">
+		<pie-chart [label]="labelpie3" [data]="datapie3"></pie-chart>
+	</div>
 
 </span>
