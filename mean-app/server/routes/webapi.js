@@ -28,7 +28,7 @@ router.get('/device', function(req, res){
 
 
 
-router.get('/data/:device/group/:group/:day1-:month1-:year1/:day2-:month2-:year2', function(req, res) {
+router.get('/data/:device/group/:group/:year1-:month1-:day1/:year2-:month2-:day2', function(req, res) {
 
   let devid = req.params.device;
   let group = req.params.group;
@@ -97,7 +97,7 @@ router.get('/data/:device/group/:group/:day1-:month1-:year1/:day2-:month2-:year2
 
 });
 
-router.get('/data/:device/:day1-:month1-:year1/:day2-:month2-:year2', function(req, res) {
+router.get('/data/:device/:year1-:month1-:day1/:year2-:month2-:day2', function(req, res) {
 
   let devid = req.params.device;
 

@@ -370,6 +370,7 @@ var PickerComponent = (function () {
     };
     PickerComponent.prototype.onSubmit = function (form) {
         this.loaded = false;
+        console.log(form);
         this.refreshData(form.meter, form.group, form.date1, form.date2, form.datatype);
     };
     PickerComponent = __decorate([
