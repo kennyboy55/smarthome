@@ -15,11 +15,13 @@ import { DetailComponent } from './detail.component';
 import { PickerComponent } from './picker.component';
 
 import { DataService } from './data.service';
+import {DoubleLineChartComponent} from "./doublelinechart.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     LineChartComponent,
+    DoubleLineChartComponent,
     PieChartComponent,
     DashboardComponent,
     DeviceComponent,

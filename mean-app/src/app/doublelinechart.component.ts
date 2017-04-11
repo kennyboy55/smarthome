@@ -5,22 +5,24 @@ import { BaseChartDirective } from 'ng2-charts/ng2-charts';
 import { LabelData } from "./label-data";
 
 @Component({
-  selector: 'line-chart',
-  templateUrl: './chart.component.html'
+  selector: 'doubleline-chart',
+  templateUrl: './doublelinechart.component.html'
 })
-export class LineChartComponent implements OnInit, OnChanges {
+export class DoubleLineChartComponent implements OnInit, OnChanges {
 
   @Input()data:LineData;
+  @Input()data2:LineData;
   @Input()label:LabelData;
 
   @ViewChild(BaseChartDirective) public chart: BaseChartDirective;
 
-  // lineChart
-  public lineChartData:Array<any> = [
-    {data: [0,0,0,0,0,0,0], label: 'Verbruik'}
-  ];
-  public lineChartLabels:Array<any> = ['-1', '-2', '-3', '-4', '-5', '-6', '-7'];
-  public lineChartOptions:any = {
+  // line2Chart
+  public doublelineChartData:Array<any> = [
+    {data: [0,0,0,0,0,0,0], label: 'Verbruik'},
+    {data2:[0,0,0,0,0,0,0], label: 'Verbruik2'}
+];
+  public doublelineChartLabels:Array<any> = ['-1', '-2', '-3', '-4', '-5', '-6', '-7'];
+  public doublelineChartOptions:any = {
     responsive: true,
     title: {
       display: true,
@@ -28,7 +30,7 @@ export class LineChartComponent implements OnInit, OnChanges {
       text: 'KiloWatt'
     }
   };
-  public lineChartColors:Array<any> = [
+  public doublelineChartColors:Array<any> = [
     { // grey
       backgroundColor: 'rgba(148,159,177,0.2)',
       borderColor: 'rgba(148,159,177,1)',
@@ -38,19 +40,19 @@ export class LineChartComponent implements OnInit, OnChanges {
       pointHoverBorderColor: 'rgba(148,159,177,0.8)'
     }
   ];
-  public lineChartLegend:boolean = true;
-  public lineChartType:string = 'line';
+  public doublelineChartLegend:boolean = true;
+  public doublelineChartType:string = 'line';
 
   constructor() {}
 
   ngOnInit(): void {
 
-        this.lineChartLabels = this.label.data.slice();
+    this.doublelineChartLabels = this.label.data.slice();
 
-        const newDataSet = [];
-        const newLine = {data: this.data.data, label: this.data.label};
-        newDataSet.push(newLine);
-        this.lineChartData = newDataSet;
+    const newDataSet = [];
+    const newLine = {data: this.data.data,data2: this.data2.data, label: this.data.label};
+    newDataSet.push(newLine);
+    this.doublelineChartData = newDataSet;
   }
 
   ngOnChanges(): void {
