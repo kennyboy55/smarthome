@@ -39,7 +39,7 @@
 		</div>
 
 		<div class="col-md-3 col-sm-6 col-xs-12">
-			<p>De huidige opgenomen energie samen met de huidig teruggeleverde energie.</p>
+			<p>De huidige opgenomen energie samen met de huidig teruggeleverde energie.<br></p>
 			<br>
 			<pie-chart [label]="labelpie1" [data]="datapie1"></pie-chart>
 		</div>
@@ -62,6 +62,13 @@
 
 <div class="row">
 
+		<div class="col-md-12">
+			<hr>
+		</div>
+</div>
+
+<div class="row">
+
 	<span *ngIf="!loaded">
 		<div class="col-md-12">
 			Loading...
@@ -76,6 +83,10 @@
 			<doubleline-chart [label]="label" [data]="data1" [data2]="data2"></doubleline-chart>
 		</div>
 
+		<div class="col-md-12">
+			<hr>
+		</div>
+
 		<div class="col-md-6">
 			<p>Totaal opgenomen energie tijdens tarief 2.</p>
 			<br>
@@ -86,6 +97,10 @@
 			<p>Totaal teruggeleverde energie tijdens tarief 2.</p>
 			<br>
 			<line-chart [label]="label" [data]="data4"></line-chart>
+		</div>
+
+		<div class="col-md-12">
+			<hr>
 		</div>
 
 		<div class="col-md-6">

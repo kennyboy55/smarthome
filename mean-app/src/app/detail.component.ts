@@ -41,7 +41,7 @@ export class DetailComponent implements OnInit, OnDestroy {
   public hov:number = 0;
   public htv:number = 0;
   public ht:string = "loading";  
-  public money:string = "calculating";
+  public money:number = 0;
 
   public loaded:boolean = false;
   public pieloaded:boolean = false;
@@ -99,7 +99,7 @@ export class DetailComponent implements OnInit, OnDestroy {
         this.htv = res.HTV;
         this.ht = res.HTN;
 
-        this.money = ((res.TOE1 - res.TTE1) * res.tarief1) + ((res.TOE2 - res.TTE2) * res.tarief2).toFixed(3);
+        this.money = Math.round( ((res.TOE1 - res.TTE1) * res.tarief1) + ((res.TOE2 - res.TTE2) * res.tarief2) * 100 ) / 100;
 
         this.datapie  = <LineData> ({data: [res.TOE2, res.TOE1], label: "Opgenomen"});
         this.datapie1 = <LineData> ({data: [res.HOV, res.HTV], label: "Huidig verbruik"});
