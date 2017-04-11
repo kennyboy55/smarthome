@@ -768,6 +768,9 @@ var PieChartComponent = (function () {
         this.pieChartType = 'pie';
     }
     PieChartComponent.prototype.ngOnInit = function () {
+        console.log("Data in piechart");
+        console.log(this.data);
+        console.log(this.label);
         this.pieChartLabels = this.label.data.slice();
         this.pieChartData = this.data.data.slice();
     };
