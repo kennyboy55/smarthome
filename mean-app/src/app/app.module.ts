@@ -11,6 +11,7 @@ import { LineChartComponent } from './chart.component';
 import { DashboardComponent } from './dashboard.component';
 import { DeviceComponent } from './device.component';
 import { DetailComponent } from './detail.component';
+import { PickerComponent } from './picker.component';
 
 import { DataService } from './data.service';
 
@@ -20,7 +21,8 @@ import { DataService } from './data.service';
     LineChartComponent,
     DashboardComponent,
     DeviceComponent,
-    DetailComponent
+    DetailComponent,
+    PickerComponent
   ],
   imports: [
     BrowserModule,

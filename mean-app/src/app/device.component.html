@@ -2,7 +2,7 @@
 
 <ul>
         <li *ngFor="let device of devices" (click)="goToDetails(device.sn)">
-          <span class="badge"> {{device.sn}} </span> {{device.name}}
+          {{device.name}}
         </li>
 </ul>
 
