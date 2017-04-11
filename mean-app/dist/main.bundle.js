@@ -209,9 +209,11 @@ var DashboardComponent = (function () {
         this.dataService
             .usage("4530303035303031353538313833363134")
             .subscribe(function (res) {
-            console.log("result " + res);
+            console.log("result ");
+            console.log(res);
             _this.data1 = ({ data: [res.HOV, res.HTV], label: "Verbruik Martijn" });
-            console.log("data " + _this.data1);
+            console.log("data ");
+            console.log(_this.data1);
             _this.mloaded = true;
         });
         this.dataService

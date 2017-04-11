@@ -43,9 +43,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.dataService
       .usage("4530303035303031353538313833363134")
       .subscribe(res => {
-        console.log("result " + res);
+        console.log("result ");
+        console.log(res);
         this.data1 = <LineData> ({data: [res.HOV, res.HTV], label: "Verbruik Martijn"});
-        console.log("data "+this.data1);
+        console.log("data ");
+        console.log(this.data1);
         this.mloaded = true;
 
       });
