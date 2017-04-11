@@ -25,6 +25,8 @@ export class DetailComponent implements OnInit, OnDestroy {
   public data2:LineData;
   public data3:LineData;
   public data4:LineData;
+  public data5:LineData;
+  public data6:LineData;
 
   public datapie1:LineData;
   public datapie2:LineData;
@@ -78,6 +80,9 @@ export class DetailComponent implements OnInit, OnDestroy {
 
         this.data3 = res.TOE2;
         this.data4 = res.TTE2;
+
+        this.data3 = res.TOE1;
+        this.data4 = res.TTE1;
 
         this.loaded = true;
 

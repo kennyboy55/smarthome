@@ -335,6 +335,8 @@ var DetailComponent = (function () {
             _this.data2 = res.HTV;
             _this.data3 = res.TOE2;
             _this.data4 = res.TTE2;
+            _this.data3 = res.TOE1;
+            _this.data4 = res.TTE1;
             _this.loaded = true;
         });
         this.dataService
@@ -972,7 +974,7 @@ module.exports = "<span *ngIf=\"mloaded\">\r\n\r\n\t<div class=\"col-md-6\">\r\n
 /***/ 677:
 /***/ (function(module, exports) {
 
-module.exports = "<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<h2>{{name}}</h2>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<div class=\"well\">\r\n\t\t\t<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>\r\n\t\t\t<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>\r\n\t\t\t<b>Huidig tarief:</b> {{ht}} <br>\r\n\t\t\t<b>Totale kosten:</b> €{{money}}\r\n\t\t</div>\r\n\t</div>\r\n\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data1\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data2\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data3\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data4\"></line-chart>\r\n\t</div>\r\n</span>\r\n\r\n<span *ngIf=\"pieloaded\">\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie1\" [data]=\"datapie1\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie2\" [data]=\"datapie2\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie3\" [data]=\"datapie3\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
+module.exports = "<div class=\"col-md-12\">\r\n\t<h2>{{name}}</h2>\r\n</div>\r\n\r\n<div class=\"col-md-12\">\r\n\t<div class=\"well\">\r\n\t\t<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>\r\n\t\t<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>\r\n\t\t<b>Huidig tarief:</b> {{ht}} <br>\r\n\t\t<b>Totale kosten:</b> €{{money}}\r\n\t</div>\r\n</div>\r\n\r\n<span *ngIf=\"pieloaded\">\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie1\" [data]=\"datapie1\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie2\" [data]=\"datapie2\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie3\" [data]=\"datapie3\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<doubleline-chart [label]=\"label\" [data]=\"data1\" [data2]=\"data2\"></doubleline-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<doubleline-chart [label]=\"label\" [data]=\"data3\" [data2]=\"data4\"></doubleline-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<doubleline-chart [label]=\"label\" [data]=\"data5\" [data2]=\"data6\"></doubleline-chart>\r\n\t</div>\r\n</span>\r\n\r\n"
 
 /***/ }),
 

@@ -1,35 +1,15 @@
-<span *ngIf="loaded">
+<div class="col-md-12">
+	<h2>{{name}}</h2>
+</div>
 
-	<div class="col-md-12">
-		<h2>{{name}}</h2>
+<div class="col-md-12">
+	<div class="well">
+		<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>
+		<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>
+		<b>Huidig tarief:</b> {{ht}} <br>
+		<b>Totale kosten:</b> €{{money}}
 	</div>
-
-	<div class="col-md-12">
-		<div class="well">
-			<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>
-			<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>
-			<b>Huidig tarief:</b> {{ht}} <br>
-			<b>Totale kosten:</b> €{{money}}
-		</div>
-	</div>
-
-
-	<div class="col-md-6">
-		<line-chart [label]="label" [data]="data1"></line-chart>
-	</div>
-
-	<div class="col-md-6">
-		<line-chart [label]="label" [data]="data2"></line-chart>
-	</div>
-
-	<div class="col-md-6">
-		<line-chart [label]="label" [data]="data3"></line-chart>
-	</div>
-
-	<div class="col-md-6">
-		<line-chart [label]="label" [data]="data4"></line-chart>
-	</div>
-</span>
+</div>
 
 <span *ngIf="pieloaded">
 
@@ -46,3 +26,19 @@
 	</div>
 
 </span>
+
+<span *ngIf="loaded">
+
+	<div class="col-md-12">
+		<doubleline-chart [label]="label" [data]="data1" [data2]="data2"></doubleline-chart>
+	</div>
+
+	<div class="col-md-12">
+		<doubleline-chart [label]="label" [data]="data3" [data2]="data4"></doubleline-chart>
+	</div>
+
+	<div class="col-md-12">
+		<doubleline-chart [label]="label" [data]="data5" [data2]="data6"></doubleline-chart>
+	</div>
+</span>
+
