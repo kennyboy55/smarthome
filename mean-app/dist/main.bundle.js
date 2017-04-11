@@ -35,6 +35,12 @@ var DataService = (function () {
             .map(mapData);
         return lineChartData$;
     };
+    DataService.prototype.pick = function (id, group, date1, date2) {
+        var lineChartData$ = this.http
+            .get((this.getUrl + "/" + id + "/group/" + group + "/" + date1 + "/" + date2), { headers: this.getHeaders() })
+            .map(mapData);
+        return lineChartData$;
+    };
     DataService.prototype.usage = function (id) {
         var usageData$ = this.http
             .get((this.usageUrl + "/" + id), { headers: this.getHeaders() })
@@ -352,18 +358,19 @@ var PickerComponent = (function () {
         this.dataService = dataService;
         this.loaded = false;
     }
-    PickerComponent.prototype.refreshData = function (id) {
+    PickerComponent.prototype.refreshData = function (id, group, date1, date2, property) {
         var _this = this;
         this.dataService
-            .get(id)
+            .pick(id, group, date1, date2)
             .subscribe(function (res) {
             _this.label = res.labels;
-            _this.data = res.HOV;
+            _this.data = res[property];
             _this.loaded = true;
         });
     };
     PickerComponent.prototype.onSubmit = function (form) {
-        console.log(form);
+        this.loaded = false;
+        this.refreshData(form.meter, form.group, form.date1, form.date2, form.datatype);
     };
     PickerComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -749,7 +756,7 @@ module.exports = "<div>\r\n\r\n<ul>\r\n        <li *ngFor=\"let device of device
 /***/ 676:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n<div class=\"col-md-12\">\r\n\r\n <form #form=\"ngForm\" (ngSubmit)=\"onSubmit(form.value)\">\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Meter</label>  \r\n    <select name=\"meter\" ngModel>\r\n    \t<option value=\"4530303035303031353538313833363134\">Martijn</option>\r\n    \t<option value=\"4530303235303030303636383733323136\">Kenneth</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Data type</label>  \r\n    <select name=\"datatype\" ngModel>\r\n    \t<optgroup label=\"Huidig\">\r\n        \t<option value=\"HOV\">Huidig opgenomen vermogen</option>\r\n        \t<option value=\"HTV\">Huidig teruggeleverd vermogen</option>\r\n        </optgroup>\r\n    \t<optgroup label=\"Tarief 1\">\r\n        \t<option value=\"TOE1\">Totaal opgenomen energie</option>\r\n        \t<option value=\"TTE1\">Totaal teruggeleverde energie</option>\r\n        </optgroup>\r\n        <optgroup label=\"Tarief 2\">\r\n        \t<option value=\"TOE2\">Totaal opgenomen energie</option>\r\n        \t<option value=\"TTE2\">Totaal teruggeleverde energie</option>\r\n        </optgroup>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Groupering</label>  \r\n    <select name=\"group\" ngModel>\r\n    \t<option value=\"minute\">Minuut</option>\r\n    \t<option value=\"hour\">Uur</option>\r\n    \t<option value=\"day\">Dag</option>\r\n    \t<option value=\"month\">Maand</option>\r\n    \t<option value=\"year\">Jaar</option>\r\n    </select>\r\n  </div>\r\n\r\n  <input type=\"submit\" value=\"Update\" />\r\n\r\n  </form>\r\n</div>\r\n\r\n<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
+module.exports = "\r\n<div class=\"col-md-12\">\r\n\r\n <form #form=\"ngForm\" (ngSubmit)=\"onSubmit(form.value)\">\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Meter</label>  \r\n    <select name=\"meter\" class=\"form-control\" ngModel>\r\n    \t<option value=\"4530303035303031353538313833363134\" selected=\"true\">Martijn</option>\r\n    \t<option value=\"4530303235303030303636383733323136\">Kenneth</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Data type</label>  \r\n    <select name=\"datatype\" class=\"form-control\" ngModel>\r\n    \t<optgroup label=\"Huidig\">\r\n        \t<option value=\"HOV\" selected=\"true\">Huidig opgenomen vermogen</option>\r\n        \t<option value=\"HTV\">Huidig teruggeleverd vermogen</option>\r\n        </optgroup>\r\n    \t<optgroup label=\"Tarief 1\">\r\n        \t<option value=\"TOE1\">Totaal opgenomen energie</option>\r\n        \t<option value=\"TTE1\">Totaal teruggeleverde energie</option>\r\n        </optgroup>\r\n        <optgroup label=\"Tarief 2\">\r\n        \t<option value=\"TOE2\">Totaal opgenomen energie</option>\r\n        \t<option value=\"TTE2\">Totaal teruggeleverde energie</option>\r\n        </optgroup>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">  \r\n    <label>Groupering</label>  \r\n    <select name=\"group\" class=\"form-control\" ngModel>\r\n    \t<option value=\"minute\">Minuut</option>\r\n    \t<option value=\"hour\" selected=\"true\">Uur</option>\r\n    \t<option value=\"day\">Dag</option>\r\n    \t<option value=\"month\">Maand</option>\r\n    \t<option value=\"year\">Jaar</option>\r\n    </select>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n  \t<label>Startdatum</label>\r\n  \t<input type=\"date\" name=\"date1\" class=\"form-control\" required=\"true\" ngModel>\r\n  </div>\r\n\r\n  <div class=\"form-group\">\r\n  \t<label>Einddatum</label>\r\n  \t<input type=\"date\" name=\"date2\" class=\"form-control\" required=\"true\" ngModel>\r\n  </div>\r\n\r\n  <input type=\"submit\" class=\"btn btn-primary\" value=\"Update\" />\r\n\r\n  </form>\r\n</div>\r\n\r\n<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data\"></line-chart>\r\n\t</div>\r\n\r\n</span>\r\n"
 
 /***/ }),
 

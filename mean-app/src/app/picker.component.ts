@@ -19,15 +19,15 @@ export class PickerComponent {
 
   constructor(private dataService: DataService) {}
 
-  refreshData(id:string)
+  refreshData(id:string, group:string, date1:string, date2:string, property:string)
   {
 
       this.dataService
-      .get(id)
+      .pick(id, group, date1, date2)
       .subscribe(res => {
 
         this.label = res.labels;
-        this.data = res.HOV;
+        this.data = res[property];
 
         this.loaded = true;
 
@@ -36,6 +36,7 @@ export class PickerComponent {
 
   onSubmit(form:any)
   {
-    console.log(form);
+     this.loaded = false;
+     this.refreshData(form.meter, form.group, form.date1, form.date2, form.datatype);
   }
 }

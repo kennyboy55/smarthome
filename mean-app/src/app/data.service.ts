@@ -29,6 +29,16 @@ export class DataService {
     return lineChartData$;
   }
 
+  pick(id:string, group:string, date1:string, date2:string): Observable<GraphData> {
+    let lineChartData$ =
+      this.http
+        .get((`${this.getUrl}/${id}/group/${group}/${date1}/${date2}`)
+          , {headers: this.getHeaders()})
+        .map(mapData);
+
+    return lineChartData$;
+  }
+
   usage(id:string): Observable<Usage> {
     let usageData$ =
       this.http
