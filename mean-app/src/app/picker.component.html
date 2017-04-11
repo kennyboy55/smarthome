@@ -1,11 +1,11 @@
 
 <div class="col-md-12">
 
- <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+ <form #form="ngForm" (ngSubmit)="onSubmit(form.value)">
 
   <div class="form-group">  
     <label>Meter</label>  
-    <select name="meter">
+    <select name="meter" ngModel>
     	<option value="4530303035303031353538313833363134">Martijn</option>
     	<option value="4530303235303030303636383733323136">Kenneth</option>
     </select>
@@ -13,7 +13,7 @@
 
   <div class="form-group">  
     <label>Data type</label>  
-    <select name="datatype">
+    <select name="datatype" ngModel>
     	<optgroup label="Huidig">
         	<option value="HOV">Huidig opgenomen vermogen</option>
         	<option value="HTV">Huidig teruggeleverd vermogen</option>
@@ -31,7 +31,7 @@
 
   <div class="form-group">  
     <label>Groupering</label>  
-    <select name="group">
+    <select name="group" ngModel>
     	<option value="minute">Minuut</option>
     	<option value="hour">Uur</option>
     	<option value="day">Dag</option>
