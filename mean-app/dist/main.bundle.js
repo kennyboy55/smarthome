@@ -234,7 +234,6 @@ var DashboardComponent = (function () {
     };
     DashboardComponent.prototype.refreshData = function () {
         var _this = this;
-        console.log("Refreshing data");
         this.label = ({ data: ["Huidig opgenomen", "Huidig terug"] });
         this.dataService
             .usage("4530303035303031353538313833363134")
@@ -258,7 +257,6 @@ var DashboardComponent = (function () {
             .get("4530303035303031353538313833363134")
             .subscribe(function (res) {
             _this.data4 = res.HOV;
-            console.log(_this.data4);
             _this.dbloaded = true;
         });
     };
@@ -323,7 +321,6 @@ var DetailComponent = (function () {
     };
     DetailComponent.prototype.refreshData = function (id) {
         var _this = this;
-        console.log("Refreshing data for ", this.id);
         this.labelpie1 = ({ data: ["Huidig opgenomen", "Huidig terug"] });
         this.labelpie2 = ({ data: ["Totaal opgenomen 2", "Totaal terug 2"] });
         this.labelpie3 = ({ data: ["Totaal opgenomen 1", "Totaal terug 1"] });
@@ -456,7 +453,6 @@ var PickerComponent = (function () {
     };
     PickerComponent.prototype.onSubmit = function (form) {
         this.loaded = false;
-        console.log(form);
         this.refreshData(form.meter, form.group, form.date1, form.date2, form.datatype);
     };
     PickerComponent = __decorate([
@@ -825,7 +821,6 @@ var DoubleLineChartComponent = (function () {
         newDataSet.push(newLine);
         newDataSet.push(newLine2);
         this.doublelineChartData = newDataSet;
-        console.log(this.doublelineChartData);
     };
     DoubleLineChartComponent.prototype.ngOnChanges = function () {
         if (this.chart.chart != undefined) {

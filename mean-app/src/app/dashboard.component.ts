@@ -45,7 +45,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   refreshData()
   {
-    console.log("Refreshing data");
     this.label = <LabelData> ({data: ["Huidig opgenomen", "Huidig terug"]});
 
     this.dataService
@@ -80,9 +79,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .subscribe(res => {
 
           this.data4 = res.HOV;
-
-          console.log(this.data4);
-
           this.dbloaded = true;
 
       });

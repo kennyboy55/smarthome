@@ -9,7 +9,6 @@ router.all('*', function(req, res){
   req.next();
 });
 
-
 router.get('/device', function(req, res){
   
   connection.query(

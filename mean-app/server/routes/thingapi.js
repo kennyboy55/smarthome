@@ -3,6 +3,10 @@ var connection = require('../db');
 const express = require('express');
 const router = express.Router();
 
+router.all('*', function(req, res){
+  console.log(req.path);
+  req.next();
+});
 
 var parseTelegram = function(data, callback){
 
@@ -102,7 +106,6 @@ var parseTelegram = function(data, callback){
 
 
 router.post('/telegram', function(req, res){
-	console.log("Telegram received");
 
 	connection.query(
     'INSERT INTO telegram (time, data) VALUES (NOW(), ?)', [req.body.datagram],

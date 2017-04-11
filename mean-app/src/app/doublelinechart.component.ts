@@ -63,8 +63,6 @@ export class DoubleLineChartComponent implements OnInit, OnChanges {
     newDataSet.push(newLine);
     newDataSet.push(newLine2);
     this.doublelineChartData = newDataSet;
-
-    console.log(this.doublelineChartData);
   }
 
   ngOnChanges(): void {

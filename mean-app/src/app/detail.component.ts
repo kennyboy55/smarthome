@@ -65,7 +65,6 @@ export class DetailComponent implements OnInit, OnDestroy {
 
   refreshData(id:string)
   {
-      console.log("Refreshing data for ", this.id);
       this.labelpie1 = <LabelData> ({data: ["Huidig opgenomen", "Huidig terug"]});
       this.labelpie2 = <LabelData> ({data: ["Totaal opgenomen 2", "Totaal terug 2"]});
       this.labelpie3 = <LabelData> ({data: ["Totaal opgenomen 1", "Totaal terug 1"]});
