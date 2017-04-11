@@ -5,17 +5,17 @@
 
   <div class="form-group">  
     <label>Meter</label>  
-    <select name="meter" class="form-control" ngModel>
-    	<option value="4530303035303031353538313833363134" selected="true">Martijn</option>
+    <select name="meter" class="form-control" required ngModel>
+    	<option value="4530303035303031353538313833363134" selected>Martijn</option>
     	<option value="4530303235303030303636383733323136">Kenneth</option>
     </select>
   </div>
 
   <div class="form-group">  
     <label>Data type</label>  
-    <select name="datatype" class="form-control" ngModel>
+    <select name="datatype" class="form-control" required ngModel>
     	<optgroup label="Huidig">
-        	<option value="HOV" selected="true">Huidig opgenomen vermogen</option>
+        	<option value="HOV" selected>Huidig opgenomen vermogen</option>
         	<option value="HTV">Huidig teruggeleverd vermogen</option>
         </optgroup>
     	<optgroup label="Tarief 1">
@@ -31,9 +31,9 @@
 
   <div class="form-group">  
     <label>Groupering</label>  
-    <select name="group" class="form-control" ngModel>
+    <select name="group" class="form-control" required ngModel>
     	<option value="minute">Minuut</option>
-    	<option value="hour" selected="true">Uur</option>
+    	<option value="hour" selected>Uur</option>
     	<option value="day">Dag</option>
     	<option value="month">Maand</option>
     	<option value="year">Jaar</option>
@@ -42,12 +42,12 @@
 
   <div class="form-group">
   	<label>Startdatum</label>
-  	<input type="date" name="date1" class="form-control" required="true" ngModel>
+  	<input type="date" name="date1" class="form-control" required ngModel>
   </div>
 
   <div class="form-group">
   	<label>Einddatum</label>
-  	<input type="date" name="date2" class="form-control" required="true" ngModel>
+  	<input type="date" name="date2" class="form-control" required ngModel>
   </div>
 
   <input type="submit" class="btn btn-primary" value="Update" />
