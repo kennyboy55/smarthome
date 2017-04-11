@@ -99,7 +99,7 @@ export class DetailComponent implements OnInit, OnDestroy {
         this.htv = res.HTV;
         this.ht = res.HTN;
 
-        this.money = Math.round( ((res.TOE1 - res.TTE1) * res.tarief1) + ((res.TOE2 - res.TTE2) * res.tarief2) * 100 ) / 100;
+        this.money = Math.round( (((res.TOE1 - res.TTE1) * res.tarief1) + ((res.TOE2 - res.TTE2) * res.tarief2)) * 100 ) / 100;
 
         this.datapie  = <LineData> ({data: [res.TOE2, res.TOE1], label: "Opgenomen"});
         this.datapie1 = <LineData> ({data: [res.HOV, res.HTV], label: "Huidig verbruik"});
