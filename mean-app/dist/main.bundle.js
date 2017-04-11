@@ -234,17 +234,17 @@ var DashboardComponent = (function () {
     };
     DashboardComponent.prototype.refreshData = function () {
         var _this = this;
-        this.label = ({ data: ["Huidig opgenomen", "Huidig terug"] });
+        this.label = ({ data: ["Totaal tarief 1", "Totaal tarief 2"] });
         this.dataService
             .usage("4530303035303031353538313833363134")
             .subscribe(function (res) {
-            _this.data1 = ({ data: [res.HOV, res.HTV], label: "Verbruik Martijn" });
+            _this.data1 = ({ data: [res.TOE1, res.TOE2], label: "Verbruik Martijn" });
             _this.mloaded = true;
         });
         this.dataService
             .usage("4530303235303030303636383733323136")
             .subscribe(function (res) {
-            _this.data2 = ({ data: [res.HOV, res.HTV], label: "Verbruik Kenneth" });
+            _this.data2 = ({ data: [res.TOE1, res.TOE2], label: "Verbruik Kenneth" });
             _this.kloaded = true;
         });
         this.dataService
@@ -321,6 +321,7 @@ var DetailComponent = (function () {
     };
     DetailComponent.prototype.refreshData = function (id) {
         var _this = this;
+        this.labelpie = ({ data: ["Totaal opgenomen 2", "Totaal opgenomen 1"] });
         this.labelpie1 = ({ data: ["Huidig opgenomen", "Huidig terug"] });
         this.labelpie2 = ({ data: ["Totaal opgenomen 2", "Totaal terug 2"] });
         this.labelpie3 = ({ data: ["Totaal opgenomen 1", "Totaal terug 1"] });
@@ -343,6 +344,7 @@ var DetailComponent = (function () {
             _this.htv = res.HTV;
             _this.ht = res.HTN;
             _this.money = ((res.TOE1 - res.TTE1) * res.tarief1) + ((res.TOE2 - res.TTE2) * res.tarief2);
+            _this.datapie = ({ data: [res.TOE2, res.TOE1], label: "Opgenomen" });
             _this.datapie1 = ({ data: [res.HOV, res.HTV], label: "Huidig verbruik" });
             _this.datapie2 = ({ data: [res.TOE2, res.TTE2], label: "Totaal 2" });
             _this.datapie3 = ({ data: [res.TOE1, res.TTE1], label: "Totaal 1" });
@@ -962,14 +964,14 @@ module.exports = "<div style=\"display: block;\">\r\n<canvas baseChart width=\"4
 /***/ 676:
 /***/ (function(module, exports) {
 
-module.exports = "<span *ngIf=\"mloaded\">\r\n\r\n\t<div class=\"col-md-6\">\r\n    <h3>Martijn</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data1\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"kloaded\">\r\n\t<div class=\"col-md-6\">\r\n    <h3>Kenneth</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data2\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"dbloaded\">\r\n\t<div class=\"col-md-12\">\r\n    <h3>Vergelijking</h3>\r\n\t\t<doubleline-chart [label]=\"label2\" [data]=\"data3\" [data2]=\"data4\"></doubleline-chart>\r\n\t</div>\r\n\r\n</span>"
+module.exports = "<span *ngIf=\"mloaded\">\r\n\r\n\t<div class=\"col-md-6\">\r\n    \t<h3>Martijn</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data1\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"kloaded\">\r\n\t<div class=\"col-md-6\">\r\n    \t<h3>Kenneth</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data2\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"dbloaded\">\r\n\t<div class=\"col-md-12\">\r\n\t\t<br>\r\n    \t<h3>Vergelijking</h3>\r\n\t\t<doubleline-chart [label]=\"label2\" [data]=\"data3\" [data2]=\"data4\"></doubleline-chart>\r\n\t</div>\r\n\r\n</span>"
 
 /***/ }),
 
 /***/ 677:
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"col-md-12\">\r\n\t<h2>{{name}}</h2>\r\n</div>\r\n\r\n<div class=\"col-md-12\">\r\n\t<div class=\"well\">\r\n\t\t<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>\r\n\t\t<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>\r\n\t\t<b>Huidig tarief:</b> {{ht}} <br>\r\n\t\t<b>Totale kosten:</b> €{{money}}\r\n\t</div>\r\n</div>\r\n\r\n<span *ngIf=\"pieloaded\">\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie1\" [data]=\"datapie1\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie2\" [data]=\"datapie2\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-4\">\r\n\t\t<pie-chart [label]=\"labelpie3\" [data]=\"datapie3\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<doubleline-chart [label]=\"label\" [data]=\"data1\" [data2]=\"data2\"></doubleline-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data3\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data4\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data5\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<line-chart [label]=\"label\" [data]=\"data6\"></line-chart>\r\n\t</div>\r\n</span>\r\n\r\n"
+module.exports = "<div class=\"col-md-12\">\r\n\t<h2>{{name}}</h2>\r\n</div>\r\n\r\n<div class=\"col-md-12\">\r\n\t<br>\r\n\t<div class=\"well\">\r\n\t\t<b>Huidig opgenomen vermogen:</b> {{hov}} kW <br>\r\n\t\t<b>Huidig teruggeleverd vermogen:</b> {{htv}} kW <br>\r\n\t\t<b>Huidig tarief:</b> {{ht}} <br>\r\n\t\t<b>Totale kosten:</b> €{{money}}\r\n\t</div>\r\n\t<br>\r\n</div>\r\n\r\n<span *ngIf=\"pieloaded\">\r\n\r\n\t<div class=\"col-md-3 col-xs-6\">\r\n\t\t<br>\r\n\t\t<pie-chart [label]=\"labelpie\" [data]=\"datapie\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-3 col-xs-6\">\r\n\t\t<br>\r\n\t\t<pie-chart [label]=\"labelpie1\" [data]=\"datapie1\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-3 col-xs-6\">\r\n\t\t<br>\r\n\t\t<pie-chart [label]=\"labelpie2\" [data]=\"datapie2\"></pie-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-3 col-xs-6\">\r\n\t\t<br>\r\n\t\t<pie-chart [label]=\"labelpie3\" [data]=\"datapie3\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"loaded\">\r\n\r\n\t<div class=\"col-md-12\">\r\n\t\t<br>\r\n\t\t<doubleline-chart [label]=\"label\" [data]=\"data1\" [data2]=\"data2\"></doubleline-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<br>\r\n\t\t<line-chart [label]=\"label\" [data]=\"data3\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<br>\r\n\t\t<line-chart [label]=\"label\" [data]=\"data4\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<br>\r\n\t\t<line-chart [label]=\"label\" [data]=\"data5\"></line-chart>\r\n\t</div>\r\n\r\n\t<div class=\"col-md-6\">\r\n\t\t<br>\r\n\t\t<line-chart [label]=\"label\" [data]=\"data6\"></line-chart>\r\n\t</div>\r\n</span>\r\n\r\n"
 
 /***/ }),
 

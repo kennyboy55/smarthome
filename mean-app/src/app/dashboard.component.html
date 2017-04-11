@@ -1,7 +1,7 @@
 <span *ngIf="mloaded">
 
 	<div class="col-md-6">
-    <h3>Martijn</h3>
+    	<h3>Martijn</h3>
 		<pie-chart [label]="label" [data]="data1"></pie-chart>
 	</div>
 
@@ -9,7 +9,7 @@
 
 <span *ngIf="kloaded">
 	<div class="col-md-6">
-    <h3>Kenneth</h3>
+    	<h3>Kenneth</h3>
 		<pie-chart [label]="label" [data]="data2"></pie-chart>
 	</div>
 
@@ -17,7 +17,8 @@
 
 <span *ngIf="dbloaded">
 	<div class="col-md-12">
-    <h3>Vergelijking</h3>
+		<br>
+    	<h3>Vergelijking</h3>
 		<doubleline-chart [label]="label2" [data]="data3" [data2]="data4"></doubleline-chart>
 	</div>
 
