@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LineChartComponent } from './chart.component';
+import { PieChartComponent } from './piechart.component';
 import { DashboardComponent } from './dashboard.component';
 import { DeviceComponent } from './device.component';
 import { DetailComponent } from './detail.component';
@@ -19,6 +20,7 @@ import { DataService } from './data.service';
   declarations: [
     AppComponent,
     LineChartComponent,
+    PieChartComponent,
     DashboardComponent,
     DeviceComponent,
     DetailComponent,

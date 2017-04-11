@@ -1,9 +1,8 @@
 import { Component, OnInit, OnChanges, ViewChild, ElementRef,Input } from '@angular/core';
-import { DataService } from './data.service';
 
 import { LineData } from './line-data';
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
-import {LabelData} from "./label-data";
+import { LabelData } from "./label-data";
 
 @Component({
   selector: 'line-chart',
@@ -26,7 +25,7 @@ export class LineChartComponent implements OnInit, OnChanges {
     title: {
       display: true,
       position: 'left',
-      text: 'Watt'
+      text: 'KiloWatt'
     }
   };
   public lineChartColors:Array<any> = [
@@ -42,7 +41,7 @@ export class LineChartComponent implements OnInit, OnChanges {
   public lineChartLegend:boolean = true;
   public lineChartType:string = 'line';
 
-  constructor(private dataService: DataService) {}
+  constructor() {}
 
   ngOnInit(): void {
 

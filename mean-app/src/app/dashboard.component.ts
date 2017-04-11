@@ -7,7 +7,6 @@ import { DataService } from './data.service';
 import {LineChartComponent} from "./chart.component";
 import {LineData} from "./line-data";
 import {LabelData} from "./label-data";
-import {Line} from "tslint/lib/test/lines";
 
 @Component({
   selector: 'dashboard',

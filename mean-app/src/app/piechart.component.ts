@@ -1,9 +1,8 @@
 import { Component, OnInit, OnChanges, ViewChild, ElementRef,Input } from '@angular/core';
-import { DataService } from './data.service';
 
 import { LineData } from './line-data';
 import { BaseChartDirective } from 'ng2-charts/ng2-charts';
-import {LabelData} from "./label-data";
+import { LabelData } from "./label-data";
 
 @Component({
   selector: 'pie-chart',
@@ -17,11 +16,11 @@ export class PieChartComponent implements OnInit, OnChanges {
   @ViewChild(BaseChartDirective) public chart: BaseChartDirective;
 
   // lineChart
-  public pieChartData:Array<any> = [0,0];
-  public pieChartLabels:Array<any> = ['-1', '-2'];
+  public pieChartData:number[] = [0,0];
+  public pieChartLabels:string[] = ['-1', '-2'];
   public pieChartType:string = 'pie';
 
-  constructor(private dataService: DataService) {}
+  constructor() {}
 
   ngOnInit(): void {
 
@@ -36,8 +35,5 @@ export class PieChartComponent implements OnInit, OnChanges {
     if(this.chart.chart != undefined){
       this.chart.chart.update();
     }
-
   }
-
-
 }
