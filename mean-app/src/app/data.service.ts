@@ -22,7 +22,7 @@ export class DataService {
   get(id:string): Observable<GraphData> {
     let lineChartData$ =
       this.http
-        .get((`${this.getUrl}/${id}`)
+        .get((`${this.getUrl}/${id}/group/hour`)
           , {headers: this.getHeaders()})
         .map(mapData);
 

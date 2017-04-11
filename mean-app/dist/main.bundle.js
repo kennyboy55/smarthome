@@ -31,7 +31,7 @@ var DataService = (function () {
     }
     DataService.prototype.get = function (id) {
         var lineChartData$ = this.http
-            .get((this.getUrl + "/" + id), { headers: this.getHeaders() })
+            .get((this.getUrl + "/" + id + "/group/hour"), { headers: this.getHeaders() })
             .map(mapData);
         return lineChartData$;
     };
