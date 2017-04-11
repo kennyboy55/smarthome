@@ -4,7 +4,8 @@ var connection = mysql.createConnection({
   user     : 'root',
   password : 'asdf1239',
   database : 'smarthome',
-  timezone : 'utc'
+  timezone : 'utc',
+  multipleStatements: true
 });
 
 connection.connect(function(err) {
