@@ -21,6 +21,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   public data4:LineData;
 
   public label:LabelData;
+  public label2:LabelData;
 
   public mloaded:boolean = false;
   public kloaded:boolean = false;
@@ -70,6 +71,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .subscribe(res => {
 
           this.data3 = res.HOV;
+          this.label2 = res.labels;
 
       });
 

@@ -252,6 +252,7 @@ var DashboardComponent = (function () {
             .get("4530303235303030303636383733323136")
             .subscribe(function (res) {
             _this.data3 = res.HOV;
+            _this.label2 = res.labels;
         });
         this.dataService
             .get("4530303035303031353538313833363134")
@@ -964,7 +965,7 @@ module.exports = "<div style=\"display: block;\">\r\n<canvas baseChart width=\"4
 /***/ 676:
 /***/ (function(module, exports) {
 
-module.exports = "<span *ngIf=\"mloaded\">\r\n\r\n\t<div class=\"col-md-6\">\r\n    <h3>Martijn</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data1\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"kloaded\">\r\n\t<div class=\"col-md-6\">\r\n    <h3>Kenneth</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data2\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"dbloaded\">\r\n\t<div class=\"col-md-12\">\r\n    <h3>Vergelijking</h3>\r\n\t\t<doubleline-chart [label]=\"label\" [data]=\"data3\" [data2]=\"data4\"></doubleline-chart>\r\n\t</div>\r\n\r\n</span>"
+module.exports = "<span *ngIf=\"mloaded\">\r\n\r\n\t<div class=\"col-md-6\">\r\n    <h3>Martijn</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data1\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"kloaded\">\r\n\t<div class=\"col-md-6\">\r\n    <h3>Kenneth</h3>\r\n\t\t<pie-chart [label]=\"label\" [data]=\"data2\"></pie-chart>\r\n\t</div>\r\n\r\n</span>\r\n\r\n<span *ngIf=\"dbloaded\">\r\n\t<div class=\"col-md-12\">\r\n    <h3>Vergelijking</h3>\r\n\t\t<doubleline-chart [label]=\"label2\" [data]=\"data3\" [data2]=\"data4\"></doubleline-chart>\r\n\t</div>\r\n\r\n</span>"
 
 /***/ }),
 
