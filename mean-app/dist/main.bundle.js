@@ -729,7 +729,7 @@ module.exports = "<div class=\"container\">\r\n\r\n  <nav class=\"navbar navbar-
 /***/ 672:
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"display: block;\">\r\n<canvas baseChart width=\"400\" height=\"400\"\r\n            [datasets]=\"lineChartData\"\r\n            [labels]=\"lineChartLabels\"\r\n            [options]=\"lineChartOptions\"\r\n            [colors]=\"lineChartColors\"\r\n            [legend]=\"lineChartLegend\"\r\n            [chartType]=\"lineChartType\"></canvas>\r\n</div>"
+module.exports = "<div style=\"display: block;\">\r\n<canvas baseChart width=\"400\" height=\"200\"\r\n            [datasets]=\"lineChartData\"\r\n            [labels]=\"lineChartLabels\"\r\n            [options]=\"lineChartOptions\"\r\n            [colors]=\"lineChartColors\"\r\n            [legend]=\"lineChartLegend\"\r\n            [chartType]=\"lineChartType\"></canvas>\r\n</div>"
 
 /***/ }),
 
