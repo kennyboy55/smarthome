@@ -12,7 +12,7 @@ router.all('*', function(req, res){
 router.get('/device', function(req, res){
   
   connection.query(
-    'SELECT SN, name, desc FROM device',
+    'SELECT `SN`, `name`, `desc` FROM `device`;',
                      function (error, results, fields) {
    if (error) throw error;
 
@@ -109,7 +109,7 @@ router.get('/data/:device/:year1-:month1-:day1/:year2-:month2-:day2', function(r
   let date2 = year2 + "-" + month2 + "-" + day2 + " 23:59:59";
 
   connection.query(
-    'SELECT s.* FROM ( SELECT TOE1, TOE2, TTE1, TTE2, HOV, HTV, HT, time FROM measurement WHERE device = ? AND time >= ? AND time <= ? ORDER BY time DESC LIMIT 0,250 ) s ORDER BY s.time ASC', [devid, date1, date2],
+    'SELECT s.* FROM ( SELECT `TOE1`, `TOE2`, `TTE1`, `TTE2`, `HOV`, `HTV`, `HT`, `time` FROM `measurement` WHERE `device` = ? AND `time` >= ? AND `time` <= ? ORDER BY `time` DESC LIMIT 0,250 ) s ORDER BY s.time ASC;', [devid, date1, date2],
                      function (error, results, fields) {
    if (error) throw error;
 
@@ -183,7 +183,7 @@ router.get('/data/:device', function(req, res) {
   let devid = req.params.device;
 
   connection.query(
-    'SELECT s.* FROM ( SELECT TOE1, TOE2, TTE1, TTE2, HOV, HTV, HT, time FROM measurement WHERE device = ? ORDER BY time DESC LIMIT 0,250 ) s ORDER BY s.time ASC', [devid],
+    'SELECT s.* FROM ( SELECT `TOE1`, `TOE2`, `TTE1`, `TTE2`, `HOV`, `HTV`, `HT`, `time` FROM `measurement` WHERE `device` = ? ORDER BY `time` DESC LIMIT 0,250 ) s ORDER BY s.time ASC;', [devid],
                      function (error, results, fields) {
    if (error) throw error;
 
@@ -203,7 +203,7 @@ router.get('/usage/:device', function(req, res) {
   let devid = req.params.device;
 
   connection.query(
-    'SELECT TOE1, TOE2, TTE1, TTE2, HOV, HTV, HT, tarief1, tarief2 FROM measurement, device WHERE measurement.device = device.SN AND measurement.device = ? ORDER BY time DESC LIMIT 0,1', [devid],
+    'SELECT `TOE1`, `TOE2`, `TTE1`, `TTE2`, `HOV`, `HTV`, `HT`, `tarief1`, `tarief2` FROM `measurement`, `device` WHERE measurement.`device` = device.`SN` AND measurement.`device` = ? ORDER BY `time` DESC LIMIT 0,1;', [devid],
                      function (error, results, fields) {
    if (error) throw error;
 
@@ -223,7 +223,7 @@ router.get('/name/:device', function(req, res) {
   let devid = req.params.device;
 
   connection.query(
-    'SELECT name FROM device WHERE SN = ?', [devid],
+    'SELECT `name` FROM `device` WHERE `SN` = ?', [devid],
                      function (error, results, fields) {
    if (error) throw error;
 

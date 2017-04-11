@@ -86,13 +86,13 @@ var parseTelegram = function(data, callback){
 
 
   connection.query(
-      'INSERT INTO measurement (device, TOE1, TOE2, TTE1, TTE2, HT, HOV, HTV, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())', [device, toe1, toe2, tte1, tte2, ht, hov, htv],
+      'INSERT INTO `measurement` (`device`, `TOE1`, `TOE2`, `TTE1`, `TTE2`, `HT`, `HOV`, `HTV`, `time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, NOW())', [device, toe1, toe2, tte1, tte2, ht, hov, htv],
                        function (error, results, fields) {
      if (error) throw error;
 
 
       connection.query(
-          'INSERT INTO device (SN, name, API) VALUES (?, "New device", 42)', [device],
+          'INSERT INTO `device` (`SN`, `name`, `API`) VALUES (?, "New device", 42)', [device],
                            function (error, results, fields) {
 
           callback();
@@ -108,7 +108,7 @@ var parseTelegram = function(data, callback){
 router.post('/telegram', function(req, res){
 
 	connection.query(
-    'INSERT INTO telegram (time, data) VALUES (NOW(), ?)', [req.body.datagram],
+    'INSERT INTO `telegram` (`time`, `data`) VALUES (NOW(), ?)', [req.body.datagram],
                      function (error, results, fields) {
 	 if (error) throw error;
 
