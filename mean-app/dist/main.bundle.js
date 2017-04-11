@@ -228,6 +228,26 @@ var DetailComponent = (function () {
         this.ht = "loading";
         this.money = 0;
         this.loaded = false;
+        this.lineChartOptions = {
+            responsive: true,
+            title: {
+                display: true,
+                position: 'left',
+                text: 'Watt'
+            }
+        };
+        this.lineChartColors = [
+            {
+                backgroundColor: 'rgba(148,159,177,0.2)',
+                borderColor: 'rgba(148,159,177,1)',
+                pointBackgroundColor: 'rgba(148,159,177,1)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+            }
+        ];
+        this.lineChartLegend = true;
+        this.lineChartType = 'line';
     }
     DetailComponent.prototype.ngOnInit = function () {
         var _this = this;

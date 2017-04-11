@@ -35,6 +35,27 @@ export class DetailComponent implements OnInit, OnDestroy {
 
   public subscription:Subscription;
 
+  public lineChartOptions:any = {
+    responsive: true,
+    title: {
+      display: true,
+      position: 'left',
+      text: 'Watt'
+    }
+  };
+  public lineChartColors:Array<any> = [
+    { // grey
+      backgroundColor: 'rgba(148,159,177,0.2)',
+      borderColor: 'rgba(148,159,177,1)',
+      pointBackgroundColor: 'rgba(148,159,177,1)',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: 'rgba(148,159,177,0.8)'
+    }
+  ];
+  public lineChartLegend:boolean = true;
+  public lineChartType:string = 'line';
+
   constructor(private dataService: DataService,
              private route: ActivatedRoute) {}
 
