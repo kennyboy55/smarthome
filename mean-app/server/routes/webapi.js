@@ -34,28 +34,34 @@ router.get('/data/:device/group/:group/:year1-:month1-:day1/:year2-:month2-:day2
   let group = req.params.group;
 
   let groupdiv = 1;
+  let limit = 250;
 
   switch(group)
   {
     case 'y':
     case 'year':
       groupdiv = 3214080;
+      limit = 5;
       break;
     case 'm':
     case 'month':
       groupdiv = 267840;
+      limit = 12;
       break;
     case 'd':
     case 'day':
       groupdiv = 8640;
+      limit = 7;
       break;
     case 'h':
     case 'hour':
       groupdiv = 360;
+      limit = 24;
       break;
     case 'min':
     case 'minute':
       groupdiv = 6;
+      limit = 30;
       break;
     default:
       break;
@@ -77,7 +83,7 @@ router.get('/data/:device/group/:group/:year1-:month1-:day1/:year2-:month2-:day2
 
 
   connection.query(
-    'SET @i:= 0; SELECT s.* FROM ( SELECT MIN(grp.`time`) AS time, AVG(grp.`HOV`) AS HOV, AVG(grp.`HTV`) AS HTV, MAX(grp.`TOE1`) as TOE1, MAX(grp.`TOE2`) as TOE2, MAX(grp.`TTE1`) as TTE1, MAX(grp.`TTE2`) as TTE2, MAX(grp.`HT`) AS HT FROM (SELECT @i:=@i+1 AS `rownum`, FLOOR(@i/?) AS `datagrp`, `time`, `HOV`, `HTV`, `TOE1`, `TOE2`, `TTE1`, `TTE2`, `HT` FROM `measurement` WHERE `device` = ? AND time >= ? AND time <= ? ORDER BY `time` DESC ) grp GROUP BY `datagrp`) s ORDER BY s.time ASC;', [groupdiv, devid, date1, date2],
+    'SET @i:= 0; SELECT s.* FROM ( SELECT MIN(grp.`time`) AS time, AVG(grp.`HOV`) AS HOV, AVG(grp.`HTV`) AS HTV, MAX(grp.`TOE1`) as TOE1, MAX(grp.`TOE2`) as TOE2, MAX(grp.`TTE1`) as TTE1, MAX(grp.`TTE2`) as TTE2, MAX(grp.`HT`) AS HT FROM (SELECT @i:=@i+1 AS `rownum`, FLOOR(@i/?) AS `datagrp`, `time`, `HOV`, `HTV`, `TOE1`, `TOE2`, `TTE1`, `TTE2`, `HT` FROM `measurement` WHERE `device` = ? AND time >= ? AND time <= ? ORDER BY `time` DESC ) grp GROUP BY `datagrp`) s ORDER BY s.time ASC LIMIT 0,?;', [groupdiv, devid, date1, date2, limit],
                      function (error, results, fields) {
    if (error) throw error;
 
@@ -130,35 +136,41 @@ router.get('/data/:device/group/:group', function(req, res) {
   let group = req.params.group;
 
   let groupdiv = 1;
+  let limit = 250;
 
   switch(group)
   {
     case 'y':
     case 'year':
       groupdiv = 3214080;
+      limit = 5;
       break;
     case 'm':
     case 'month':
       groupdiv = 267840;
+      limit = 12;
       break;
     case 'd':
     case 'day':
       groupdiv = 8640;
+      limit = 7;
       break;
     case 'h':
     case 'hour':
       groupdiv = 360;
+      limit = 24;
       break;
     case 'min':
     case 'minute':
       groupdiv = 6;
+      limit = 30;
       break;
     default:
       break;
   }
 
   connection.query(
-    'SET @i:= 0; SELECT s.* FROM ( SELECT MIN(grp.`time`) AS time, AVG(grp.`HOV`) AS HOV, AVG(grp.`HTV`) AS HTV, MAX(grp.`TOE1`) as TOE1, MAX(grp.`TOE2`) as TOE2, MAX(grp.`TTE1`) as TTE1, MAX(grp.`TTE2`) as TTE2, MAX(grp.`HT`) AS HT FROM (SELECT @i:=@i+1 AS `rownum`, FLOOR(@i/?) AS `datagrp`, `time`, `HOV`, `HTV`, `TOE1`, `TOE2`, `TTE1`, `TTE2`, `HT` FROM `measurement` WHERE `device` = ? ORDER BY `time` DESC ) grp GROUP BY `datagrp`) s ORDER BY s.time ASC;', [groupdiv, devid],
+    'SET @i:= 0; SELECT s.* FROM ( SELECT MIN(grp.`time`) AS time, AVG(grp.`HOV`) AS HOV, AVG(grp.`HTV`) AS HTV, MAX(grp.`TOE1`) as TOE1, MAX(grp.`TOE2`) as TOE2, MAX(grp.`TTE1`) as TTE1, MAX(grp.`TTE2`) as TTE2, MAX(grp.`HT`) AS HT FROM (SELECT @i:=@i+1 AS `rownum`, FLOOR(@i/?) AS `datagrp`, `time`, `HOV`, `HTV`, `TOE1`, `TOE2`, `TTE1`, `TTE2`, `HT` FROM `measurement` WHERE `device` = ? ORDER BY `time` DESC ) grp GROUP BY `datagrp`) s ORDER BY s.time ASC LIMIT 0,?;', [groupdiv, devid, limit],
                      function (error, results, fields) {
    if (error) throw error;
 
