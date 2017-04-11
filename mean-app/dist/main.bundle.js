@@ -985,7 +985,7 @@ module.exports = "<div>\r\n\r\n<ul>\r\n        <li *ngFor=\"let device of device
 /***/ 679:
 /***/ (function(module, exports) {
 
-module.exports = "<div style=\"display: block;\">\r\n  <canvas baseChart width=\"400\" height=\"200\"\r\n          [datasets]=\"lineChartData\"\r\n          [labels]=\"lineChartLabels\"\r\n          [options]=\"lineChartOptions\"\r\n          [colors]=\"lineChartColors\"\r\n          [legend]=\"lineChartLegend\"\r\n          [chartType]=\"lineChartType\"></canvas>\r\n</div>\r\n"
+module.exports = "<div style=\"display: block;\">\r\n  <canvas baseChart width=\"400\" height=\"200\"\r\n          [datasets]=\"doublelineChartData\"\r\n          [labels]=\"doublelineChartLabels\"\r\n          [options]=\"doublelineChartOptions\"\r\n          [colors]=\"doublelineChartColors\"\r\n          [legend]=\"doublelineChartLegend\"\r\n          [chartType]=\"doublelineChartType\"></canvas>\r\n</div>\r\n"
 
 /***/ }),
 
