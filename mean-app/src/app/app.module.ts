@@ -9,13 +9,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LineChartComponent } from './chart.component';
 import { PieChartComponent } from './piechart.component';
+import { DoubleLineChartComponent } from "./doublelinechart.component";
 import { DashboardComponent } from './dashboard.component';
 import { DeviceComponent } from './device.component';
 import { DetailComponent } from './detail.component';
 import { PickerComponent } from './picker.component';
 
 import { DataService } from './data.service';
-import {DoubleLineChartComponent} from "./doublelinechart.component";
 
 @NgModule({
   declarations: [

@@ -257,6 +257,7 @@ var DashboardComponent = (function () {
             .get("4530303035303031353538313833363134")
             .subscribe(function (res) {
             _this.data4 = res.HOV;
+            console.log(_this.data4);
             _this.dbloaded = true;
         });
     };
@@ -600,12 +601,12 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(512);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__chart_component__ = __webpack_require__(514);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__piechart_component__ = __webpack_require__(516);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__dashboard_component__ = __webpack_require__(335);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__device_component__ = __webpack_require__(337);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__detail_component__ = __webpack_require__(336);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__picker_component__ = __webpack_require__(338);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__data_service__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__doublelinechart_component__ = __webpack_require__(515);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__doublelinechart_component__ = __webpack_require__(515);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__dashboard_component__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__device_component__ = __webpack_require__(337);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__detail_component__ = __webpack_require__(336);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__picker_component__ = __webpack_require__(338);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__data_service__ = __webpack_require__(104);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -639,12 +640,12 @@ var AppModule = (function () {
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
                 __WEBPACK_IMPORTED_MODULE_7__chart_component__["a" /* LineChartComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__doublelinechart_component__["a" /* DoubleLineChartComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__doublelinechart_component__["a" /* DoubleLineChartComponent */],
                 __WEBPACK_IMPORTED_MODULE_8__piechart_component__["a" /* PieChartComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__dashboard_component__["a" /* DashboardComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__device_component__["a" /* DeviceComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__detail_component__["a" /* DetailComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__picker_component__["a" /* PickerComponent */]
+                __WEBPACK_IMPORTED_MODULE_10__dashboard_component__["a" /* DashboardComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__device_component__["a" /* DeviceComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__detail_component__["a" /* DetailComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__picker_component__["a" /* PickerComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -653,7 +654,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_4_ng2_charts_ng2_charts__["ChartsModule"],
                 __WEBPACK_IMPORTED_MODULE_5__app_routing_module__["a" /* AppRoutingModule */]
             ],
-            providers: [__WEBPACK_IMPORTED_MODULE_13__data_service__["a" /* DataService */]],
+            providers: [__WEBPACK_IMPORTED_MODULE_14__data_service__["a" /* DataService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
         }), 
         __metadata('design:paramtypes', [])
@@ -821,6 +822,7 @@ var DoubleLineChartComponent = (function () {
         newDataSet.push(newLine);
         newDataSet.push(newLine2);
         this.doublelineChartData = newDataSet;
+        console.log(this.doublelineChartData);
     };
     DoubleLineChartComponent.prototype.ngOnChanges = function () {
         if (this.chart.chart != undefined) {
