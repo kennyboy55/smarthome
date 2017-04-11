@@ -206,20 +206,17 @@ var DashboardComponent = (function () {
     DashboardComponent.prototype.refreshData = function () {
         var _this = this;
         console.log("Refreshing data");
+        this.label = ({ data: ["Huidig opgenomen", "Huidig terug"] });
         this.dataService
             .usage("4530303035303031353538313833363134")
             .subscribe(function (res) {
-            //this.data1 = <LineData> ({data: [res.HOV, res.HTV], label: "Verbruik Martijn"});
-            _this.data1 = ({ data: [21, 25], label: "Verbruik Martijn" });
-            console.log("data ");
-            console.log(_this.data1);
+            _this.data1 = ({ data: [res.HOV, res.HTV], label: "Verbruik Martijn" });
             _this.mloaded = true;
         });
         this.dataService
             .usage("4530303235303030303636383733323136")
             .subscribe(function (res) {
-            //this.data1 = <LineData> ({data: [res.HOV, res.HTV], label: "Verbruik Kenneth"});
-            _this.data2 = ({ data: [18, 13], label: "Verbruik Kenneth" });
+            _this.data1 = ({ data: [res.HOV, res.HTV], label: "Verbruik Kenneth" });
             _this.kloaded = true;
         });
         this.dataService
