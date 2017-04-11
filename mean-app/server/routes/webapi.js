@@ -157,6 +157,8 @@ router.get('/data/:device/group/:group', function(req, res) {
       break;
   }
 
+  console.log("Calculating group ", groupdiv);
+
   connection.query(
     'SELECT MIN(grp.`time`), AVG(grp.`HOV`) as HOV, AVG(grp.`HTV`) as HTV FROM (SELECT @i:=@i+1 AS `rownum`, FLOOR(@i/?) AS `datagrp`, `time`, `HOV`, `HTV` FROM `measurement` WHERE `device` = ? ORDER BY `time` DESC ) grp GROUP BY `datagrp`', [groupdiv, devid],
                      function (error, results, fields) {

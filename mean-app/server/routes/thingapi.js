@@ -32,7 +32,6 @@ var parseTelegram = function(data, callback){
 
   if(found)
     toe1 = found[1];
-console.log(toe1);
 
   //TOE2
   regx = /1-0:1\.8\.2\((\d{5,6}\.\d{3})\*kWh\)/g;
@@ -103,8 +102,7 @@ console.log(toe1);
 
 
 router.post('/telegram', function(req, res){
-	console.log("Telegram received: ");
-	console.log(req.body);
+	console.log("Telegram received");
 
 	connection.query(
     'INSERT INTO telegram (time, data) VALUES (NOW(), ?)', [req.body.datagram],
